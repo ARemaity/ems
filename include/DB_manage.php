@@ -7,7 +7,7 @@ class DB_Manage{
      
     private $conn;
  
-private $timezone;
+//private $timezone;
     // constructor
     function __construct() {
         require_once 'DB_Connect.php';
@@ -15,8 +15,8 @@ private $timezone;
         $db = new Db_Connect();
         $this->conn = $db->connect();
 
-        $this->date= new DateTime("now", new DateTimeZone('Asia/Beirut'));
-        $this->timezone=$this->date->format('Y-m-d H:i:s');
+       // $this->date= new DateTime("now", new DateTimeZone('Asia/Beirut'));
+       // $this->timezone=$this->date->format('Y-m-d H:i:s');
     }
 
     // destructor
@@ -51,6 +51,23 @@ private $timezone;
                  return false;
              }
          }
+
+
+
+         public function updateclient($name,$address,$phone_number) {
+                                
+            $stmt = $this->conn->prepare("UPDATE `client` SET `CID`=[value-1],`name`=[value-2],`address`=[value-3],`phone_number`=[value-4] WHERE 1");
+            $stmt->bind_param("ssi",$name,$address,$phone_number);
+             $result = $stmt->execute();
+         $stmt->close();+
+         // check for successful stores
+         if ($result) {
+             return true;
+         } else {
+             return false;
+         }
+     }
+         
 
 
 
