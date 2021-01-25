@@ -1,4 +1,4 @@
-<?php 
+<?php 0
 
 //America/New_York
 
@@ -28,8 +28,8 @@ class DB_Manage{
                                 
                     $stmt = $this->conn->prepare("INSERT INTO `client`(`CID`, `name`, `address`, `phone_number`) VALUES (NULL,?,?,?)");
                     $stmt->bind_param("ssi",$name,$address,$phone_number);
-                     $result = $stmt->execute();
-                 $stmt->close();
+                    $result = $stmt->execute();
+                    $stmt->close();
                  // check for successful stores
                  if ($result) {
                      return true;
@@ -53,13 +53,12 @@ class DB_Manage{
          }
 
 
-
-         public function updateclient($name,$address,$phone_number) {
+         public function insertintocompany($name,$address,$phone,$description) {
                                 
-            $stmt = $this->conn->prepare("UPDATE `client` SET `CID`=[value-1],`name`=[value-2],`address`=[value-3],`phone_number`=[value-4] WHERE 1");
-            $stmt->bind_param("ssi",$name,$address,$phone_number);
-             $result = $stmt->execute();
-         $stmt->close();+
+            $stmt = $this->conn->prepare("INSERT INTO `company`(`CID`, `name`, `address`, `phone`, `description`) VALUES (Null,?,?,?,?)");
+            $stmt->bind_param("ssis",$name,$address,$phone,$description);
+            $result = $stmt->execute();
+            $stmt->close();
          // check for successful stores
          if ($result) {
              return true;
@@ -67,8 +66,21 @@ class DB_Manage{
              return false;
          }
      }
-         
 
+
+     public function insertintoexpense($name,$address,$phone,$description) {
+                                
+        $stmt = $this->conn->prepare("INSERT INTO `expense`(`EID`, `name`, `description`, `cost`) VALUES (Null,?,?,?)");
+        $stmt->bind_param("ssd",$name,$address,$phone,$description);
+        $result = $stmt->execute();
+        $stmt->close();
+     // check for successful stores
+     if ($result) {
+         return true;
+     } else {
+         return false;
+     }
+ }
 
 
 
