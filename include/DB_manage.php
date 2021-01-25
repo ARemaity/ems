@@ -1,8 +1,8 @@
-<?php 0
+<?php 
 
 //America/New_York
 
-class DB_Manage{
+class DB_Manage {
      
      
     private $conn;
@@ -38,19 +38,19 @@ class DB_Manage{
                  }
              }
 
-             public function deletefromclient($clientid) {
+        //      public function deletefromclient($clientid) {
                                 
-                $stmt = $this->conn->prepare("DELETE FROM `client` WHERE CID = ?");
-                $stmt->bind_param("i",$clientid);
-                 $result = $stmt->execute();
-             $stmt->close();
-             // check for successful stores
-             if ($result) {
-                 return true;
-             } else {
-                 return false;
-             }
-         }
+        //         $stmt = $this->conn->prepare("DELETE FROM `client` WHERE CID = ?");
+        //         $stmt->bind_param("i",$clientid);
+        //          $result = $stmt->execute();
+        //      $stmt->close();
+        //      // check for successful stores
+        //      if ($result) {
+        //          return true;
+        //      } else {
+        //          return false;
+        //      }
+        //  }
 
 
          public function insertintocompany($name,$address,$phone,$description) {
@@ -68,10 +68,10 @@ class DB_Manage{
      }
 
 
-     public function insertintoexpense($name,$address,$phone,$description) {
+     public function insertintoexpense($name,$description,$cost) {
                                 
         $stmt = $this->conn->prepare("INSERT INTO `expense`(`EID`, `name`, `description`, `cost`) VALUES (Null,?,?,?)");
-        $stmt->bind_param("ssd",$name,$address,$phone,$description);
+        $stmt->bind_param("ssd",$name,$description,$cost);
         $result = $stmt->execute();
         $stmt->close();
      // check for successful stores
@@ -84,17 +84,72 @@ class DB_Manage{
 
 
 
+ public function insertintoexpense_transaction($fk_UID,$fk_PID,$fk_IID,$created_at) {
+                                
+    $stmt = $this->conn->prepare("INSERT INTO `expense_transaction`(`ETID`, `fk_UID`, `fk_PID`, `fk_IID`, `created_at`) VALUES (Null,?,?,?,?)");
+    $stmt->bind_param("iiis",$fk_UID,$fk_PID,$fk_IID,$created_at);
+    $result = $stmt->execute();
+    $stmt->close();
+ // check for successful stores
+ if ($result) {
+     return true;
+ } else {
+     return false;
+ }
+}
 
 
 
 
 
+public function insertintoincome($name,$description,$cost) {
+                                
+    $stmt = $this->conn->prepare("INSERT INTO `income`(`IID`, `name`, `description`, `cost`) VALUES (Null,?,?,?)");
+    $stmt->bind_param("ssd",$name,$description,$cost);
+    $result = $stmt->execute();
+    $stmt->close();
+ // check for successful stores
+ if ($result) {
+     return true;
+ } else {
+     return false;
+ }
+}
 
 
 
 
 
+public function insertintoincome_transaction($fk_UID,$fk_PID,$fk_IID,$created_at) {
+                                
+    $stmt = $this->conn->prepare("INSERT INTO `income_transaction`(`ITID`, `fk_UID`, `fk_PID`, `fk_IID`, `created_at`) VALUES (Null,?,?,?,?)");
+    $stmt->bind_param("iiis",$fk_UID,$fk_PID,$fk_IID,$created_at);
+    $result = $stmt->execute();
+    $stmt->close();
+ // check for successful stores
+ if ($result) {
+     return true;
+ } else {
+     return false;
+ }
+}
 
+
+
+
+public function insertintoproject($number,$city,$owner_id,$created_at) {
+                                
+    $stmt = $this->conn->prepare("INSERT INTO `project`(`PID`, `number`, `city`, `owner_id`, `created_at`) VALUES (Null,?,?,?,?)");
+    $stmt->bind_param("isis",$number,$city,$owner_id,$created_at);
+    $result = $stmt->execute();
+    $stmt->close();
+ // check for successful stores
+ if ($result) {
+     return true;
+ } else {
+     return false;
+ }
+}
 
 
 
