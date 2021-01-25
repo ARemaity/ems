@@ -38,7 +38,19 @@ private $timezone;
                  }
              }
 
-
+             public function deletefromclient($clientid) {
+                                
+                $stmt = $this->conn->prepare("DELETE FROM `client` WHERE CID = ?");
+                $stmt->bind_param("i",$clientid);
+                 $result = $stmt->execute();
+             $stmt->close();
+             // check for successful stores
+             if ($result) {
+                 return true;
+             } else {
+                 return false;
+             }
+         }
 
 
 
