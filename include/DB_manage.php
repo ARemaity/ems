@@ -24,6 +24,39 @@ private $timezone;
         
     }
 
+    public function insertintoclient($name,$address,$phone_number) {
+                                
+                    $stmt = $this->conn->prepare("INSERT INTO `client`(`CID`, `name`, `address`, `phone_number`) VALUES (NULL,?,?,?)");
+                    $stmt->bind_param("ssi",$name,$address,$phone_number);
+                     $result = $stmt->execute();
+                 $stmt->close();
+                 // check for successful stores
+                 if ($result) {
+                     return true;
+                 } else {
+                     return false;
+                 }
+             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //     /**
 //      * Delete lead by Id
