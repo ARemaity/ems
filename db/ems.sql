@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2021 at 12:17 PM
+-- Generation Time: Jan 26, 2021 at 12:56 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -34,6 +34,13 @@ CREATE TABLE `client` (
   `phone_number` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`CID`, `name`, `address`, `phone_number`) VALUES
+(1, 'ali', 'sour', 700324234);
+
 -- --------------------------------------------------------
 
 --
@@ -57,9 +64,16 @@ CREATE TABLE `company` (
 CREATE TABLE `expense` (
   `EID` int(100) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `cost` decimal(65,2) NOT NULL
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `expense`
+--
+
+INSERT INTO `expense` (`EID`, `name`, `description`) VALUES
+(1, 'twabe3', 'tawbe3'),
+(2, 'benzin', 'sefqsefwEAF');
 
 -- --------------------------------------------------------
 
@@ -71,21 +85,9 @@ CREATE TABLE `expense_transaction` (
   `ETID` int(255) NOT NULL,
   `fk_UID` int(100) NOT NULL,
   `fk_PID` int(100) NOT NULL,
-  `fk_IID` int(100) NOT NULL,
+  `fk_EID` int(100) NOT NULL,
+  `cost` decimal(10,0) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `income`
---
-
-CREATE TABLE `income` (
-  `IID` int(100) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `cost` decimal(65,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -98,7 +100,6 @@ CREATE TABLE `income_transaction` (
   `ITID` int(255) NOT NULL,
   `fk_UID` int(100) NOT NULL,
   `fk_PID` int(100) NOT NULL,
-  `fk_IID` int(100) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -167,12 +168,6 @@ ALTER TABLE `expense_transaction`
   ADD PRIMARY KEY (`ETID`);
 
 --
--- Indexes for table `income`
---
-ALTER TABLE `income`
-  ADD PRIMARY KEY (`IID`);
-
---
 -- Indexes for table `income_transaction`
 --
 ALTER TABLE `income_transaction`
@@ -198,7 +193,7 @@ ALTER TABLE `project`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `CID` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `CID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -210,19 +205,13 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `EID` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `EID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `expense_transaction`
 --
 ALTER TABLE `expense_transaction`
   MODIFY `ETID` int(255) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `income`
---
-ALTER TABLE `income`
-  MODIFY `IID` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `income_transaction`
