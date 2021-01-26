@@ -8,7 +8,7 @@ $db=new DB_Manage();
 $rpt=new DB_Reports();
 // example 
 
-// $insertinto=$db->insertintoclient("ali","sour",700324234);
+// $insertinto=$db->insertintoclient("abadi","kafra",700324234);
 // if($insertinto){
 //     echo "good";
 // }else{
@@ -36,8 +36,12 @@ $rpt=new DB_Reports();
 
 
 
- $insertinto3 = $db->insertintoproject(7546654,"sur",25,"2000-01-01");
- if($insertinto3){echo "sucess";}else{echo "dumm";}
+//  $insertinto3 = $db->insertintoproject(7546654,"sur",25s,"2000-01-01");
+//  if($insertinto3){echo "sucess";}else{echo "dumm";}
+
+$client = $db->getproject(1);
+
+echo print_r($client);
 
 
 ?>
