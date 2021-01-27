@@ -1872,7 +1872,7 @@ $module='project';
 																		<label
 																			class="col-xl-3 col-lg-3 col-form-label">Number</label>
 																		<div class="col-lg-9 col-xl-9">
-																			<input id="numeric"
+																			<input id="numeric2"
 																				class="form-control form-control-solid form-control-lg"
 																				name="number" type="text" required>
 																			<div class="fv-plugins-message-container">
@@ -3427,7 +3427,7 @@ $module='project';
 		$(document).ready(function () {
 
 			// process the form
-			$("#numeric").on("keypress keyup blur", function (event) {
+			$("#numeric,#numeric2").on("keypress keyup blur", function (event) {
 				$(this).val($(this).val().replace(/[^\d].+/, ""));
 				if ((event.which < 48 || event.which > 57)) {
 					$(".error").css("display", "inline");
