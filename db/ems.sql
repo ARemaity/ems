@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2021 at 12:56 PM
+-- Generation Time: Jan 27, 2021 at 06:59 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -20,26 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ems`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `client`
---
-
-CREATE TABLE `client` (
-  `CID` int(100) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `phone_number` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `client`
---
-
-INSERT INTO `client` (`CID`, `name`, `address`, `phone_number`) VALUES
-(1, 'ali', 'sour', 700324234);
 
 -- --------------------------------------------------------
 
@@ -135,19 +115,14 @@ CREATE TABLE `project` (
   `PID` int(100) NOT NULL,
   `number` int(100) NOT NULL,
   `city` varchar(255) NOT NULL,
-  `owner_id` int(100) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `client_name` varchar(255) NOT NULL,
+  `client_phone` int(15) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`CID`);
 
 --
 -- Indexes for table `company`
@@ -188,12 +163,6 @@ ALTER TABLE `project`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `client`
---
-ALTER TABLE `client`
-  MODIFY `CID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `company`
