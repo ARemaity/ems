@@ -124,7 +124,7 @@ public function insertintoincome_transaction($fk_UID,$fk_PID,$fk_IID,$created_at
 
 public function insertintoproject($number,$city,$client_name,$client_phone) {
                                 
-    $stmt = $this->conn->prepare("INSERT INTO `project`(`PID`, `number`, `city`, `client_name`, `client_phone`, `created_at`) VALUES (Null,?,?,?,?,NOW()");
+    $stmt = $this->conn->prepare("INSERT INTO `project`(`PID`, `number`, `city`, `client_name`, `client_phone`, `created_at`) VALUES (Null,?,?,?,?,NOW())");
  
     $stmt->bind_param("issi",$number,$city,$client_name,$client_phone);
   
