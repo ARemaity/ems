@@ -4,7 +4,8 @@
 require_once '../include/DB_manage.php';
 require_once '../include/DB_Reports.php';
 
-$db =new DB_Manage();           ?>
+$db =new DB_Manage();        
+   ?>
 
 
 
