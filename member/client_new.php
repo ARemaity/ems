@@ -1541,7 +1541,7 @@ $db =new DB_Manage();           ?>
 													<div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
 														<div class="col-xl-12 col-xxl-10">
 															<!--begin::Wizard Form-->
-															<form  action = "client_new.php" method = "POST" class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form">
+															<form  action = "process.php" method = "POST" class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form">
 																<div class="row justify-content-center">
 																	<div class="col-xl-9">
 																		<!--begin::Wizard Step 1-->
@@ -1570,7 +1570,7 @@ $db =new DB_Manage();           ?>
 																			<div class="form-group row fv-plugins-icon-container">
 																				<label class="col-xl-3 col-lg-3 col-form-label">Phone number</label>
 																				<div class="col-lg-9 col-xl-9">
-																					<input class="form-control form-control-solid form-control-lg" name="phonenumber" type="text" required >
+																					<input class="form-control form-control-solid form-control-lg" id = "numeric" name="phonenumber" type="text" required >
 																					
 																				<div class="fv-plugins-message-container"></div></div>
 																			</div>
@@ -3848,7 +3848,7 @@ $db =new DB_Manage();           ?>
     </div>
   </div>
   
-
+<!-- 
         <?php
 if(isset($_POST["submit"])){
    
@@ -3860,7 +3860,82 @@ if($result){   echo "<script>
   }else {die( "failed");}
 
 }
-?>
+?> -->
+
+
+<script type="text/javascript">
+    
+    $(document).ready(function() {
+      $("#numeric").on("keypress keyup blur",function (event) {    
+           $(this).val($(this).val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                $(".error").css("display", "inline");
+                event.preventDefault();
+            }else{
+            	$(".error").css("display", "none");
+            }
+        });
+    });
+     
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+// process the form
+$('#kt_form').submit(function(event) {
+
+    // get the form data
+    // there are many ways to get this data using jQuery (you can use the class or id also)
+    var formData = {
+        'name'              : $('input[name=name]').val(),
+        'address'             : $('input[name=address]').val(),
+        'phonenumber'    : $('input[name=phonenumber]').val()
+    };
+
+    // process the form
+    $.ajax({
+        type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+        url         : 'process.php', // the url where we want to POST
+        data        : formData, // our data object
+        dataType    : 'json', // what type of data do we expect back from the server
+                    encode : true
+    })
+        // using the done promise callback
+        .done(function(data) {
+
+            // log data to the console so we can see
+            console.log(data);
+
+
+
+            if ( ! data.success) {
+                $("#exampleModalLabel").html("Error inserting new client");
+                $('#exampleModal').modal('show');
+
+            }else{       
+                $('#exampleModal').modal('show');}
+            // here we will handle errors and validation messages
+        });
+
+    // stop the form from submitting the normal way and refreshing the page
+    event.preventDefault();
+});
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
