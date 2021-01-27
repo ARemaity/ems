@@ -44,7 +44,7 @@ $module='project';
 	<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 		<!--begin::Logo-->
 		<a href="/metronic/demo1/index.html">
-			<img alt="Logo" src="assets/media/logos/logo-light.png" />
+			<img alt="Logo" src="../assets/media/logos/logo-default.png" />
 		</a>
 		<!--end::Logo-->
 		<!--begin::Toolbar-->
@@ -1867,22 +1867,69 @@ $module='project';
 
 																	<!--end::Group-->
 																	<!--begin::Group-->
+                                                                    </div>
+                                                                
+																				
+																			
+													
+
+																	<div>
 																	<div
 																		class="form-group row fv-plugins-icon-container">
 																		<label
-																			class="col-xl-3 col-lg-3 col-form-label">Number</label>
+																			class="col-xl-3 col-lg-3 col-form-label">Client Name</label>
 																		<div class="col-lg-9 col-xl-9">
-																			<input id="numeric2"
+																			<input 
 																				class="form-control form-control-solid form-control-lg"
-																				name="number" type="text" required>
+																				name="clientname" type="text" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
 																		</div>
 																	</div>
+																	
+
+
+
+																	<div class="form-group row">
+																				<label class="col-xl-3 col-lg-3 col-form-label">Contact Phone</label>
+																				<div class="col-lg-9 col-xl-9">
+																					<div class="input-group input-group-solid input-group-lg">
+																						<div class="input-group-prepend">
+																							<span class="input-group-text">
+																								<i class="la la-phone"></i>
+																							</span>
+																						</div>
+																						<input type="text" class="form-control form-control-solid form-control-lg" name="phonenumber"  placeholder="Phone" id = "numeric2" required/>
+																				
+																			</div>
+	
+																			</div>
+
+
+	
+																			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+																	
 																	<!--end::Group-->
 																	<!--begin::Group-->
-																	<div
-																		class="form-group row fv-plugins-icon-container">
+																	<div class="form-group row fv-plugins-icon-container">
 																		<label
 																			class="col-xl-3 col-lg-3 col-form-label">City</label>
 																		<div class="col-lg-9 col-xl-9">
@@ -1893,26 +1940,34 @@ $module='project';
 																			</div>
 																		</div>
 																	</div>
-																	<!--end::Group-->
-																	<!--begin::Group-->
-																	<div
+
+                                                                    <div
 																		class="form-group row fv-plugins-icon-container">
 																		<label
-																			class="col-xl-3 col-lg-3 col-form-label">Owner ID
-																		</label>
+																			class="col-xl-3 col-lg-3 col-form-label">Number</label>
 																		<div class="col-lg-9 col-xl-9">
-																			<input
+																			<input 
 																				class="form-control form-control-solid form-control-lg"
-																				id="numeric" name="ownerid"
-																				type="text" required>
-
+																				name="number" type="text" id = "numeric1" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
 																		</div>
 																	</div>
 
-																</div>
+
+
+
+
+
+
+																	<!--end::Group-->
+																	<!--begin::Group-->
+																	
+
 															
+                                                                        
+																				
+																			</div>
 																<div
 																	class="d-flex justify-content-between border-top pt-10 mt-15">
 
@@ -3427,7 +3482,7 @@ $module='project';
 		$(document).ready(function () {
 
 			// process the form
-			$("#numeric,#numeric2").on("keypress keyup blur", function (event) {
+			$("#numeric1,#numeric2").on("keypress keyup blur", function (event) {
 				$(this).val($(this).val().replace(/[^\d].+/, ""));
 				if ((event.which < 48 || event.which > 57)) {
 					$(".error").css("display", "inline");

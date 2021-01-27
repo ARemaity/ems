@@ -19,7 +19,7 @@ $rpt=new DB_Reports();
 // $insertinto2 = $db->insertintocompany("apple","cali",7415466,"assembled in china");
 // if($insertinto2){echo "sucess";}else{echo "failed"; }
 
-// $insertinro3 = $db->insertintoexpense("that","this is spartan",2500.23);
+// $insertinro3 = $db->insertintoexpense("that","this is spartssan",2500.23);
 // if($insertinro3){echo "sucess";}else{echo "duuummm";}
 
 // $insertinto3 = $db->insertintoexpense_transaction(10,20,30,"");
@@ -36,7 +36,7 @@ $rpt=new DB_Reports();
 
 
 
- $insertinto3 = $db->insertintoproject(7546654,"sur",25,"2000-01-01");
+ $insertinto3 = $db->insertintoproject(75654,"sur","ali",25);
  if($insertinto3){echo "sucess";}else{echo "dumm";}
 
 // $client = $db->getproject(1);

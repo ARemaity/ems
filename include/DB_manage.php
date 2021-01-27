@@ -24,19 +24,19 @@ class DB_Manage {
         
     }
 
-    public function insertintoclient($name,$address,$phone_number) {
+    // public function insertintoclient($name,$address,$phone_number) {
                                 
-                    $stmt = $this->conn->prepare("INSERT INTO `client`(`CID`, `name`, `address`, `phone_number`) VALUES (NULL,?,?,?)");
-                    $stmt->bind_param("ssi",$name,$address,$phone_number);
-                    $result = $stmt->execute();
-                    $stmt->close();
-                 // check for successful stores
-                 if ($result) {
-                     return true;
-                 } else {
-                     return false;
-                 }
-             }
+    //                 $stmt = $this->conn->prepare("INSERT INTO `client`(`CID`, `name`, `address`, `phone_number`) VALUES (NULL,?,?,?)");
+    //                 $stmt->bind_param("ssi",$name,$address,$phone_number);
+    //                 $result = $stmt->execute();
+    //                 $stmt->close();
+    //              // check for successful stores
+    //              if ($result) {
+    //                  return true;
+    //              } else {
+    //                  return false;
+    //              }
+    //          }
 
         //      public function deletefromclient($clientid) {
                                 
@@ -122,10 +122,12 @@ public function insertintoincome_transaction($fk_UID,$fk_PID,$fk_IID,$created_at
 
 
 
-public function insertintoproject($number,$city,$owner_id) {
+public function insertintoproject($number,$city,$client_name,$client_phone) {
                                 
-    $stmt = $this->conn->prepare("INSERT INTO `project`(`PID`, `number`, `city`, `owner_id`, `created_at`) VALUES (Null,?,?,?,NOW())");
-    $stmt->bind_param("isi",$number,$city,$owner_id);
+    $stmt = $this->conn->prepare("INSERT INTO `project`(`PID`, `number`, `city`, `client_name`, `client_phone`, `created_at`) VALUES (Null,?,?,?,?,NOW()");
+ 
+    $stmt->bind_param("issi",$number,$city,$client_name,$client_phone);
+  
     $result = $stmt->execute();
     $stmt->close();
  // check for successful stores
@@ -136,20 +138,7 @@ public function insertintoproject($number,$city,$owner_id) {
  }
 }
 
-    public function getclient($clientid) {
-       
-        $stmt = $this->conn->prepare("SELECT `CID`, `name`, `address`, `phone_number` FROM `client` WHERE CID = ?");        
-    $stmt->bind_param("i", $clientid);   
-
-    if ($stmt->execute()) {			
-         $order = $stmt->get_result()->fetch_assoc();
-         $stmt->close();
-         return $order; 
-     } else {
-        return NULL;
-     }
- }
-
+  
 
  public function getcompany($companyid) {
        
@@ -217,7 +206,7 @@ if ($stmt->execute()) {
 
 public function getproject($projecttid) {
        
-    $stmt = $this->conn->prepare("SELECT `PID`, `number`, `city`, `owner_id`, `created_at` FROM `project` WHERE PID = ?");        
+    $stmt = $this->conn->prepare("SELECT `PID`, `number`, `city`, `client_name`, `client_phone`, `created_at` FROM `project` WHERE 1 PID = ?");        
 $stmt->bind_param("i", $projecttid);   
 
 if ($stmt->execute()) {			
