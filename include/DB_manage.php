@@ -122,10 +122,10 @@ public function insertintoincome_transaction($fk_UID,$fk_PID,$fk_IID,$created_at
 
 
 
-public function insertintoproject($number,$city,$owner_id,$created_at) {
+public function insertintoproject($number,$city,$owner_id) {
                                 
-    $stmt = $this->conn->prepare("INSERT INTO `project`(`PID`, `number`, `city`, `owner_id`, `created_at`) VALUES (Null,?,?,?,?)");
-    $stmt->bind_param("isis",$number,$city,$owner_id,$created_at);
+    $stmt = $this->conn->prepare("INSERT INTO `project`(`PID`, `number`, `city`, `owner_id`, `created_at`) VALUES (Null,?,?,?,Null)");
+    $stmt->bind_param("isi",$number,$city,$owner_id);
     $result = $stmt->execute();
     $stmt->close();
  // check for successful stores

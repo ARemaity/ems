@@ -36,12 +36,12 @@ $rpt=new DB_Reports();
 
 
 
-//  $insertinto3 = $db->insertintoproject(7546654,"sur",25s,"2000-01-01");
-//  if($insertinto3){echo "sucess";}else{echo "dumm";}
+ $insertinto3 = $db->insertintoproject(7546654,"sur",25,"2000-01-01");
+ if($insertinto3){echo "sucess";}else{echo "dumm";}
 
-$client = $db->getproject(1);
+// $client = $db->getproject(1);
 
-echo print_r($client);
+// echo print_r($client);
 
 
 ?>
