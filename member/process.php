@@ -42,8 +42,9 @@ if ( ! empty($errors)) {
 } else {
 
     // if there are no errors process our form, then return a message
-   
-   
+    $data['name'] = $_POST['name'];
+    $data['address'] = $_POST['address'];
+    $data['phonenumber'] = $_POST['phonenumber'];
     // DO ALL YOUR FORM PROCESSING HERE
     // THIS CAN BE WHATEVER YOU WANT TO DO (LOGIN, SAVE, UPDATE, WHATEVER)
 

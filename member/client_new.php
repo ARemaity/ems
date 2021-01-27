@@ -3838,7 +3838,7 @@ $db =new DB_Manage();           ?>
           </button>
         </div>
         <div class="modal-body">
-         
+         <p id="modalbody"></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -3906,7 +3906,7 @@ $('#kt_form').submit(function(event) {
         .done(function(data) {
 
             // log data to the console so we can see
-            console.log(data);
+           
 
 
 
@@ -3914,7 +3914,9 @@ $('#kt_form').submit(function(event) {
                 $("#exampleModalLabel").html("Error inserting new client");
                 $('#exampleModal').modal('show');
 
-            }else{       
+            }else{   
+                $("#exampleModalLabel").html("Sucess inserting new client");    
+                $("#modalbody").html("Name : "+data.name+"<br> Address : "+data.address+"<br>Phone number : "+data.phonenumber);  
                 $('#exampleModal').modal('show');}
             // here we will handle errors and validation messages
         });
