@@ -71,7 +71,7 @@ class DB_Manage {
      public function insertintoexpense($name,$description) {
                                 
         $stmt = $this->conn->prepare("INSERT INTO `expense`(`EID`, `name`, `description`) VALUES (Null,?,?)");
-        $stmt->bind_param("ssd",$name,$description);
+        $stmt->bind_param("ss",$name,$description);
         $result = $stmt->execute();
         $stmt->close();
      // check for successful stores
