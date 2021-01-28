@@ -1,6 +1,8 @@
 <?php
-
-$module='expense';
+require_once (dirname(__FILE__, 2)) . '/base.php';
+require_once (dirname(__FILE__, 2)) . '/' . DIR_INC . 'DB_manage.php';
+$db=new DB_Manage();
+$module='expensetransaction';
 
 ?>
 
@@ -1861,7 +1863,7 @@ $module='expense';
 																<!--begin::Wizard Step 1-->
 																<div class="my-5 step" data-wizard-type="step-content"
 																	data-wizard-state="current">
-																	<h5 class="text-dark font-weight-bold mb-10">Add Expense
+																	<h5 class="text-dark font-weight-bold mb-10">Income transactions :
 																		:</h5>
 																	<!--begin::Group-->
 
@@ -1877,50 +1879,59 @@ $module='expense';
 																	<div
 																		class="form-group row fv-plugins-icon-container">
 																		<label
-																			class="col-xl-3 col-lg-3 col-form-label">Expense Name</label>
+																			class="col-xl-3 col-lg-3 col-form-label">Project ID</label>
 																		<div class="col-lg-9 col-xl-9">
 																			<input 
 																				class="form-control form-control-solid form-control-lg"
-																				name="expensename" type="text" required>
+																				name="projectid" type="text" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
 																		</div>
 																	</div>
 																	
+                                                                    <div
+																		class="form-group row fv-plugins-icon-container">
+                                                                        <label
+																			class="col-xl-3 col-lg-3 col-form-label">Expense</label>
+																		<div class="col-lg-9 col-xl-9">
+
+																		<select name="dropdown" class="form-control form-control-lg form-control-solid">
+																			<option >Out the list...</option>
+																			
+                                                                                   <?php
+                                                                                   
+                                                                                            $result = $db->getallexpense()->get_result();
+                                                                                                 while ($row = $result->fetch_assoc()) {
+                                                                                                    echo "<option value='".$row['EID']."'>".$row['name']."</option>";}
+
+
+
+                                                                                                         
+
+                                                                                                 
+                                                                                   ?>
 
 
 
 
+																			
+
+																		</select>
+																	</div>
+																</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-																	
 																	<!--end::Group-->
-																	<!--begin::Group-->
 																	
 
                                                                     <div
 																		class="form-group row fv-plugins-icon-container">
 																		<label
-																			class="col-xl-3 col-lg-3 col-form-label">Description</label>
+																			class="col-xl-3 col-lg-3 col-form-label">Cost</label>
 																		<div class="col-lg-9 col-xl-9">
 																			<input 
 																				class="form-control form-control-solid form-control-lg"
-																				name="description" type="text"  required>
+																				name="cost" type="text" id = "numeric1" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
 																		</div>
@@ -1948,7 +1959,7 @@ $module='expense';
 																		<button type="submit" name="regsiter"
 																			id="regsiter"
 																			class="btn btn-primary font-weight-bolder px-9 py-4">Add
-																			expense</button>
+																			transaction</button>
 
 																	</div>
 																</div>
@@ -3422,7 +3433,6 @@ $module='expense';
 				</div>
 				<div class="modal-body">
 					<p id="modalbody"></p>
-                    
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -3454,6 +3464,16 @@ $module='expense';
 
 		$(document).ready(function () {
 
+			// process the form
+			$("#numeric1,#numeric2").on("keypress keyup blur", function (event) {
+				$(this).val($(this).val().replace(/[^\d].+/, ""));
+				if ((event.which < 48 || event.which > 57)) {
+					$(".error").css("display", "inline");
+					event.preventDefault();
+				} else {
+					$(".error").css("display", "none");
+				}
+			});
 
 
 

@@ -84,10 +84,10 @@ class DB_Manage {
 
 
 
- public function insertintoexpense_transaction($fk_UID,$fk_PID,$fk_IID,$cost,$created_at) {
+ public function insertintoexpense_transaction($fk_UID,$fk_PID,$fk_IID,$cost) {
                                 
-    $stmt = $this->conn->prepare("INSERT INTO `expense_transaction`(`ETID`, `fk_UID`, `fk_PID`, `fk_IID`,`cost`,`created_at`) VALUES (Null,?,?,?,?,?)");
-    $stmt->bind_param("iiiis",$fk_UID,$fk_PID,$fk_IID,$cost,$created_at);
+    $stmt = $this->conn->prepare("INSERT INTO `expense_transaction`(`ETID`, `fk_UID`, `fk_PID`, `fk_EID`,`cost`,`created_at`) VALUES (Null,?,?,?,?,NOW())");
+    $stmt->bind_param("iiid",$fk_UID,$fk_PID,$fk_IID,$cost);
     $result = $stmt->execute();
     $stmt->close();
  // check for successful stores
@@ -168,6 +168,18 @@ if ($stmt->execute()) {
     return NULL;
  }
 }
+public function getallexpense() {
+       
+    $stmt = $this->conn->prepare(" SELECT `EID`, `name` FROM `expense` ");        
+  
+
+if ($stmt->execute()) {			
+    return $stmt;
+ } else {
+    return NULL;
+ }
+}
+
 
 
 public function getexpense_transaction($expensetrans_id) {
