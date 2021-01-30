@@ -1,6 +1,6 @@
 <?php
 
-include 'list_util.php';
+include '../list_util.php';
 
 $data = $alldata = json_decode(file_get_contents('file.json'));
 

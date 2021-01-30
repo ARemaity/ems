@@ -58,10 +58,8 @@ var KTDatatableRemoteAjaxDemo = function() {
             title: "Property Number",
             width: 70,
             // callback function support for column rendering
-            template: function(data, i) {
+            template: function(row) {
                 return row.number;
- 
-                
             }
         },{
             field: 'city',
@@ -77,13 +75,6 @@ var KTDatatableRemoteAjaxDemo = function() {
             width: 100,
             template: function(row) {
                 return row.client_name;
-            },
-        },{
-            field: 'address',
-            title: 'Address',
-            width: 80,
-            template: function(row) {
-                return row.address;
             },
         },{
             field: 'client_phone',
