@@ -892,8 +892,214 @@ require_once (dirname(__FILE__,2)).'/base.php';
 				<!--end::Svg Icon-->
 			</span>
 		</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div  class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+	  <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+					<!-- this is dummmmmmmmmmmmmmmmmmmmmm -->
+
+
+					<!--begin::Container-->
+					<div class="container">
+						<!--begin::Card-->
+						<div class="card card-custom card-transparent">
+							<div class="card-body p-0">
+								<!--begin::Wizard-->
+								<div class="wizard wizard-4" id="kt_wizard" data-wizard-state="first"
+									data-wizard-clickable="true">
+									<!--begin::Wizard Nav-->
+
+									<!--end::Wizard Nav-->
+									<!--begin::Card-->
+									<div class="card card-custom card-shadowless rounded-top-0">
+										<!--begin::Body-->
+										<div class="card-body p-0">
+											<div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
+												<div class="col-xl-12 col-xxl-10">
+													<!--begin::Wizard Form-->
+													<form
+														action="<?='action/'.$module.'/new.php'?>"
+														method="POST"
+														class="form fv-plugins-bootstrap fv-plugins-framework"
+														id="project_form">
+														<div class="row justify-content-center">
+															<div class="col-xl-9">
+																<!--begin::Wizard Step 1-->
+																<div class="my-5 step" data-wizard-type="step-content"
+																	data-wizard-state="current">
+																	<h5 class="text-dark font-weight-bold mb-10">Project's
+																		Profile Details:</h5>
+																	<!--begin::Group-->
+
+																	<!--end::Group-->
+																	<!--begin::Group-->
+                                                                    </div>
+                                                                
+																				
+																			
+													
+
+																	<div>
+																	<div
+																		class="form-group row fv-plugins-icon-container">
+																		<label
+																			class="col-xl-3 col-lg-3 col-form-label">Client Name</label>
+																		<div class="col-lg-9 col-xl-9">
+																			<input 
+																				class="form-control form-control-solid form-control-lg"
+																				name="clientname" type="text" id ="clientname1" required>
+																			<div class="fv-plugins-message-container">
+																			</div>
+																		</div>
+																	</div>
+																	
+
+
+
+																	<div class="form-group row">
+																				<label class="col-xl-3 col-lg-3 col-form-label">Contact Phone</label>
+																				<div class="col-lg-9 col-xl-9">
+																					<div class="input-group input-group-solid input-group-lg">
+																						<div class="input-group-prepend">
+																							<span class="input-group-text">
+																								<i class="la la-phone"></i>
+																							</span>
+																						</div>
+																						<input type="text" class="form-control form-control-solid form-control-lg" name="phonenumber"  placeholder="Phone" id = "phonenumber1" required/>
+																				
+																			</div>
+	
+																			</div>
+
 
 	
+																			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+																	
+																	<!--end::Group-->
+																	<!--begin::Group-->
+																	<div class="form-group row fv-plugins-icon-container">
+																		<label
+																			class="col-xl-3 col-lg-3 col-form-label">City</label>
+																		<div class="col-lg-9 col-xl-9">
+																			<input
+																				class="form-control form-control-solid form-control-lg"
+																				name="city" type="text" id = "city1" required>
+																			<div class="fv-plugins-message-container">
+																			</div>
+																		</div>
+																	</div>
+
+                                                                    <div
+																		class="form-group row fv-plugins-icon-container">
+																		<label
+																			class="col-xl-3 col-lg-3 col-form-label">Number</label>
+																		<div class="col-lg-9 col-xl-9">
+																			<input 
+																				class="form-control form-control-solid form-control-lg"
+																				name="number" type="text" id = "number1" required>
+																			<div class="fv-plugins-message-container">
+																			</div>
+																		</div>
+																	</div>
+
+
+
+
+
+
+
+																	<!--end::Group-->
+																	<!--begin::Group-->
+																	
+
+															
+                                                                        
+																				
+																			</div>
+															
+																
+																<!--end::Wizard Actions-->
+															</div>
+														</div>
+												
+												</div>
+											</div>
+										</div>
+										<!--end::Body-->
+									</div>
+									<!--end::Card-->
+								</div>
+								<!--end::Wizard-->
+							</div>
+						</div>
+						<!--end::Card-->
+					</div>
+					<!--end::Container-->
+
+
+				</div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+	  </form>
+													<!--end::Wizard Form-
+    </div>
+  </div>
+</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<!--begin::Global Config(global config for global JS scripts)-->
 		<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
 		<!--end::Global Config-->

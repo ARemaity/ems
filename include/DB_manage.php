@@ -218,7 +218,7 @@ if ($stmt->execute()) {
 
 public function getproject($projecttid) {
        
-    $stmt = $this->conn->prepare("SELECT `PID`, `number`, `city`, `client_name`, `client_phone`, `created_at` FROM `project` WHERE 1 PID = ?");        
+    $stmt = $this->conn->prepare("SELECT `PID`, `number`, `city`, `client_name`, `client_phone`, `created_at` FROM `project` WHERE PID = ?");        
 $stmt->bind_param("i", $projecttid);   
 
 if ($stmt->execute()) {			

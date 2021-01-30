@@ -99,7 +99,7 @@ var KTDatatableRemoteAjaxDemo = function() {
             overflow: 'visible',
             autoHide: false,
             template: function(row) {
-                return '<a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\
+                return '<a href="javascript:;" id="'+row.PID+'"    class="edditbutton btn btn-sm btn-clean btn-icon mr-2 " title="Edit details">\
                         <span class="svg-icon svg-icon-md">\
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -110,7 +110,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                             </svg>\
                         </span>\
                     </a>\
-                    <a href="javascript:;" class="btn btn-sm btn-clean btn-icon edit_pr" id="'+row.PID+'"\
+                    <a href="javascript:;" class="btn btn-sm btn-clean btn-icon edit_pr"\
                    title="Delete">\
                         <span class="svg-icon svg-icon-md">\
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
@@ -167,7 +167,49 @@ var KTDatatableRemoteAjaxDemo = function() {
 
 // onclick .edit_pr id  create ajax then recive data and put them in the form then show the modal 
 
-            	// selected records status update
+                // selected records status update
+             
+
+                $(document).ready(function(){
+                    $(".edditbutton").on("click", function(){
+                        // 
+                        $.ajax({
+                            url: "action/project/edit_project.php",
+                            type: "POST",
+                            data: { id:this.id },
+                            dataType: 'json',
+                            success: function (response) {
+                              if(response!='0'){
+                                $('#clientname1').val(response.client_name);
+                                $('#phonenumber1').val(response.client_phone);
+                                $('#city1').val(response.city);
+                                $('#number1').val(response.number);
+
+                                $('#exampleModalCenter').modal('show');
+                      
+                              }
+                            },
+                          });
+                    
+
+
+
+
+
+
+                    
+                    });
+                  });
+                
+                
+                
+
+
+
+
+
+
+
 
     
 
@@ -185,6 +227,20 @@ var KTDatatableRemoteAjaxDemo = function() {
     };
 }();
 // module var  is init at the top of the page //
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
 jQuery(document).ready(function() {
     $.ajax({
         url: "action/project/fetch.php",
@@ -202,3 +258,5 @@ jQuery(document).ready(function() {
     
     
 });
+
+
