@@ -86,10 +86,10 @@ var KTDatatableRemoteAjaxDemo = function() {
             },
         },{
             field: 'created_at',
-            title: 'created AT',
+            title: 'Date',
             width: 60,
             template: function(row) {
-                return row.lp;
+                return row.created_at;
             },
         },{
             field: 'Actions',
