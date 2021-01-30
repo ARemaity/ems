@@ -170,7 +170,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                 // selected records status update
              
 
-                $(document).ready(function(){
+             
                     $(".edditbutton").on("click", function(){
                         // 
                         $.ajax({
@@ -199,7 +199,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
                     
                     });
-                  });
+          
                 
                 
                 
