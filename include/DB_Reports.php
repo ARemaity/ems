@@ -134,6 +134,32 @@ if ($stmt->execute()) {
  }
 }
 
+  
+/**
+ * getAllProject 
+ *
+ * @return array
+ */
+public function getAllProject() {
+      
+    $stmt = $this->conn->prepare("SELECT * FROM project   ORDER BY created_at DESC");              
+
+
+
+
+if ($stmt->execute()) {			
+$project = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+
+return $project; 
+$stmt->close();
+} else {
+die("Adding record failed: " .$stmt->error); 
+$stmt->close();
+
+}
+
+}
 
   
 }
