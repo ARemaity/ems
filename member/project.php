@@ -1,11 +1,12 @@
 
 <?php if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+	session_start();
+	
 }
 require_once (dirname(__FILE__,2)).'/base.php';
 // enabled on the production phase
 // if(isset($_SESSION)&&isset($_SESSION["usertype"])){
-
+	$module='project';
 ?>
 
 <!DOCTYPE html>
@@ -927,7 +928,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
 												<div class="col-xl-12 col-xxl-10">
 													<!--begin::Wizard Form-->
 													<form
-														action="<?='action/'.$module.'/new.php'?>"
+														action="<?='action/'.$module.'/update_project.php'?>"
 														method="POST"
 														class="form fv-plugins-bootstrap fv-plugins-framework"
 														id="project_form">
@@ -945,7 +946,9 @@ require_once (dirname(__FILE__,2)).'/base.php';
                                                                     </div>
                                                                 
 																				
-																			
+																	<input type="hidden"
+																				class="form-control form-control-solid form-control-lg"
+																				name="PID" type="text" id ="PID1" required>
 													
 
 																	<div>
@@ -1067,8 +1070,8 @@ require_once (dirname(__FILE__,2)).'/base.php';
 				</div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit"  class="btn btn-primary">Save changes</button>
       </div>
 	  </form>
 													<!--end::Wizard Form-

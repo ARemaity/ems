@@ -230,6 +230,26 @@ if ($stmt->execute()) {
  }
 }
 
+public function updateproject($projecttid,$number,$city,$client_name,$client_phone) {
+       
+    $stmt = $this->conn->prepare("UPDATE `project` SET `number`= ?,`city`= ?,`client_name`= ?,`client_phone`= ? WHERE PID = ?");        
+$stmt->bind_param("issii", $number,$city,$client_name,$client_phone,$projecttid);   
+$result = $stmt->execute();
+$stmt->close();
+// check for successful stores
+if ($result) {
+ return true;
+} else {
+ return false;
+}
+}
+
+
+
+
+
+
+
 
 }
 
