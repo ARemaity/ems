@@ -311,7 +311,10 @@ require_once (dirname(__FILE__,2)).'/base.php';
 												<!-- <button class="btn btn-sm btn-danger mr-2" type="button" id="kt_datatable_delete_all">Delete All</button> -->
 											</div>
 										</div>
-										<div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+										<div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable">
+
+
+										</div>
 										
 									
 							
@@ -801,7 +804,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
 									<input type="hidden" class="form-control" id="user_status" name="user_status"
 									required>
 						
-						
+				
 						<div class="form-group">
 							<label for="user_fullName" class="form-control-label">Name:</label>
 							<input type="text" class="form-control" id="user_fullName"
