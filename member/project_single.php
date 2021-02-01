@@ -175,51 +175,51 @@
 														<!--begin::Contacts-->
 														<div class="d-flex flex-wrap my-2">
 														
-															<span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
-																<!--begin::Svg Icon | path:assets/media/svg/icons/Map/Marker2.svg-->
-																<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-																	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																		<rect x="0" y="0" width="24" height="24" />
-																		<path d="M9.82829464,16.6565893 C7.02541569,15.7427556 5,13.1079084 5,10 C5,6.13400675 8.13400675,3 12,3 C15.8659932,3 19,6.13400675 19,10 C19,13.1079084 16.9745843,15.7427556 14.1717054,16.6565893 L12,21 L9.82829464,16.6565893 Z M12,12 C13.1045695,12 14,11.1045695 14,10 C14,8.8954305 13.1045695,8 12,8 C10.8954305,8 10,8.8954305 10,10 C10,11.1045695 10.8954305,12 12,12 Z" fill="#000000" />
-																	</g>
-																</svg>
-																<!--end::Svg Icon-->
-															</span> <h6 id ="city">Melbourne </h6>
+														<a id="phone" href="#" class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
 
+														<span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
+														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <path d="M11.914857,14.1427403 L14.1188827,11.9387145 C14.7276032,11.329994 14.8785122,10.4000511 14.4935235,9.63007378 L14.3686433,9.38031323 C13.9836546,8.61033591 14.1345636,7.680393 14.7432841,7.07167248 L17.4760882,4.33886839 C17.6713503,4.14360624 17.9879328,4.14360624 18.183195,4.33886839 C18.2211956,4.37686904 18.2528214,4.42074752 18.2768552,4.46881498 L19.3808309,6.67676638 C20.2253855,8.3658756 19.8943345,10.4059034 18.5589765,11.7412615 L12.560151,17.740087 C11.1066115,19.1936265 8.95659008,19.7011777 7.00646221,19.0511351 L4.5919826,18.2463085 C4.33001094,18.1589846 4.18843095,17.8758246 4.27575484,17.613853 C4.30030124,17.5402138 4.34165566,17.4733009 4.39654309,17.4184135 L7.04781491,14.7671417 C7.65653544,14.1584211 8.58647835,14.0075122 9.35645567,14.3925008 L9.60621621,14.5173811 C10.3761935,14.9023698 11.3061364,14.7514608 11.914857,14.1427403 Z" fill="#000000"/>
+    </g>
+</svg><!--end::Svg Icon--></span></a>
+															<a id ="city" href="#" class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+															<span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-02-01-052524/theme/html/demo1/dist/../src/media/svg/icons/Map/Marker1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <path d="M5,10.5 C5,6 8,3 12.5,3 C17,3 20,6.75 20,10.5 C20,12.8325623 17.8236613,16.03566 13.470984,20.1092932 C12.9154018,20.6292577 12.0585054,20.6508331 11.4774555,20.1594925 C7.15915182,16.5078313 5,13.2880005 5,10.5 Z M12.5,12 C13.8807119,12 15,10.8807119 15,9.5 C15,8.11928813 13.8807119,7 12.5,7 C11.1192881,7 10,8.11928813 10,9.5 C10,10.8807119 11.1192881,12 12.5,12 Z" fill="#000000" fill-rule="nonzero"/>
+    </g>
+</svg><!--end::Svg Icon--></span></a>
 															
 														</div>
 														<!--end::Contacts-->
 													</div>
-													<div class="my-lg-0 my-1">
-														<a href="#" class="btn btn-sm btn-light-success font-weight-bolder text-uppercase mr-3">Reports</a>
-														<a href="#" class="btn btn-sm btn-info font-weight-bolder text-uppercase">New Task</a>
-													</div>
+												
 												</div>
 												<!--end: Title-->
 												<!--begin: Content-->
 												<div class="d-flex align-items-center flex-wrap justify-content-between">
-													<div class="flex-grow-1 font-weight-bold text-dark-50 py-5 py-lg-2 mr-5">I distinguish three main text objectives could be merely to inform people. 
-													<br />A second could be persuade people. You want people to bay objective.</div>
+													<div class="flex-grow-1 font-weight-bold text-dark-50 py-5 py-lg-2 mr-5">
+													<br/></div>
 													<div class="d-flex flex-wrap align-items-center py-2">
 														<div class="d-flex align-items-center mr-10">
 															<div class="mr-6">
-																<div class="font-weight-bold mb-2">Created on: </div>
+																<div class="font-weight-bold mb-2">Created on : </div>
 																<span id="date" class="btn btn-sm btn-text btn-light-primary text-uppercase font-weight-bold"></span>
 															</div>
 															<div class="">
-																<div class="font-weight-bold mb-2">Due Date</div>
-																<span class="btn btn-sm btn-text btn-light-danger text-uppercase font-weight-bold">10 June, 2021</span>
+																<div  class="font-weight-bold mb-2">Number</div>
+																<span id="landnumber" class="btn btn-sm btn-text btn-light-danger text-uppercase font-weight-bold"></span>
 															</div>
 														</div>
 														<div class="flex-grow-1 flex-shrink-0 w-150px w-xl-300px mt-4 mt-sm-0">
-															<span class="font-weight-bold">Progress</span>
-															<div class="progress progress-xs mt-2 mb-2">
-																<div class="progress-bar bg-success" role="progressbar" style="width: 63%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-															</div>
-															<span class="font-weight-bolder text-dark">78%</span>
+															
+													
 														</div>
 													</div>
 												</div>
+												
 												<!--end: Content-->
 											</div>
 											<!--end: Info-->
@@ -2647,7 +2647,7 @@
 		<!--end::Page Scripts-->
 		
 <?php  
-$id = 1;
+$id = 2; //later using GET
 echo "
 
 
@@ -2671,10 +2671,10 @@ var PID = ". $id ."
                             success: function (response) {
                               if(response!='0'){
                                 $('#clientname').text("Client Name : " + response.client_name);
-                                // $('#phonenumber1').val(response.client_phone);
-								$('#city').text(response.city);
+                                $('#landnumber').text(response.number);
+								$('#phone').append(response.client_phone);
 								$('#date').text(response.created_at);
-                                // $('#number1').val(response.number);
+                                $('#city').append(response.city);
                                 // $('#PID1').val(response.PID);
                                     
                                      
