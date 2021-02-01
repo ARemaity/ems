@@ -269,7 +269,7 @@
 													<i class="flaticon-file-2 icon-2x text-muted font-weight-bold"></i>
 												</span>
 												<div class="d-flex flex-column flex-lg-fill">
-													<span class="text-dark-75 font-weight-bolder font-size-sm">73 Tasks</span>
+													<span id="transnumber" class="text-dark-75 font-weight-bolder font-size-sm"></span>
 													<a href="#" class="text-primary font-weight-bolder">View</a>
 												</div>
 											</div>
@@ -280,7 +280,7 @@
 													<i class="flaticon-chat-1 icon-2x text-muted font-weight-bold"></i>
 												</span>
 												<div class="d-flex flex-column">
-													<span class="text-dark-75 font-weight-bolder font-size-sm">648 Comments</span>
+													<span id="incmnumber" class="text-dark-75 font-weight-bolder font-size-sm"></span>
 													<a href="#" class="text-primary font-weight-bolder">View</a>
 												</div>
 											</div>
@@ -2686,29 +2686,35 @@ var Total = 0;
 						  $.ajax({
                             url: "action/project/getexpenses.php",
                             type: "POST",
-							data: { id:PID,action:"trans" },
+							data: { id:PID},
                             dataType: 'json',
                             success: function (response) {
                               if(response!='0'){
-								$('#exp').append(response.sum);
-                                    Total+=response.sum;
-                                     
+								$('#exp').append(response.trns);
+								$('#incm').append(response.incm);
+								$('#total').append(response.trns-response.incm); 
+								$('#transnumber').append(response.trnscount+" Transactions"); 
+								$('#incmnumber').append(response.incmcount+" income Trans."); 
+								
+
+
+
                               }
                             },
                           });
-						  $.ajax({
-                            url: "action/project/getexpenses.php",
-                            type: "POST",
-							data: { id:PID,action:"incm" },
-                            dataType: 'json',
-                            success: function (response) {
-                              if(response!='0'){
-								$('#incm').append(response.sum);
-								Total-=response.sum;
-								$('#total').append(Total); 
-                              }
-                            },
-                          });
+						//   $.ajax({
+                        //     url: "action/project/getexpenses.php",
+                        //     type: "POST",
+						// 	data: { id:PID,action:"incm" },
+                        //     dataType: 'json',
+                        //     success: function (response) {
+                        //       if(response!='0'){
+						// 		$('#incm').append(response.sum);
+						// 		Total-=response.sum;
+								
+                        //       }
+                        //     },
+                        //   });
 
 
 

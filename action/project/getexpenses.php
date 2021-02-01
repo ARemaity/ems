@@ -4,8 +4,9 @@ require_once (dirname(__FILE__, 3)) . '/' . DIR_INC . 'DB_Reports.php';
 
 $db =new DB_Reports();      
 $id=$_POST['id'];
-$action=$_POST['action'];
-$data=0;
+
+
+$data=array();
 if(!empty($id)){
 
 
@@ -16,31 +17,31 @@ if(!empty($id)){
 
 
 
-    if($action =="trans"){
+
 
     $result = $db->getexpensetransaction_sum($id);
     if($result){
-     echo json_encode($result);
-    die();}
-    
-    }else{
-
-        $result = $db->getincometransaction_sum($id);
-        if($result){
-         echo json_encode($result);
-        die();}
-
-
-
-
-
-
-
+        $data["trns"] = $result['sum'];
+        $data["trnscount"] = $result['trnscount'];
     }
-    
+        $result1 = $db->getincometransaction_sum($id);
+        if($result1){
+            $data["incm"] = $result1['sum'];
+            $data["incmcount"] = $result1['incmcount'];
+       
+
+       
+        }
+
+ echo json_encode($data);
+
+die();
+
+
+
 
 }
 
 
-echo $data;
+echo $data = 0;
 die();

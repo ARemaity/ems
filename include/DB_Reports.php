@@ -122,7 +122,7 @@ if ($stmt->execute()) {
 
 public function getexpensetransaction_sum($projecttid) {
        
-    $stmt = $this->conn->prepare("SELECT SUM(cost) as sum FROM expense_transaction WHERE fk_PID = ?");        
+    $stmt = $this->conn->prepare("SELECT SUM(cost) as sum ,COUNT(cost) AS trnscount FROM expense_transaction WHERE fk_PID = ?");        
 $stmt->bind_param("i", $projecttid);   
 
 if ($stmt->execute()) {			
@@ -136,7 +136,7 @@ if ($stmt->execute()) {
 
 public function getincometransaction_sum($projecttid) {
        
-    $stmt = $this->conn->prepare("SELECT SUM(cost) as sum FROM income_transaction fk_PID WHERE fk_PID = ?");        
+    $stmt = $this->conn->prepare("SELECT SUM(cost) as sum,COUNT(cost) AS incmcount FROM income_transaction fk_PID WHERE fk_PID = ?");        
 $stmt->bind_param("i", $projecttid);   
 
 if ($stmt->execute()) {			
