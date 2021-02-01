@@ -245,7 +245,7 @@
 													<i class="flaticon-confetti icon-2x text-muted font-weight-bold"></i>
 												</span>
 												<div class="d-flex flex-column text-dark-75">
-													<span class="font-weight-bolder font-size-sm">Income</span>
+													<span class="font-weight-bolder font-size-sm">Income : </span>
 													<span id="incm" class="font-weight-bolder font-size-h5">
 													<span class="text-dark-50 font-weight-bold">$</span></span>
 												</div>
@@ -257,9 +257,9 @@
 													<i class="flaticon-pie-chart icon-2x text-muted font-weight-bold"></i>
 												</span>
 												<div class="d-flex flex-column text-dark-75">
-													<span class="font-weight-bolder font-size-sm">Net</span>
-													<span class="font-weight-bolder font-size-h5">
-													<span class="text-dark-50 font-weight-bold">$</span>782,300</span>
+													<span class="font-weight-bolder font-size-sm">Remaining : </span>
+													<span id="total" class="font-weight-bolder font-size-h5">
+													<span class="text-dark-50 font-weight-bold">$</span></span>
 												</div>
 											</div>
 											<!--end: Item-->
@@ -2654,6 +2654,7 @@ echo "
 <script type='text/javascript'>
 
 var PID = ". $id ."
+var Total = 0;
 </script>
 ";
 
@@ -2690,7 +2691,7 @@ var PID = ". $id ."
                             success: function (response) {
                               if(response!='0'){
 								$('#exp').append(response.sum);
-                                    
+                                    Total+=response.sum;
                                      
                               }
                             },
@@ -2703,8 +2704,8 @@ var PID = ". $id ."
                             success: function (response) {
                               if(response!='0'){
 								$('#incm').append(response.sum);
-                                    
-                                     
+								Total-=response.sum;
+								$('#total').append(Total); 
                               }
                             },
                           });
