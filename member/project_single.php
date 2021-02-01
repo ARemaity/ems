@@ -286,31 +286,7 @@
 											</div>
 											<!--end: Item-->
 											<!--begin: Item-->
-											<div class="d-flex align-items-center flex-lg-fill my-1">
-												<span class="mr-4">
-													<i class="flaticon-network icon-2x text-muted font-weight-bold"></i>
-												</span>
-												<div class="symbol-group symbol-hover">
-													<div class="symbol symbol-30 symbol-circle" data-toggle="tooltip" title="Mark Stone">
-														<img alt="Pic" src="assets/media/users/300_25.jpg" />
-													</div>
-													<div class="symbol symbol-30 symbol-circle" data-toggle="tooltip" title="Charlie Stone">
-														<img alt="Pic" src="assets/media/users/300_19.jpg" />
-													</div>
-													<div class="symbol symbol-30 symbol-circle" data-toggle="tooltip" title="Luca Doncic">
-														<img alt="Pic" src="assets/media/users/300_22.jpg" />
-													</div>
-													<div class="symbol symbol-30 symbol-circle" data-toggle="tooltip" title="Nick Mana">
-														<img alt="Pic" src="assets/media/users/300_23.jpg" />
-													</div>
-													<div class="symbol symbol-30 symbol-circle" data-toggle="tooltip" title="Teresa Fox">
-														<img alt="Pic" src="assets/media/users/300_18.jpg" />
-													</div>
-													<div class="symbol symbol-30 symbol-circle symbol-light">
-														<span class="symbol-label font-weight-bold">5+</span>
-													</div>
-												</div>
-											</div>
+											
 											<!--end: Item-->
 										</div>
 										<!--begin: Items-->
@@ -2702,33 +2678,7 @@ var Total = 0;
                               }
                             },
                           });
-						//   $.ajax({
-                        //     url: "action/project/getexpenses.php",
-                        //     type: "POST",
-						// 	data: { id:PID,action:"incm" },
-                        //     dataType: 'json',
-                        //     success: function (response) {
-                        //       if(response!='0'){
-						// 		$('#incm').append(response.sum);
-						// 		Total-=response.sum;
-								
-                        //       }
-                        //     },
-                        //   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		
                     
 						});
 

@@ -8,17 +8,6 @@ $id=$_POST['id'];
 
 $data=array();
 if(!empty($id)){
-
-
-
-
-
-
-
-
-
-
-
     $result = $db->getexpensetransaction_sum($id);
     if($result){
         $data["trns"] = $result['sum'];
