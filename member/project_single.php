@@ -233,9 +233,9 @@
 													<i class="flaticon-piggy-bank icon-2x text-muted font-weight-bold"></i>
 												</span>
 												<div class="d-flex flex-column text-dark-75">
-													<span class="font-weight-bolder font-size-sm">Earnings</span>
-													<span class="font-weight-bolder font-size-h5">
-													<span class="text-dark-50 font-weight-bold">$</span>249,500</span>
+													<span  class="font-weight-bolder font-size-sm">Transactions : </span>
+													<span id="exp" class="font-weight-bolder font-size-h5">
+													<span class="text-dark-50 font-weight-bold">$</span></span>
 												</div>
 											</div>
 											<!--end: Item-->
@@ -245,9 +245,9 @@
 													<i class="flaticon-confetti icon-2x text-muted font-weight-bold"></i>
 												</span>
 												<div class="d-flex flex-column text-dark-75">
-													<span class="font-weight-bolder font-size-sm">Expenses</span>
-													<span class="font-weight-bolder font-size-h5">
-													<span class="text-dark-50 font-weight-bold">$</span>164,700</span>
+													<span class="font-weight-bolder font-size-sm">Income</span>
+													<span id="incm" class="font-weight-bolder font-size-h5">
+													<span class="text-dark-50 font-weight-bold">$</span></span>
 												</div>
 											</div>
 											<!--end: Item-->
@@ -2647,7 +2647,7 @@
 		<!--end::Page Scripts-->
 		
 <?php  
-$id = 2; //later using GET
+$id = 911; //later using GET
 echo "
 
 
@@ -2680,7 +2680,48 @@ var PID = ". $id ."
                                      
                               }
                             },
+						  });
+						  
+						  $.ajax({
+                            url: "action/project/getexpenses.php",
+                            type: "POST",
+							data: { id:PID,action:"trans" },
+                            dataType: 'json',
+                            success: function (response) {
+                              if(response!='0'){
+								$('#exp').append(response.sum);
+                                    
+                                     
+                              }
+                            },
                           });
+						  $.ajax({
+                            url: "action/project/getexpenses.php",
+                            type: "POST",
+							data: { id:PID,action:"incm" },
+                            dataType: 'json',
+                            success: function (response) {
+                              if(response!='0'){
+								$('#incm').append(response.sum);
+                                    
+                                     
+                              }
+                            },
+                          });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     
 						});
 
