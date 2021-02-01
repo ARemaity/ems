@@ -244,7 +244,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
 jQuery(document).ready(function() {
     
-    $('#exampleModalCenter').modal('show');
+    $('#exampleModalCenter').modal('show');//to show the modal auto
     $.ajax({
         url: "action/project/fetch.php",
         type: "POST",
