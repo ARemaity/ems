@@ -120,9 +120,42 @@ if ($stmt->execute()) {
 
 
 
+public function getexpensetransaction_sum($projecttid) {
+       
+    $stmt = $this->conn->prepare("SELECT SUM(cost) as sum FROM expense_transaction WHERE fk_PID = ?");        
+$stmt->bind_param("i", $projecttid);   
+
+if ($stmt->execute()) {			
+     $order = $stmt->get_result()->fetch_assoc();
+     $stmt->close();
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
+
+public function getincometransaction_sum($projecttid) {
+       
+    $stmt = $this->conn->prepare("SELECT SUM(cost) as sum FROM income_transaction fk_PID WHERE fk_PID = ?");        
+$stmt->bind_param("i", $projecttid);   
+
+if ($stmt->execute()) {			
+     $order = $stmt->get_result()->fetch_assoc();
+     $stmt->close();
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
+
+
+
+
+
+
 public function getproject($projecttid) {
        
-    $stmt = $this->conn->prepare("SELECT `PID`, `number`, `city`, `owner_id`, `created_at` FROM `project` WHERE PID = ?");        
+    $stmt = $this->conn->prepare("SELECT `PID`, `number`, `city`, `client_name`, `client_phone`, `created_at` FROM `project` WHERE PID = ?");        
 $stmt->bind_param("i", $projecttid);   
 
 if ($stmt->execute()) {			
