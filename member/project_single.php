@@ -1,9 +1,9 @@
 <?php
 require_once (dirname(__FILE__, 2)) . '/base.php';
-require_once (dirname(__FILE__, 2)) . '/' . DIR_INC . 'DB_manage.php';
+require_once (dirname(__FILE__, 2)) . '/' . DIR_INC . 'DB_Manage.php';
 $db=new DB_Manage();
 $module='expensetransaction';
-
+$id=911;
 ?>
 <!DOCTYPE html>
 
@@ -11,8 +11,7 @@ $module='expensetransaction';
 	<!--begin::Head-->
 	<head>
 	<base href="../">
-		<!-- Google Tag Manager -->
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-5FS8GGP');</script>
+		
 		<!-- End Google Tag Manager -->
 		<meta charset="utf-8" />
 		<title>View Project | Keenthemes</title>
@@ -34,9 +33,11 @@ $module='expensetransaction';
 		<link href="assets/css/themes/layout/aside/dark.css?v=7.1.8" rel="stylesheet" type="text/css" />
 		<!--end::Layout Themes-->
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
-		<!-- Hotjar Tracking Code for keenthemes.com -->
-		<script>(function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:1070954,hjsv:6}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script>
-	</head>
+		<script>
+				var PID=<?=$id?>;
+				var Total = 0;
+		</script>
+		</head>
 	<!--end::Head-->
 	<!--begin::Body-->
 	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
@@ -311,7 +312,7 @@ $module='expensetransaction';
 													<span class="text-muted mt-3 font-weight-bold font-size-sm">More than 400+ new members</span>
 												</h3>
 												<div class="card-toolbar">
-													<a href="#" class="btn btn-success font-weight-bolder font-size-sm">
+													<a href="javascript;" class="btn btn-success font-weight-bolder font-size-sm" id="kt_sweetalert">
 													<span class="svg-icon svg-icon-md svg-icon-white">
 														<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Add-user.svg-->
 														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -2629,21 +2630,8 @@ $module='expensetransaction';
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="assets/js/pages/widgets.js?v=7.1.8"></script>
 		<!--end::Page Scripts-->
-		<script src="assets/js/pages/sweetalerts.js"></script>
-<?php  
-$id = 911; //later using GET  to get id of the project and get its info
-echo "
+		<script src="assets/js/pages/s_pr.js"></script>
 
-
-<script type='text/javascript'>
-
-var PID = ". $id ." 
-var Total = 0;
-</script>
-";
-
-
-?>
 
 
 
@@ -2658,69 +2646,6 @@ var Total = 0;
 
 		<script type="text/javascript">
 	
-
-	jQuery(document).ready(function() {
-	$.ajax({
-                            url: "action/project/get_projectbyid.php",
-                            type: "POST",
-                            data: { id:PID },
-                            dataType: 'json',
-                            success: function (response) {
-                              if(response!='0'){
-                                $('#clientname').text("Client Name : " + response.client_name);
-                                $('#landnumber').text(response.number);
-								$('#phone').append(response.client_phone);
-								$('#date').text(response.created_at);
-                                $('#city').append(response.city);
-                                // $('#PID1').val(response.PID);
-                                    
-                                     
-                              }
-                            },
-						  });
-						  
-						  $.ajax({
-                            url: "action/project/getexpenses.php",
-                            type: "POST",
-							data: { id:PID},
-                            dataType: 'json',
-                            success: function (response) {
-                              if(response!='0'){
-								$('#exp').append(response.trns);
-								$('#incm').append(response.incm);
-								$('#total').append(response.trns-response.incm); 
-								$('#transnumber').append(response.trnscount+" Transactions"); 
-								$('#incmnumber').append(response.incmcount+" income Trans."); 
-								
-
-
-
-                              }
-                            },
-                          });
-		
-					
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    
-						});
 
 	</script>
 
