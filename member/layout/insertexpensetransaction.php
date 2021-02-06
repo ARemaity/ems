@@ -9,7 +9,7 @@
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+				<h5 class="modal-title" id="exampleModalLongTitle">Expense Transaction</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -136,15 +136,7 @@
                                                                         
 																				
 																			</div>
-																<div
-																	class="d-flex justify-content-between border-top pt-10 mt-15">
-
-																	<div>
-
-																	
-
-																	</div>
-																</div>
+																
 																<!--end::Wizard Actions-->
 															</div>
 														</div>
@@ -180,60 +172,6 @@
 </div>
 
 
-<script>
-
-jQuery(document).ready(function() {
-
-$("#etransactions").on("click", function(){
-	 
-    $('#insertmodal').modal('show');	 
-    $('#projectidinput').val(PID);
-                  
-                          $("#insrtextrans").on('submit', function (event) {
-        event.preventDefault(); //prevent default action 
-        var post_url = $(this).attr("action"); //get form action url
-        var form_data = $(this).serialize(); //Encode form elements for submission
-
-        $.post(post_url, form_data, function (response) {
-
-
-            if (response == '1') {
-                console.log('nice');
-
-            } else {
-
-                console.log("there is an error");
-            }
-        });
-
-    });
-
-
-
-});	 
-
-
-});	 
-
-
-
-
-
-
-
-                    
-                   
-          
-
-
-
-
-
-
-
-
-
-</script>
 
 
 

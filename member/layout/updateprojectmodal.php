@@ -160,10 +160,7 @@
 <script>
 
 
-$("#nproject").on("click", function(){
-	 
-
-             
+$("#nproject1").on("click", function(){	             
                         $.ajax({
                             url: "action/project/edit_project.php",
                             type: "POST",
