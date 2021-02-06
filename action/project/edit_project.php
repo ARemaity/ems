@@ -17,7 +17,7 @@ if(!empty($id)){
     
         
         echo json_encode($result);
-    die();
+    exit();
     
     }
 

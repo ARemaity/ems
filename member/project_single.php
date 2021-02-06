@@ -1,4 +1,10 @@
+<?php
+require_once (dirname(__FILE__, 2)) . '/base.php';
+require_once (dirname(__FILE__, 2)) . '/' . DIR_INC . 'DB_manage.php';
+$db=new DB_Manage();
+$module='expensetransaction';
 
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -156,7 +162,7 @@
 											<!--begin: Pic-->
 											<div class="flex-shrink-0 mr-7 mt-lg-0 mt-3">
 												<div class="symbol symbol-50 symbol-lg-120">
-													<img alt="Pic" src="assets/media/project-logos/3.png" />
+													<img id="nproject" alt="Pic" src="assets/media/project-logos/3.png" />
 												</div>
 												<div class="symbol symbol-50 symbol-lg-120 symbol-primary d-none">
 													<span class="font-size-h3 symbol-label font-weight-boldest">JM</span>
@@ -233,7 +239,7 @@
 													<i class="flaticon-piggy-bank icon-2x text-muted font-weight-bold"></i>
 												</span>
 												<div class="d-flex flex-column text-dark-75">
-													<span  class="font-weight-bolder font-size-sm">Transactions : </span>
+													<span  id="etransactions" class="font-weight-bolder font-size-sm">Transactions : </span>
 													<span id="exp" class="font-weight-bolder font-size-h5">
 													<span class="text-dark-50 font-weight-bold">$</span></span>
 												</div>
@@ -2608,6 +2614,8 @@
 			</div>
 			<!--end::Content-->
 		</div>
+		
+
 		<!--end::Demo Panel-->
 		<script>var HOST_URL = "/metronic/theme/html/tools/preview";</script>
 		<!--begin::Global Config(global config for global JS scripts)-->
@@ -2621,21 +2629,33 @@
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="assets/js/pages/widgets.js?v=7.1.8"></script>
 		<!--end::Page Scripts-->
-		
+		<script src="assets/js/pages/sweetalerts.js"></script>
 <?php  
-$id = 911; //later using GET
+$id = 911; //later using GET  to get id of the project and get its info
 echo "
 
 
 <script type='text/javascript'>
 
-var PID = ". $id ."
+var PID = ". $id ." 
 var Total = 0;
 </script>
 ";
 
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
 		<script type="text/javascript">
 	
 
@@ -2679,15 +2699,35 @@ var Total = 0;
                             },
                           });
 		
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     
 						});
 
 	</script>
 
 
+<?php include 'layout/updateprojectmodal.php'; ?>
 
-
-
+<?php include 'layout/insertexpensetransaction.php'; ?>
 
 
 

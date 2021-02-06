@@ -231,6 +231,5 @@ var KTDatatableRemoteAjaxDemo = function() {
     
     
     
-});
 
 

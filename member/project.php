@@ -1114,6 +1114,33 @@ require_once (dirname(__FILE__,2)).'/base.php';
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="assets/js/scripts.bundle.js"></script>
 		<script src="assets/js/pages/project.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 		<!--end::Page Scripts-->
 	</body>
