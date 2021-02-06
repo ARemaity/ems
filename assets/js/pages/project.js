@@ -171,36 +171,7 @@ var KTDatatableRemoteAjaxDemo = function() {
              
 
              
-                    $(".edditbutton").on("click", function(){
-                        // 
-                        $.ajax({
-                            url: "action/project/edit_project.php",
-                            type: "POST",
-                            data: { id:this.id },
-                            dataType: 'json',
-                            success: function (response) {
-                              if(response!='0'){
-                                $('#clientname1').val(response.client_name);
-                                $('#phonenumber1').val(response.client_phone);
-                                $('#city1').val(response.city);
-                                $('#number1').val(response.number);
-                                $('#PID1').val(response.PID);
-
-                                $('#exampleModalCenter').modal('show');
-                      
-                              }
-                            },
-                          });
-                    
-
-
-
-
-
-
-                    
-                    });
-          
+               
                 
                 
                 
@@ -242,7 +213,6 @@ var KTDatatableRemoteAjaxDemo = function() {
 
 
 
-jQuery(document).ready(function() {
     
     $('#exampleModalCenter').modal('show');//to show the modal auto
     $.ajax({
@@ -258,24 +228,7 @@ jQuery(document).ready(function() {
         },
       });
 
-      $("#project_form").on('submit', function (event) {
-        event.preventDefault(); //prevent default action 
-        var post_url = $(this).attr("action"); //get form action url
-        var form_data = $(this).serialize(); //Encode form elements for submission
-
-        $.post(post_url, form_data, function (response) {
-
-
-            if (response == '1') {
-                console.log('nice');
-
-            } else {
-
-                console.log("there is an error");
-            }
-        });
-
-    });
+    
     
     
 });
