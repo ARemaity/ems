@@ -105,10 +105,10 @@ class DB_Manage {
 
 
 
-public function insertintoincome_transaction($fk_UID,$fk_PID,$fk_IID,$created_at) {
+public function insertintoincome_transaction($fk_UID,$fk_PID,$cost) {
                                 
-    $stmt = $this->conn->prepare("INSERT INTO `income_transaction`(`ITID`, `fk_UID`, `fk_PID`, `fk_IID`, `created_at`) VALUES (Null,?,?,?,?)");
-    $stmt->bind_param("iiis",$fk_UID,$fk_PID,$fk_IID,$created_at);
+    $stmt = $this->conn->prepare("INSERT INTO `income_transaction`(`ITID`, `fk_UID`, `fk_PID`, `cost`, `created_at`) VALUES (NULL,?,?,?,NOW())");
+    $stmt->bind_param("iid",$fk_UID,$fk_PID,$cost);
     $result = $stmt->execute();
     $stmt->close();
  // check for successful stores

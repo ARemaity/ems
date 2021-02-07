@@ -252,7 +252,7 @@ $id=911;
 													<i class="flaticon-confetti icon-2x text-muted font-weight-bold"></i>
 												</span>
 												<div class="d-flex flex-column text-dark-75">
-													<span class="font-weight-bolder font-size-sm">Income : </span>
+													<span id="incomebttn" class="font-weight-bolder font-size-sm">Income : </span>
 													<span id="incm" class="font-weight-bolder font-size-h5">
 													<span class="text-dark-50 font-weight-bold">$</span></span>
 												</div>
@@ -2654,7 +2654,7 @@ $id=911;
 
 <?php include 'layout/insertexpensetransaction.php'; ?>
 
-
+<?php include 'layout/insertincomemodal.php'; ?>
 
 
 

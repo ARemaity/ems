@@ -4,50 +4,53 @@ require_once 'include/DB_Login.php';
 require_once 'base.php';
 $db = new DB_Login();
 session_start();
-	if(isset($_SESSION['usertype'])){
-		
-		if($_SESSION["usertype"]==1) header("location:".DIR_ROOT.DIR_USER."index.php");
-		
-	
-	}
-$type="";   //alert type
-$msg="";    //alert message
-// json response array
-$response = array("error" => FALSE);
-if(isset($_POST['submit'])){
-//Check if inputs are empty before submission
-if ((isset($_POST['username']) && isset($_POST['password']))) {
-    //Get input values
-    $username = $_POST['username'];
-    $password = $_POST['password'];	
-    // get the user by username and password
-    
-    $user = $db->getUserByUsernameAndPassword($username, $password);	
-    if ($user != false) {
-        // use is found
-        $response["error"] = FALSE;
-		$response["userId"] = $user["userId"];
-        // save userId and usertypes in sessions for security reasons
-        $_SESSION['userId']=$response["userId"];
-        $_SESSION['usertype']=$user["usertype"];
-        $_SESSION['username']=$username;
-        $_SESSION['loggedin_time'] = time();  
-		if($_SESSION["usertype"]==1) header("location:".DIR_ROOT.DIR_USER."index.php");
-        else $type="danger";   $msg="Invaild username or password";
+if (isset($_SESSION['usertype'])) {
 
-     
-    } else {
-		$type="danger";
-        $msg="Invaild username or password";
-        
-    }	
-} 
+    if ($_SESSION["usertype"] == 1) {
+        header("location:" . DIR_ROOT . DIR_USER . "index.php");
+    }
+
+}
+$type = ""; //alert type
+$msg = ""; //alert message
+// json response array
+$response = array("error" => false);
+if (isset($_POST['submit'])) {
+//Check if inputs are empty before submission
+    if ((isset($_POST['username']) && isset($_POST['password']))) {
+        //Get input values
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        // get the user by username and password
+
+        $user = $db->getUserByUsernameAndPassword($username, $password);
+        if ($user != false) {
+            // use is found
+            $response["error"] = false;
+            $response["userId"] = $user["userId"];
+            // save userId and usertypes in sessions for security reasons
+            $_SESSION['userId'] = $response["userId"];
+            $_SESSION['usertype'] = $user["usertype"];
+            $_SESSION['username'] = $username;
+            $_SESSION['loggedin_time'] = time();
+            if ($_SESSION["usertype"] == 1) {
+                header("location:" . DIR_ROOT . DIR_USER . "index.php");
+            } else {
+                $type = "danger";
+            }
+
+            $msg = "Invaild username or password";
+
+        } else {
+            $type = "danger";
+            $msg = "Invaild username or password";
+
+        }
+    }
 }
 
-
-
 //alert design
-$alert='<div class="alert alert-custom alert-light-danger fade show mb-5" role="alert">
+$alert = '<div class="alert alert-custom alert-light-danger fade show mb-5" role="alert">
     <div class="alert-icon"><i class="flaticon-warning"></i></div>
     <div class="alert-text">Error Try again</div>
     <div class="alert-close">
@@ -99,7 +102,7 @@ $alert='<div class="alert alert-custom alert-light-danger fade show mb-5" role="
 						<!--begin::Login Header-->
 						<div class="d-flex flex-center mb-15">
 						</div>
-                      
+
 						<!--end::Login Header-->
 						<!--begin::Login Sign in form-->
 						<div class="login-signin">
@@ -108,7 +111,7 @@ $alert='<div class="alert alert-custom alert-light-danger fade show mb-5" role="
 								<p class="opacity-40">Enter your details to login to your account:</p>
 							</div>
 
-                            <?= $msg ?>
+                            <?=$msg?>
 							<form action="index.php"  method="post"  class="form" >
 								<div class="form-group">
 									<input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Email" name="username" autocomplete="off" />
@@ -116,15 +119,15 @@ $alert='<div class="alert alert-custom alert-light-danger fade show mb-5" role="
 								<div class="form-group">
 									<input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="password" placeholder="Password" name="password" />
 								</div>
-						
+
 								<div class="form-group text-center mt-10">
 									<button type="submit" name="submit"  class="btn btn-pill btn-primary opacity-90 px-15 py-3">Sign In</button>
 								</div>
 							</form>
-							
+
 						</div>
-				
-				
+
+
 						<!--end::Login forgot password form-->
 					</div>
 				</div>

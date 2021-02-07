@@ -5,11 +5,11 @@
 <!-- Modal -->
 
 
-<div class="modal fade" id="insertmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="incomemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Expense Transaction</h5>
+				<h5 class="modal-title" id="exampleModalLongTitle">Income Transaction</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -39,16 +39,16 @@
 												<div class="col-xl-12 col-xxl-10">
 													<!--begin::Wizard Form-->
 													<form
-														action="<?='action/' . $module . '/new.php'?>"
+														action="<?='action/income/new.php'?>"
 														method="POST"
 														class="form fv-plugins-bootstrap fv-plugins-framework"
-														id="insrtextrans">
+														id="insrtincmtrans">
 														<div class="row justify-content-center">
 															<div class="col-xl-9">
 																<!--begin::Wizard Step 1-->
 																<div class="my-5 step" data-wizard-type="step-content"
 																	data-wizard-state="current">
-																	<h5 class="text-dark font-weight-bold mb-10">Expense transactions :
+																	<h5 class="text-dark font-weight-bold mb-10">Income transactions :
 																		</h5>
 																	<!--begin::Group-->
 
@@ -66,7 +66,7 @@
 																		<label
 																			class="col-xl-3 col-lg-3 col-form-label">Project ID</label>
 																		<div class="col-lg-9 col-xl-9">
-																			<input id="projectidinput"
+																			<input id="projectidinputinc"
 																				class="form-control form-control-solid form-control-lg"
 																				name="projectid" type="text" readonly>
 																			<div class="fv-plugins-message-container">
@@ -74,32 +74,6 @@
 																		</div>
 																	</div>
 
-                                                                    <div
-																		class="form-group row fv-plugins-icon-container">
-                                                                        <label
-																			class="col-xl-3 col-lg-3 col-form-label">Expense</label>
-																		<div class="col-lg-9 col-xl-9">
-
-																		<select name="dropdown" class="form-control form-control-lg form-control-solid">
-																			<option >Out the list...</option>
-
-                                                                                   <?php
-
-$result = $db->getallexpense()->get_result();
-while ($row = $result->fetch_assoc()) {
-    echo "<option value='" . $row['EID'] . "'>" . $row['name'] . "</option>";}
-
-
-?>
-
-
-
-
-
-
-																		</select>
-																	</div>
-																</div>
 
 
 																	<!--end::Group-->
@@ -159,7 +133,7 @@ while ($row = $result->fetch_assoc()) {
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-primary">Add ExpenseTransaction</button>
+				<button type="submit" class="btn btn-primary">Add IncomeTransaction</button>
 			</div>
 			</form>
 
