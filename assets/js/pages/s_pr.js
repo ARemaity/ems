@@ -10,31 +10,33 @@ var KTSweetAlert = {
       $("#insertmodal").modal("show");
       $("#projectidinput").val(PID);
       $("#insrtextrans").on("submit", function (event) {
-        $("#insertmodal").modal("hide");
+    
         event.preventDefault();
         post_url = $(this).attr("action"); //get form action url
         form_data = $(this).serialize(); //Encode form elements for submission
 
         Swal.fire({
           title: "Are you sure?",
-          text: "You want to insert this transaction",
+          text: "You want to insert this transactions",
           icon: "warning",
           showCancelButton: !0,
           confirmButtonText: "Yes, Insert it!",
         }).then(function (e) {
           if (e.value) {
             $.post(post_url, form_data, function (response) {
-              if (response == "1") {
+              if (response == '1') {
+                
                 Swal.fire(
                   "Inserted!",
                   "Transaction has been Inserted.",
                   "success"
                 );
+                $("#insertmodal").modal("hide");
                 $("#insrtextrans")
                   .closest("form")
                   .find("input[type=text], textarea")
                   .val("");
-               
+                  location.reload();
               } else {
                 Swal.fire(
                   "Error",
