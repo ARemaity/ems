@@ -200,19 +200,6 @@ if ($stmt->execute()) {
 
 
 
-public function getincome_transaction($incomereans_id) {
-       
-    $stmt = $this->conn->prepare("SELECT `ITID`, `fk_UID`, `fk_PID`, `fk_IID`, `created_at` FROM `income_transaction` WHERE ITID = ?");        
-$stmt->bind_param("i", $incomereans_id);   
-
-if ($stmt->execute()) {			
-     $order = $stmt->get_result()->fetch_assoc();
-     $stmt->close();
-     return $order; 
- } else {
-    return NULL;
- }
-}
 
 
 
