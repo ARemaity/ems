@@ -232,6 +232,20 @@ if ($result) {
 }
 
 
+public function deleteexptransaction($expensetrans_id) {
+       
+    $stmt = $this->conn->prepare("DELETE FROM `expense_transaction` WHERE ETID = ?");        
+$stmt->bind_param("i", $expensetrans_id);   
+
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
+
 
 
 

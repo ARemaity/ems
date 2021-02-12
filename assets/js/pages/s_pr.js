@@ -94,7 +94,7 @@ var KTDatatable_expense = function() {
           overflow: 'visible',
           autoHide: false,
           template: function(row) {
-              return '<a href="javascript:;" id="'+row.PID+'"    class="edditbutton btn btn-sm btn-clean btn-icon mr-2 " title="Edit details">\
+              return '<a href="javascript:;" id="'+row.ETID+'"    class="edditbutton btn btn-sm btn-clean btn-icon mr-2 " title="Edit details">\
                       <span class="svg-icon svg-icon-md">\
                           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
                               <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -105,7 +105,7 @@ var KTDatatable_expense = function() {
                           </svg>\
                       </span>\
                   </a>\
-                  <a href="javascript:;" class="btn btn-sm btn-clean btn-icon edit_pr"\
+                  <a href="javascript:;" id="'+row.ETID+'" class="dbtn btn btn-sm btn-clean btn-icon edit_pr"\
                  title="Delete">\
                       <span class="svg-icon svg-icon-md">\
                           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
@@ -116,7 +116,7 @@ var KTDatatable_expense = function() {
                               </g>\
                           </svg>\
                       </span>\
-                  </a>\
+                  </a><script></script>\
               ';
           },
       }
@@ -125,8 +125,20 @@ var KTDatatable_expense = function() {
 };
   
 
+
+
+  
+
+
+
+
+
+
+
+
   // basic demo
   var kt_extension = function() {
+    
       // enable extension
       kt_expense.extensions = {
           // boolean or object (extension options)
@@ -150,6 +162,7 @@ var KTDatatable_expense = function() {
       datatable.on(
           'datatable-on-check datatable-on-uncheck',
           function(e) {
+            
               var checkedNodes = datatable.rows('.datatable-row-active').nodes();
               var count = checkedNodes.length;
               $('#kt_datatable_selected_records').html(count);
@@ -327,11 +340,91 @@ var KTSweetAlert = {
             }
           });
         });
+      }),$(".dbtn").click(function (e) {  ////////delete button for expense transaction 
+       
+          
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You want to delete this Transaction",
+            icon: "warning",
+            showCancelButton: !0,
+            confirmButtonText: "Yes, Delete it!",
+          }).then(function (e) {
+            if (e.value) {
+              $.ajax({
+                url: "action/expense_tran/delete.php",
+                type: "POST",
+                data: { id: this.id},
+                dataType: "json",
+                success: function (response) {
+              
+            
+                if (response == "1") {
+                  Swal.fire(
+                    "Deleted!",
+                    "Income Transaction has been Deleted.",
+                    "success"
+                  );
+                  
+                 
+                } else {
+                  Swal.fire(
+                    "Error",
+                    "there is an error Call the developer)",
+                    "error"
+                  );
+                }
+              },
+            });
+            }
+          });
+       
       });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   },
 };
 
 jQuery(document).ready(function () {
+
+
+// TODO : aync await 
+
+  $.ajax({
+    url: "action/expense_tran/fetch.php",
+    type: "POST",
+    data: { PID: PID },
+    success: function (response) {
+      if(response=='1'){
+
+        KTDatatable_expense.init();
+
+      }
+    },
+  });
+    
+
+
+
+
+
+
+
+
+
+
   KTSweetAlert.init();
   //ajax  get single project row from project tbl
 
@@ -351,20 +444,7 @@ jQuery(document).ready(function () {
       }
     },
   });
-  // TODO : aync await 
-  $.ajax({
-    url: "action/expense_tran/fetch.php",
-    type: "POST",
-    data: { PID: PID },
-    success: function (response) {
-      if(response=='1'){
-
-        KTDatatable_expense.init();
-
-      }
-    },
-  });
-
+ 
 
 
 
@@ -387,4 +467,45 @@ jQuery(document).ready(function () {
       }
     },
   });
+
+
+   
+   
+
+
+
+  $("#dbtn").click(function (e) {
+
+
+
+
+
+
+
+
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });

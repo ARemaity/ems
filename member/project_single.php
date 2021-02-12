@@ -174,7 +174,7 @@ $id=911;
 									<!--begin::Page Title-->
 									<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Action Toolbar</h5>
 									<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
-									<a href="#" class="btn btn-light-primary font-weight-bolder btn-sm">Update Project</a>
+									<a href="javascript:;" id="nproject" class="btn btn-light-primary font-weight-bolder btn-sm">Update Project</a>
 									<!--end::Action-->
 								</div>
 								<!--end::Info-->
@@ -195,7 +195,7 @@ $id=911;
 											<!--begin: Pic-->
 											<div class="flex-shrink-0 mr-7 mt-lg-0 mt-3">
 												<div class="symbol symbol-50 symbol-lg-120">
-													<img id="nproject" alt="Pic" src="assets/media/project-logos/3.png" />
+													<img  alt="Pic" src="assets/media/project-logos/3.png" />
 												</div>
 												<div class="symbol symbol-50 symbol-lg-120 symbol-primary d-none">
 													<span class="font-size-h3 symbol-label font-weight-boldest">JM</span>
@@ -235,9 +235,9 @@ $id=911;
 														<!--end::Contacts-->
 													</div>
 													<div class="my-lg-0 my-1">
-														<button class="btn btn-sm btn-light-danger font-weight-bolder text-uppercase mr-3">
+														<button id="etransactions"  class="btn btn-sm btn-light-danger font-weight-bolder text-uppercase mr-3">
 															New Expense</button>
-														<button  class="btn btn-sm btn-light-success font-weight-bolder text-uppercase mr-3">New Income</button>
+														<button id="incomebttn"  class="btn btn-sm btn-light-success font-weight-bolder text-uppercase mr-3">New Income</button>
 													</div>
 												</div>
 												<!--end: Title-->
@@ -275,7 +275,7 @@ $id=911;
 													<i class="flaticon-piggy-bank icon-2x text-muted font-weight-bold"></i>
 												</span>
 												<div class="d-flex flex-column text-dark-75">
-													<span  id="etransactions" class="font-weight-bolder font-size-sm">Transactions : </span>
+													<span id="testbtn"  class="font-weight-bolder font-size-sm">Transactions : </span>
 													<span id="exp" class="font-weight-bolder font-size-h5">
 													<span class="text-dark-50 font-weight-bold">$</span></span>
 												</div>
@@ -287,7 +287,7 @@ $id=911;
 													<i class="flaticon-confetti icon-2x text-muted font-weight-bold"></i>
 												</span>
 												<div class="d-flex flex-column text-dark-75">
-													<span id="incomebttn" class="font-weight-bolder font-size-sm">Income : </span>
+													<span  class="font-weight-bolder font-size-sm">Income : </span>
 													<span id="incm" class="font-weight-bolder font-size-h5">
 													<span class="text-dark-50 font-weight-bold">$</span></span>
 												</div>
