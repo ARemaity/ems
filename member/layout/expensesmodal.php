@@ -17,9 +17,7 @@
 			<div class="modal-body">
 
             <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-					<!-- this is dummmmmmmmmmmmmmmmmmmmmm -->
-
-
+			
 					<div class="container">
 						<!--begin::Card-->
 						<div class="card card-custom card-transparent">

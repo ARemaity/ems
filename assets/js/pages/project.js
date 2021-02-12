@@ -1,7 +1,7 @@
 "use strict";
 // Class definition
 
-var KTDatatableRemoteAjaxDemo = function() {
+var KTDatatableproject = function() {
 
     var kt_lead={
     data: {
@@ -132,39 +132,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
     // basic demo
     var delete_pr = function() {
-        // enable extension
-        kt_lead.extensions = {
-            // boolean or object (extension options)
-            checkbox: true,
-        };
-
-        kt_lead.search = {
-            input: $('#kt_datatable_search_query'),
-            key: 'generalSearch'
-        };
-
-        var datatable = $('#kt_datatable').KTDatatable(kt_lead);
-
-        $('#kt_datatable_search_status').on('change', function() {
-            datatable.search($(this).val().toLowerCase(), 'number');
-        });
-
-
-        $('#kt_datatable_search_status').selectpicker();
-
-        datatable.on(
-            'datatable-on-check datatable-on-uncheck',
-            function(e) {
-                var checkedNodes = datatable.rows('.datatable-row-active').nodes();
-                var count = checkedNodes.length;
-                $('#kt_datatable_selected_records').html(count);
-                if (count > 0) {
-                    $('#kt_datatable_group_action_form').collapse('show');
-                } else {
-                    $('#kt_datatable_group_action_form').collapse('hide');
-                }
-            });
-
+       
     };
 
 
@@ -188,7 +156,9 @@ var KTDatatableRemoteAjaxDemo = function() {
 }();
 // module var  is init at the top of the page //
 
-       
+      
+jQuery(document).ready(function () {
+    KTDatatableproject.init();
 
     $('#exampleModalCenter').modal('show');//to show the modal auto
     $.ajax({
@@ -205,7 +175,7 @@ var KTDatatableRemoteAjaxDemo = function() {
       });
 
     
-    
+    });
     
 
 
