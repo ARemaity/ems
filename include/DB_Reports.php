@@ -104,19 +104,6 @@ if ($stmt->execute()) {
  }
 }
 
-public function getincome_transaction($incomereans_id) {
-       
-    $stmt = $this->conn->prepare("SELECT `ITID`, `fk_UID`, `fk_PID`, `fk_IID`, `created_at` FROM `income_transaction` WHERE ITID = ?");        
-$stmt->bind_param("i", $incomereans_id);   
-
-if ($stmt->execute()) {			
-     $order = $stmt->get_result()->fetch_assoc();
-     $stmt->close();
-     return $order; 
- } else {
-    return NULL;
- }
-}
 
 
 
@@ -193,6 +180,55 @@ $stmt->close();
 }
 
 }
+
+public function getincome_transaction($incometransactionid) {
+       
+    $stmt = $this->conn->prepare("SELECT `ITID`, `fk_UID`, `fk_PID`, `cost`, `created_at` FROM `income_transaction` WHERE ITID = $incometransactionid ");        
+$stmt->bind_param("i", $incometransactionid);   
+
+if ($stmt->execute()) {			
+     $order = $stmt->get_result()->fetch_assoc();
+     $stmt->close();
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
+
+public function getincome_transactionproject($PID) {//unfinished
+       
+    $stmt = $this->conn->prepare("");        
+$stmt->bind_param("i", $incometransactionid);   
+
+if ($stmt->execute()) {			
+     $order = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+     $stmt->close();
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
