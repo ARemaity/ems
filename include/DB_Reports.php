@@ -195,5 +195,23 @@ $stmt->close();
 }
 
   
+
+public function get_expenses_project($PID) {
+    
+    $stmt = $this->conn->prepare("SELECT   ETID ,  name , cost, T.created_at as date FROM expense_transaction AS T  INNER JOIN expense AS E  ON   T.fk_EID = E.EID where T.fk_PID = ?  ORDER BY created_at DESC");              
+    $stmt->bind_param("i", $PID);   
+if ($stmt->execute()) {			
+$expenses = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+return $expenses; 
+$stmt->close();
+} else {
+die("Adding record failed: " .$stmt->error); 
+$stmt->close();
+
+}
+
+}
+
+  
 }
 ?>

@@ -130,25 +130,50 @@ var KTDatatableproject = function() {
 };
     
 
-    // basic demo
-    var delete_pr = function() {
-       
+    var kt_extension = function() {
+        // enable extension
+        kt_lead.extensions = {
+            // boolean or object (extension options)
+            checkbox: true,
+        };
+
+        kt_lead.search = {
+            input: $('#kt_datatable_search_query'),
+            key: 'generalSearch'
+        };
+
+        var datatable = $('#kt_datatable').KTDatatable(kt_lead);
+
+        $('#kt_datatable_search_status').on('change', function() {
+            datatable.search($(this).val().toLowerCase(), 'number');
+        });
+
+
+        $('#kt_datatable_search_status').selectpicker();
+
+        datatable.on(
+            'datatable-on-check datatable-on-uncheck',
+            function(e) {
+                var checkedNodes = datatable.rows('.datatable-row-active').nodes();
+                var count = checkedNodes.length;
+                $('#kt_datatable_selected_records').html(count);
+                if (count > 0) {
+                    $('#kt_datatable_group_action_form').collapse('show');
+                } else {
+                    $('#kt_datatable_group_action_form').collapse('hide');
+                }
+            });
+
     };
 
 
-
-     // basic demo
-     var kt_lead_dt = function() {
-     
-    };
 
 
     return {
         // public functions
         init: function() {
    
-            kt_lead_dt();
-            delete_pr();
+            kt_extension();
 
 
         },
