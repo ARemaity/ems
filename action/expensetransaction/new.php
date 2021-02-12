@@ -6,6 +6,7 @@ $db =new DB_Manage();
 $projectid=$_POST['projectid'];
 $dropdown=$_POST['dropdown'];
 $cost=$_POST['cost'];
+// first arg for uid 
 
 $data=0;
 if(!empty($projectid)&&!empty($dropdown)&&!empty($cost)){

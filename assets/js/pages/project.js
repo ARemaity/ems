@@ -131,7 +131,7 @@ var KTDatatableRemoteAjaxDemo = function() {
     
 
     // basic demo
-    var kt_lead_dt = function() {
+    var delete_pr = function() {
         // enable extension
         kt_lead.extensions = {
             // boolean or object (extension options)
@@ -165,26 +165,13 @@ var KTDatatableRemoteAjaxDemo = function() {
                 }
             });
 
-// onclick .edit_pr id  create ajax then recive data and put them in the form then show the modal 
-
-                // selected records status update
-             
-
-             
-               
-                
-                
-                
+    };
 
 
 
-
-
-
-
-
-    
-
+     // basic demo
+     var kt_lead_dt = function() {
+     
     };
 
 
@@ -193,6 +180,7 @@ var KTDatatableRemoteAjaxDemo = function() {
         init: function() {
    
             kt_lead_dt();
+            delete_pr();
 
 
         },
@@ -202,18 +190,6 @@ var KTDatatableRemoteAjaxDemo = function() {
 
        
 
-
-
-
-
-
-
-
-
-
-
-
-    
     $('#exampleModalCenter').modal('show');//to show the modal auto
     $.ajax({
         url: "action/project/fetch.php",
