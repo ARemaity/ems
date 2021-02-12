@@ -161,7 +161,7 @@
 												<div class="col-xl-12 col-xxl-10">
 													<!--begin::Wizard Form-->
 													<form
-														action="<?='action/' . $module . '/new.php'?>"
+														action="<?='action/expense_tran/new.php'?>"
 														method="POST"
 														class="form fv-plugins-bootstrap fv-plugins-framework"
 														id="insrtextrans">
