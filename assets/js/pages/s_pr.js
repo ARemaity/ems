@@ -94,7 +94,7 @@ var KTDatatable_expense = function() {
           overflow: 'visible',
           autoHide: false,
           template: function(row) {
-              return '<a href="javascript:;" id="'+row.ETID+'"    class="edditbutton btn btn-sm btn-clean btn-icon mr-2 " title="Edit details">\
+              return '<a href="javascript:;" id="'+row.ETID+'"    class="edit_tran btn btn-sm btn-clean btn-icon mr-2 " title="Edit details">\
                       <span class="svg-icon svg-icon-md">\
                           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
                               <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -105,7 +105,7 @@ var KTDatatable_expense = function() {
                           </svg>\
                       </span>\
                   </a>\
-                  <a href="javascript:;" id="'+row.ETID+'" class="dbtn btn btn-sm btn-clean btn-icon edit_pr"\
+                  <a href="javascript:;" id="'+row.ETID+'" class="delete_tran btn btn-sm btn-clean btn-icon edit_pr"\
                  title="Delete">\
                       <span class="svg-icon svg-icon-md">\
                           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
@@ -124,17 +124,6 @@ var KTDatatable_expense = function() {
 
 };
   
-
-
-
-  
-
-
-
-
-
-
-
 
   // basic demo
   var kt_extension = function() {
@@ -173,17 +162,75 @@ var KTDatatable_expense = function() {
               }
           });
 
+
+
+
   };
 
 
+  // basic demo
+  var edit_expense = function() {
+ 
+  // follow this principle 
+    $(document).on("click", ".edit_tran", function () {
+
+      console.log("dummmmm"+$(this).attr('id'));
+
+      
+        });
+
+}
 
 
+
+  // basic demo
+  var delete_expense = function() {
+    ////////delete button for expense transaction 
+ $(document).on("click", ".delete_tran", function () {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You want to delete this Transaction",
+        icon: "warning",
+        showCancelButton: !0,
+        confirmButtonText: "Yes, Delete it!",
+      }).then(function (e) {
+        if (e.value) {
+          $.ajax({
+            url: "action/expense_tran/delete.php",
+            type: "POST",
+            data: { id: this.id},
+            dataType: "json",
+            success: function (response) {
+          
+        
+            if (response == "1") {
+              Swal.fire(
+                "Deleted!",
+                "Income Transaction has been Deleted.",
+                "success"
+              );
+              
+             
+            } else {
+              Swal.fire(
+                "Error",
+                "there is an error Call the developer)",
+                "error"
+              );
+            }
+          },
+        });
+        }
+      });
+   
+  });
+}
   return {
       // public functions
       init: function() {
- 
+        delete_expense();
         kt_extension();
-
+        edit_expense();
 
       },
   };
@@ -233,19 +280,6 @@ var KTSweetAlert = {
                 );
               }
             });
-
-            // ajax request
-            // TODO: on response we fire swal deleted or there is an error;
-            //HACK: success // Swal.fire(
-            //     "Deleted!",
-            //     "Your file has been deleted.",
-            //     "success"
-            // );
-            //HACK: failed// Swal.fire(
-            //     "Error",
-            //     "there is an error Call the developer)",
-            //     "error"
-            // );
           }
         });
       });
@@ -340,59 +374,7 @@ var KTSweetAlert = {
             }
           });
         });
-      }),$(".dbtn").click(function (e) {  ////////delete button for expense transaction 
-       
-          
-          Swal.fire({
-            title: "Are you sure?",
-            text: "You want to delete this Transaction",
-            icon: "warning",
-            showCancelButton: !0,
-            confirmButtonText: "Yes, Delete it!",
-          }).then(function (e) {
-            if (e.value) {
-              $.ajax({
-                url: "action/expense_tran/delete.php",
-                type: "POST",
-                data: { id: this.id},
-                dataType: "json",
-                success: function (response) {
-              
-            
-                if (response == "1") {
-                  Swal.fire(
-                    "Deleted!",
-                    "Income Transaction has been Deleted.",
-                    "success"
-                  );
-                  
-                 
-                } else {
-                  Swal.fire(
-                    "Error",
-                    "there is an error Call the developer)",
-                    "error"
-                  );
-                }
-              },
-            });
-            }
-          });
-       
-      });
-
-
-
-
-
-
-
-
-
-
-
-
-
+      })
 
   },
 };
@@ -416,15 +398,6 @@ jQuery(document).ready(function () {
   });
     
 
-
-
-
-
-
-
-
-
-
   KTSweetAlert.init();
   //ajax  get single project row from project tbl
 
@@ -445,10 +418,6 @@ jQuery(document).ready(function () {
     },
   });
  
-
-
-
-
 
   // ajax REQUEST TO GET EXPENSE ,INCOME, total,total transaction.
   $.ajax({

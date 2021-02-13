@@ -248,6 +248,24 @@ $stmt->close();
 
 }
 
+
+
+public function get_income_project($PID) {
+    
+    $stmt = $this->conn->prepare("SELECT `ITID`, `cost`, `created_at` FROM `income_transaction`   where T.fk_PID = ?  ORDER BY created_at DESC");              
+    $stmt->bind_param("i", $PID);   
+if ($stmt->execute()) {			
+$expenses = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+return $expenses; 
+$stmt->close();
+} else {
+die("Adding record failed: " .$stmt->error); 
+$stmt->close();
+
+}
+
+}
+
   
 }
 ?>
