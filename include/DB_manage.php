@@ -246,6 +246,20 @@ if ($stmt->execute()) {
  }
 }
 
+public function updateexptransaction($expensetrans_id,$expenseid,$cost) {
+       
+    $stmt = $this->conn->prepare("UPDATE `expense_transaction` SET `fk_EID`=?,`cost`= ? WHERE ETID= ?");        
+$stmt->bind_param("idi",$expenseid,$cost,$expensetrans_id);   
+
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
+
 
 
 

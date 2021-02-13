@@ -3,9 +3,10 @@
 "use strict"
 var post_url;
 var form_data;
-
-
-
+var did;//since in the delete transaction method this.id coukdnt bee acessed inside swap.fire
+var eid;///expense id
+var costedit;
+var dropdown;
 
 
 
@@ -105,7 +106,7 @@ var KTDatatable_expense = function() {
                           </svg>\
                       </span>\
                   </a>\
-                  <a href="javascript:;" id="'+row.ETID+'" class="delete_tran btn btn-sm btn-clean btn-icon edit_pr"\
+                  <a href="javascript:;" id="'+row.ETID+'"  class="delete_tran btn btn-sm btn-clean btn-icon edit_pr"\
                  title="Delete">\
                       <span class="svg-icon svg-icon-md">\
                           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
@@ -169,12 +170,69 @@ var KTDatatable_expense = function() {
 
 
   // basic demo
-  var edit_expense = function() {
+  var edit_expense = function() {//edit the transaction from the table
  
   // follow this principle 
     $(document).on("click", ".edit_tran", function () {
+        $("#edittransactionmodal").modal("show");
 
-      console.log("dummmmm"+$(this).attr('id'));
+        $.ajax({//get the transactio attribute and them to the form
+          url: "action/expense_tran/getexp.php",
+          type: "POST",
+          data: { id: this.id},
+          dataType: "json",
+          success: function (response) {
+            if (response != "0") {
+              $("#transactionid").val(response.ETID);//fill the input values 
+              $("#liste").val(response.fk_EID);
+              $("#costedit").val(response.cost);
+             
+            }else{$("#edittransactionmodal").modal("hide");}//if couldnt retrieve transaction from database
+          },
+        });
+
+      
+      
+        $("#editextrans").on("submit", function (event) {//update transaction form get 3 attributes and update them
+      
+          event.preventDefault();
+          post_url = $(this).attr("action"); //get form action url
+          form_data = $(this).serialize(); //Encode form elements for submission
+  
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You want to insert this transactions",
+            icon: "warning",
+            showCancelButton: !0,
+            confirmButtonText: "Yes, Insert it!",
+          }).then(function (e) {
+            if (e.value) {
+              $.post(post_url, form_data, function (response) {
+                if (response == '1') {
+                  
+                  Swal.fire(
+                    "Updated!",
+                    "Transaction has been Updated.",
+                    "success"
+                  );
+                  $("#edittransactionmodal").modal("hide");
+                  $("#editextrans")
+                    .closest("form")
+                    .find("input[type=text], textarea")
+                    .val("");
+                    location.reload();
+                } else {
+                  Swal.fire(
+                    "Error",
+                    "there is an error Call the developer)",
+                    "error"
+                  );
+                }
+              });
+            }
+          });
+        });
+    
 
       
         });
@@ -187,6 +245,7 @@ var KTDatatable_expense = function() {
   var delete_expense = function() {
     ////////delete button for expense transaction 
  $(document).on("click", ".delete_tran", function () {
+  did=this.id;
       Swal.fire({
         title: "Are you sure?",
         text: "You want to delete this Transaction",
@@ -198,7 +257,7 @@ var KTDatatable_expense = function() {
           $.ajax({
             url: "action/expense_tran/delete.php",
             type: "POST",
-            data: { id: this.id},
+            data: { id: did},
             dataType: "json",
             success: function (response) {
           
@@ -374,7 +433,7 @@ var KTSweetAlert = {
             }
           });
         });
-      })
+      });
 
   },
 };
