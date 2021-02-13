@@ -426,21 +426,7 @@ var KTDatatable_income = function() {
       });
 
 
-      // $('#kt_datatable_search_status_inc').selectpicker();
-
-      // datatable2.on(
-      //     'datatable-on-check datatable-on-uncheck',
-      //     function(e) {
-            
-      //         var checkedNodes = datatable2.rows('.datatable-row-active').nodes();
-      //         var count = checkedNodes.length;
-      //         $('#kt_datatable_selected_records').html(count);
-      //         if (count > 0) {
-      //             $('#kt_datatable_group_action_form').collapse('show');
-      //         } else {
-      //             $('#kt_datatable_group_action_form').collapse('hide');
-      //         }
-      //     });
+  
 
 
 

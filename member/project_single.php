@@ -575,10 +575,6 @@ $id=911;
 												<div class="tab-pane fade" id="kt_tab_income" role="tabpanel"
 													aria-labelledby="kt_tab_income">
 
-
-
-
-
 													<div class="card-body">
 														<!--begin: Search Form-->
 														<!--begin::Search Form-->
@@ -838,7 +834,6 @@ $id=911;
 
 	<script>
 
-		// EDIT PROUJECT AJAX
 		$("#nproject1").on("click", function () {
 			$.ajax({
 				url: "action/project/edit_project.php",
