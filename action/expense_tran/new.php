@@ -12,11 +12,10 @@ $data=0;
 if(!empty($projectid)&&!empty($dropdown)&&!empty($cost)){
 
     $result = $db->insertintoexpense_transaction(1,$projectid,$dropdown,$cost);
-    if($result){
-    
-        $data=1;
-    
-    
+    if(!is_bool($result)){
+
+
+        $data=intval($result);
     }
 
 }

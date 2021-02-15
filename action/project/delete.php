@@ -19,8 +19,7 @@ $DPID=0;
 // decode json to associative array
 $json_arr = json_decode($jsonString, true);
 
-// get array index to delete
-$arr_index = array();
+
 foreach ($json_arr as $key => $value)
 {
     if ($value['PID'] == $projectid)

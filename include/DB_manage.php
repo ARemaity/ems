@@ -15,8 +15,6 @@ class DB_Manage {
         $db = new Db_Connect();
         $this->conn = $db->connect();
 
-       // $this->date= new DateTime("now", new DateTimeZone('Asia/Beirut'));
-       // $this->timezone=$this->date->format('Y-m-d H:i:s');
     }
 
     // destructor
@@ -24,33 +22,6 @@ class DB_Manage {
         
     }
 
-    // public function insertintoclient($name,$address,$phone_number) {
-                                
-    //                 $stmt = $this->conn->prepare("INSERT INTO `client`(`CID`, `name`, `address`, `phone_number`) VALUES (NULL,?,?,?)");
-    //                 $stmt->bind_param("ssi",$name,$address,$phone_number);
-    //                 $result = $stmt->execute();
-    //                 $stmt->close();
-    //              // check for successful stores
-    //              if ($result) {
-    //                  return true;
-    //              } else {
-    //                  return false;
-    //              }
-    //          }
-
-        //      public function deletefromclient($clientid) {
-                                
-        //         $stmt = $this->conn->prepare("DELETE FROM `client` WHERE CID = ?");
-        //         $stmt->bind_param("i",$clientid);
-        //          $result = $stmt->execute();
-        //      $stmt->close();
-        //      // check for successful stores
-        //      if ($result) {
-        //          return true;
-        //      } else {
-        //          return false;
-        //      }
-        //  }
 
 
          public function insertintocompany($name,$address,$phone,$description) {
@@ -73,13 +44,14 @@ class DB_Manage {
         $stmt = $this->conn->prepare("INSERT INTO `expense`(`EID`, `name`, `description`) VALUES (Null,?,?)");
         $stmt->bind_param("ss",$name,$description);
         $result = $stmt->execute();
+        $last_id=$stmt->insert_id;
         $stmt->close();
-     // check for successful stores
-     if ($result) {
-         return true;
-     } else {
-         return false;
-     }
+    // check for successful store
+    if ($result) {
+        return $last_id;
+    } else {
+        return false;
+    }
  }
 
 
@@ -89,13 +61,14 @@ class DB_Manage {
     $stmt = $this->conn->prepare("INSERT INTO `expense_transaction`(`ETID`, `fk_UID`, `fk_PID`, `fk_EID`,`cost`,`created_at`) VALUES (Null,?,?,?,?,NOW())");
     $stmt->bind_param("iiid",$fk_UID,$fk_PID,$fk_IID,$cost);
     $result = $stmt->execute();
+    $last_id=$stmt->insert_id;
     $stmt->close();
- // check for successful stores
- if ($result) {
-     return true;
- } else {
-     return false;
- }
+// check for successful store
+if ($result) {
+    return $last_id;
+} else {
+    return false;
+}
 }
 
 
@@ -110,13 +83,14 @@ public function insertintoincome_transaction($fk_UID,$fk_PID,$cost) {
     $stmt = $this->conn->prepare("INSERT INTO `income_transaction`(`ITID`, `fk_UID`, `fk_PID`, `cost`, `created_at`) VALUES (NULL,?,?,?,NOW())");
     $stmt->bind_param("iid",$fk_UID,$fk_PID,$cost);
     $result = $stmt->execute();
+    $last_id=$stmt->insert_id;
     $stmt->close();
- // check for successful stores
- if ($result) {
-     return true;
- } else {
-     return false;
- }
+// check for successful store
+if ($result) {
+    return $last_id;
+} else {
+    return $last_id;
+}
 }
 
 
@@ -129,13 +103,14 @@ public function insertintoproject($number,$city,$client_name,$client_phone) {
     $stmt->bind_param("issi",$number,$city,$client_name,$client_phone);
   
     $result = $stmt->execute();
+    $last_id=$stmt->insert_id;
     $stmt->close();
- // check for successful stores
- if ($result) {
-     return true;
- } else {
-     return false;
- }
+// check for successful store
+if ($result) {
+    return $last_id;
+} else {
+    return $last_id;
+}
 }
 
   
@@ -297,15 +272,6 @@ if ($stmt->execute()) {
  } else {
     return false;
  }
-}
-
-
-public function getlastid() {
-    
-    return  mysqli_insert_id($this->conn);
-    
-
-
 }
 
 

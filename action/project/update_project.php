@@ -15,8 +15,7 @@ if(!empty($number)&&!empty($city)&&!empty($phonenumber)&&!empty($clientname)){
     if($result){
     
         $data=1;
-    
-    
+
     }
 
 }

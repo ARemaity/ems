@@ -10,11 +10,6 @@ if(!empty($id)){
 
     $result = $db->getproject($id);
     if($result){
-    
-
-
-
-    
         
         echo json_encode($result);
     exit();

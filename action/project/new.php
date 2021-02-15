@@ -11,28 +11,11 @@ $data=0;
 if(!empty($number)&&!empty($city)&&!empty($phonenumber)&&!empty($clientname)){
 
     $result = $db->insertintoproject($number,$city,$clientname,$phonenumber);
-    if($result){
-    
-        $data=1;
-    
-      
+    // if bool type then its false else success inser tion
+    if(!is_bool($result)){
 
 
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-    
+        $data=intval($result);
     }
 
 }

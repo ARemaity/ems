@@ -10,11 +10,10 @@ $data=0;
 if(!empty($projectid)&&!empty($cost)){
 
     $result = $db->insertintoincome_transaction(1,$projectid,$cost);
-    if($result){
-    
-        $data=1;
-    
-    
+    if(!is_bool($result)){
+
+
+        $data=intval($result);
     }
 
 }
