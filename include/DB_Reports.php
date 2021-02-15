@@ -182,7 +182,7 @@ $stmt->close();
 
 public function getincome_transaction($incometransactionid) {
        
-    $stmt = $this->conn->prepare("SELECT `ITID`, `fk_UID`, `fk_PID`, `cost`, `created_at` FROM `income_transaction` WHERE ITID = $incometransactionid ");        
+    $stmt = $this->conn->prepare("SELECT `ITID`, `fk_UID`, `fk_PID`, `cost`, `created_at` FROM `income_transaction` WHERE ITID = ? ");        
 $stmt->bind_param("i", $incometransactionid);   
 
 if ($stmt->execute()) {			

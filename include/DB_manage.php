@@ -259,9 +259,45 @@ if ($stmt->execute()) {
     return false;
  }
 }
+public function deleteincometransaction($incometransactionid) {
+       
+    $stmt = $this->conn->prepare("DELETE FROM `income_transaction` WHERE ITID = ?");        
+$stmt->bind_param("i", $incometransactionid);   
 
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
+public function updateincometransaction($incometransactionid,$cost) {
+       
+    $stmt = $this->conn->prepare("UPDATE `income_transaction` SET `cost`=? WHERE ITID = ?");        
+$stmt->bind_param("di",$cost,$incometransactionid);   
 
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
+public function deleteproject($projectid) {
+       
+    $stmt = $this->conn->prepare("DELETE FROM `project` WHERE PID = ?");        
+$stmt->bind_param("i", $projectid);   
 
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
 
 
 

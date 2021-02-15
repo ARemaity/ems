@@ -3,16 +3,19 @@
 "use strict"
 var post_url;
 var form_data;
-var did;//since in the delete transaction method this.id coukdnt bee acessed inside swap.fire
-var eid;///expense id
-var costedit;
-var dropdown;
+var did;//since in the delete transaction method this.id coukdnt bee acessed inside swap.fire deleteid
+var eid;///expense id for edit expense id
+
+var incmdid;//income delete id
+
 var datatable1;
 var datatable2;
+
 
 // Class definition
 
 var KTDatatable_expense = function() {
+
 
   var kt_expense={
   data: {
@@ -223,6 +226,7 @@ var KTDatatable_expense = function() {
                     // TODO : later on 
                     // datatable.reload();
                     location.reload();
+               
                 } else {
                   Swal.fire(
                     "Error",
@@ -374,7 +378,7 @@ var KTDatatable_income = function() {
           overflow: 'visible',
           autoHide: false,
           template: function(row) {
-              return '<a href="javascript:;" id="'+row.ETID+'"    class="edit_inc btn btn-sm btn-clean btn-icon mr-2 " title="Edit details">\
+              return '<a href="javascript:;" id="'+row.ITID+'"    class="edit_inc btn btn-sm btn-clean btn-icon mr-2 " title="Edit details">\
                       <span class="svg-icon svg-icon-md">\
                           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
                               <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -385,7 +389,7 @@ var KTDatatable_income = function() {
                           </svg>\
                       </span>\
                   </a>\
-                  <a href="javascript:;" id="'+row.ETID+'"  class="delete_inc btn btn-sm btn-clean btn-icon edit_pr"\
+                  <a href="javascript:;" id="'+row.ITID+'"  class="delete_inc btn btn-sm btn-clean btn-icon edit_pr"\
                  title="Delete">\
                       <span class="svg-icon svg-icon-md">\
                           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
@@ -436,15 +440,121 @@ var KTDatatable_income = function() {
 
   // basic demo
   var edit_income = function() {//edit the transaction from the table
- 
+ // follow this principle 
+ $(document).on("click", ".edit_inc", function () { 
+  $("#incomemodalupdate").modal("show");
+
+  $.ajax({//get the transactio attribute and them to the form
+    url: "action/income/getincm.php",
+    type: "POST",
+    data: { id: this.id},
+    dataType: "json",
+    success: function (response) {
+      if (response != "0") {
+        
+        $("#incometransactionidupdate").val(response.ITID);//fill the input values 
+        $("#incometransactioncostupdate").val(response.cost);
+
+      }else{$("#incomemodalupdate").modal("hide");}//if couldnt retrieve transaction from database
+    },
+  });
+
+
+
+  $("#updateincmform").on("submit", function (event) {//update transaction form get 3 attributes and update them
+
+    event.preventDefault();
+    post_url = $(this).attr("action"); //get form action url
+    form_data = $(this).serialize(); //Encode form elements for submission
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to Update this transactions",
+      icon: "warning",
+      showCancelButton: !0,
+      confirmButtonText: "Yes, Update it!",
+    }).then(function (e) {
+      if (e.value) {
+        $.post(post_url, form_data, function (response) {
+          if (response == '1') {
+           
+            Swal.fire(
+              "Updated!",
+              "Transaction has been Updated.",
+              "success"
+            );
+            $("#incomemodalupdate").modal("hide");
+            $("#updateincmform")
+              .closest("form")
+              .find("input[type=text], textarea")
+              .val("");
+              // TODO : later on 
+              // datatable.reload();
+              // location.reload();
+         
+          } else {
+            Swal.fire(
+              "Error",
+              "there is an error Call the developer)",
+              "error"
+            );
+          }
+        });
+      }
+    });
+  });
+
+
+
+  });
 
 }
 
 
 
   // basic demo
-  var delete_income = function() {
+  
  
+
+var delete_income = function() {
+  ////////delete button for expense transaction 
+$(document).on("click", ".delete_inc", function () {
+  incmdid=this.id;
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to delete this income",
+      icon: "warning",
+      showCancelButton: !0,
+      confirmButtonText: "Yes, Delete it!",
+    }).then(function (e) {
+      if (e.value) {
+        $.ajax({
+          url: "action/income/delete.php",
+          type: "POST",
+          data: { id: incmdid},
+          dataType: "json",
+          success: function (response) {
+          if (response == "1") {
+            Swal.fire(
+              "Deleted!",
+              "Income Transaction has been Deleted.",
+              "success"
+            );
+            // datatable.reload();
+         
+          } else {
+            Swal.fire(
+              "Error",
+              "there is an error Call the developer)",
+              "error"
+            );
+          }
+        },
+      });
+      }
+    });
+ 
+});
 }
   return {
       // public functions

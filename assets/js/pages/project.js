@@ -1,5 +1,6 @@
 "use strict";
 // Class definition
+var pidd;//project to be deleted inorder to azcess it inside firemethod
 var datatable;
 var KTDatatableproject = function() {
 
@@ -102,7 +103,7 @@ var KTDatatableproject = function() {
             overflow: 'visible',
             autoHide: false,
             template: function(row) {
-                return '<a href="javascript:;" class="btn btn-sm btn-clean btn-icon"\
+                return '<a href="javascript:;" id="'+row.PID+'" class="delete_pr btn btn-sm btn-clean btn-icon"\
                    title="Delete">\
                         <span class="svg-icon svg-icon-md">\
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
@@ -163,7 +164,43 @@ var KTDatatableproject = function() {
 //   TODO : add delete btn with sweet alert
   var kt_delete = function() {
     // $(document).on("click", ".edit_tran", function () { 
-
+        $(document).on("click", ".delete_pr", function () {
+            pidd=this.id;
+              Swal.fire({
+                title: "Are you sure?",
+                text: "You want to delete this project",
+                icon: "warning",
+                showCancelButton: !0,
+                confirmButtonText: "Yes, Delete it!",
+              }).then(function (e) {
+                if (e.value) {
+                  $.ajax({
+                    url: "action/project/delete.php",
+                    type: "POST",
+                    data: { id: pidd},
+                    dataType: "json",
+                    success: function (response) {
+                    if (response == "1") {
+                      Swal.fire(
+                        "Deleted!",
+                        "Income Project has been Deleted.",
+                        "success"
+                      );
+                      // datatable.reload();
+                   
+                    } else {
+                      Swal.fire(
+                        "Error",
+                        "there is an error Call the developer)",
+                        "error"
+                      );
+                    }
+                  },
+                });
+                }
+              });
+           
+          });
 }
 
     return {
