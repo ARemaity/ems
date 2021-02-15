@@ -300,6 +300,31 @@ if ($stmt->execute()) {
 }
 
 
+public function getlastid() {
+    
+    return  mysqli_insert_id($this->conn);
+    
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

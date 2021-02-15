@@ -186,7 +186,7 @@ var KTDatatableproject = function() {
                         "Income Project has been Deleted.",
                         "success"
                       );
-                      // datatable.reload();
+                    datatable.reload();
                    
                     } else {
                       Swal.fire(
@@ -238,10 +238,9 @@ jQuery(document).ready(function () {
 
 
       $('#nproject').on('click',function(){
-
+     
         $('#addprojectmodal').modal('show');
-
-        
+     
         $("#newprojectform").on("submit", function (event) {
       
           event.preventDefault();
@@ -265,11 +264,13 @@ jQuery(document).ready(function () {
                     "success"
                   );
                   $("#addprojectmodal").modal("hide");
+               
                   $("#newprojectform")
                     .closest("form")
                     .find("input[type=text], textarea")
                     .val("");
-                    location.reload();
+                   
+
                 } else {
                   Swal.fire(
                     "Error",
