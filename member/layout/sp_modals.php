@@ -54,10 +54,9 @@
 																	<div>
 																	<div
 																		class="form-group row fv-plugins-icon-container">
-																		<label
-																			class="col-xl-3 col-lg-3 col-form-label">Project ID</label>
+																		
 																		<div class="col-lg-9 col-xl-9">
-																			<input id="projectidinputinc"
+																			<input type="hidden" id="projectidinputinc"
 																				class="form-control form-control-solid form-control-lg"
 																				name="projectid" type="text" readonly>
 																			<div class="fv-plugins-message-container">
@@ -185,10 +184,9 @@
 																	<div>
 																	<div
 																		class="form-group row fv-plugins-icon-container">
-																		<label
-																			class="col-xl-3 col-lg-3 col-form-label">Project ID</label>
+																		
 																		<div class="col-lg-9 col-xl-9">
-																			<input id="projectidinput"
+																			<input type="hidden" id="projectidinput"
 																				class="form-control form-control-solid form-control-lg"
 																				name="projectid" type="text" readonly>
 																			<div class="fv-plugins-message-container">
@@ -505,10 +503,9 @@ while ($row = $result->fetch_assoc()) {
 																	<div>
 																	<div
 																		class="form-group row fv-plugins-icon-container">
-																		<label
-																			class="col-xl-3 col-lg-3 col-form-label">Transaction ID</label>
+																		
 																		<div class="col-lg-9 col-xl-9">
-																			<input id="transactionid"
+																			<input type="hidden" id="transactionid"
 																				class="form-control form-control-solid form-control-lg"
 																				name="transactionid" type="text" readonly>
 																			<div class="fv-plugins-message-container">
@@ -657,10 +654,9 @@ while ($row = $result->fetch_assoc()) {
 																	<div>
 																	<div
 																		class="form-group row fv-plugins-icon-container">
-																		<label
-																			class="col-xl-3 col-lg-3 col-form-label">Transactio ID</label>
+																		
 																		<div class="col-lg-9 col-xl-9">
-																			<input id="incometransactionidupdate"
+																			<input type="hidden" id="incometransactionidupdate"
 																				class="form-control form-control-solid form-control-lg"
 																				name="incometransactionidupdate" type="text" readonly>
 																			<div class="fv-plugins-message-container">
