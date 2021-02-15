@@ -859,7 +859,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
 			</span>
 		</div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="addprojectmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div  class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -893,10 +893,10 @@ require_once (dirname(__FILE__,2)).'/base.php';
 												<div class="col-xl-12 col-xxl-10">
 													<!--begin::Wizard Form-->
 													<form
-														action="<?='action/'.$module.'/update_project.php'?>"
+														action="<?='action/'.$module.'/new.php'?>"
 														method="POST"
 														class="form fv-plugins-bootstrap fv-plugins-framework"
-														id="project_form">
+														id="newprojectform">
 														<div class="row justify-content-center">
 															<div class="col-xl-9">
 																<!--begin::Wizard Step 1-->
@@ -911,9 +911,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
                                                                     </div>
                                                                 
 																				
-																	<input type="hidden"
-																				class="form-control form-control-solid form-control-lg"
-																				name="PID" type="text" id ="PID1" required>
+																
 													
 
 																	<div>
@@ -924,7 +922,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
 																		<div class="col-lg-9 col-xl-9">
 																			<input 
 																				class="form-control form-control-solid form-control-lg"
-																				name="clientname" type="text" id ="clientname1" required>
+																				name="clientnameinput" type="text" id ="clientnameinput" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
 																		</div>
@@ -942,7 +940,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
 																								<i class="la la-phone"></i>
 																							</span>
 																						</div>
-																						<input type="text" class="form-control form-control-solid form-control-lg" name="phonenumber"  placeholder="Phone" id = "phonenumber1" required/>
+																						<input type="text" class="form-control form-control-solid form-control-lg" name="phonenumberinput"  placeholder="Phone" id = "phonenumberinput" required/>
 																				
 																			</div>
 	
@@ -978,7 +976,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
 																		<div class="col-lg-9 col-xl-9">
 																			<input
 																				class="form-control form-control-solid form-control-lg"
-																				name="city" type="text" id = "city1" required>
+																				name="cityinput" type="text" id = "cityinput" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
 																		</div>
@@ -991,7 +989,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
 																		<div class="col-lg-9 col-xl-9">
 																			<input 
 																				class="form-control form-control-solid form-control-lg"
-																				name="number" type="text" id = "number1" required>
+																				name="numberinput" type="text" id = "numberinput" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
 																		</div>
@@ -1036,7 +1034,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit"  class="btn btn-primary">Save changes</button>
+        <button type="submit"  class="btn btn-primary">Add project</button>
       </div>
 	  </form>
 													<!--end::Wizard Form-

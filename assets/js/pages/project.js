@@ -234,15 +234,54 @@ jQuery(document).ready(function () {
         },
       });
 
-      nproject
+    
 
 
       $('#nproject').on('click',function(){
 
-        $('#exampleModalCenter').modal('show');
+        $('#addprojectmodal').modal('show');
 
+        
+        $("#newprojectform").on("submit", function (event) {
+      
+          event.preventDefault();
+          var post_url = $(this).attr("action"); //get form action url
+          var form_data = $(this).serialize(); //Encode form elements for submission
+  
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You want to insert this transactions",
+            icon: "warning",
+            showCancelButton: !0,
+            confirmButtonText: "Yes, Insert it!",
+          }).then(function (e) {
+            if (e.value) {
+              $.post(post_url, form_data, function (response) {
+                if (response == '1') {
+                  
+                  Swal.fire(
+                    "Inserted!",
+                    "Transaction has been Inserted.",
+                    "success"
+                  );
+                  $("#addprojectmodal").modal("hide");
+                  $("#newprojectform")
+                    .closest("form")
+                    .find("input[type=text], textarea")
+                    .val("");
+                    location.reload();
+                } else {
+                  Swal.fire(
+                    "Error",
+                    "there is an error Call the developer)",
+                    "error"
+                  );
+                }
+              });
+            }
+          });
+        });
       });
-     
     
     });
     
