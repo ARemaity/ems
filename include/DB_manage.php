@@ -14,7 +14,7 @@ class DB_Manage {
         // connecting to database
         $db = new Db_Connect();
         $this->conn = $db->connect();
-
+     
     }
 
     // destructor

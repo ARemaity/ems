@@ -190,6 +190,9 @@
 																				class="form-control form-control-solid form-control-lg"
 																				name="projectid" type="text" readonly>
 																			<div class="fv-plugins-message-container">
+																			<input type="hidden" id="expnsname"
+																				class="form-control form-control-solid form-control-lg"
+																				name="expnsname" type="text" readonly>
 																			</div>
 																		</div>
 																	</div>
@@ -200,7 +203,7 @@
 																			class="col-xl-3 col-lg-3 col-form-label">Expense</label>
 																		<div class="col-lg-9 col-xl-9">
 
-																		<select name="dropdown" class="form-control form-control-lg form-control-solid">
+																		<select name="dropdown" id="dropdownexpns" class="form-control form-control-lg form-control-solid">
 																			<option >Out the list...</option>
 
                                                                                    <?php
@@ -509,6 +512,9 @@ while ($row = $result->fetch_assoc()) {
 																				class="form-control form-control-solid form-control-lg"
 																				name="transactionid" type="text" readonly>
 																			<div class="fv-plugins-message-container">
+																			<input type="hidden" id="transactionname"
+																				class="form-control form-control-solid form-control-lg"
+																				name="transactionname" type="text" readonly>
 																			</div>
 																		</div>
 																	</div>

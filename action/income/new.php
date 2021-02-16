@@ -21,7 +21,7 @@ if(!empty($projectid)&&!empty($cost)){
         $extra = array(  
              'ITID'  =>  $data,  
              'cost'=> $cost,  
-             'created_at'=>"refresh");
+             'created_at'=>date("Y-m-d H:i:s"));
 
         $array_data[] = $extra;  
         $final_data = json_encode($array_data);  

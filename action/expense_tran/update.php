@@ -6,6 +6,7 @@ $db =new DB_Manage();
 $expenseid=$_POST['transactionid'];
 $dropdown=$_POST['liste'];
 $cost=$_POST['costedit'];
+$transactionname=$_POST['transactionname'];
 // first arg for uid 
 
 $data=0;
@@ -22,7 +23,7 @@ if(!empty($dropdown)&&!empty($cost)&&!empty($expenseid)){
             if ($entry['ETID'] == $expenseid) {
               
                 // if 1 no need to add again
-                $datas[$key]['name'] = "refresh";
+                $datas[$key]['name'] = $transactionname;
                 $datas[$key]['cost'] = $cost;
                 
                 break;

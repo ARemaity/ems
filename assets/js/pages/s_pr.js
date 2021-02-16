@@ -233,7 +233,8 @@ var KTDatatable_expense = function() {
   // follow this principle 
     $(document).on("click", ".edit_tran", function () { 
         $("#edittransactionmodal").modal("show");
-
+       // $("#transactionname").val($("#liste option:selected").text());//get the name of the selcted expense name and type it in the input
+        
         $.ajax({//get the transactio attribute and them to the form
           url: "action/expense_tran/getexp.php",
           type: "POST",
@@ -242,7 +243,8 @@ var KTDatatable_expense = function() {
           success: function (response) {
             if (response != "0") {
               $("#transactionid").val(response.ETID);//fill the input values 
-              $("#liste").val(response.fk_EID);
+             
+               $("#liste").val(response.fk_EID);
               $("#costedit").val(response.cost);
              
             }else{$("#edittransactionmodal").modal("hide");}//if couldnt retrieve transaction from database
@@ -252,7 +254,7 @@ var KTDatatable_expense = function() {
       
       
         $("#editextrans").on("submit", function (event) {//update transaction form get 3 attributes and update them
-      
+          $("#transactionname").val($("#liste option:selected").text());
           event.preventDefault();
           post_url = $(this).attr("action"); //get form action url
           form_data = $(this).serialize(); //Encode form elements for submission
@@ -652,7 +654,9 @@ var KTSweetAlert = {
       $("#insertmodal").modal("show");
       $("#projectidinput").val(PID);
       $("#insrtextrans").on("submit", function (event) {
-    
+           $("#expnsname").val($("#dropdownexpns option:selected").text());//add expense name to input inorder to add it to ajax
+       
+
         event.preventDefault();
         post_url = $(this).attr("action"); //get form action url
         form_data = $(this).serialize(); //Encode form elements for submission
@@ -855,10 +859,10 @@ $('.decimalonly').keypress(function(event) {
   profile_reload();
    
 
-
-
-
-
+//   $("#dropdownexpns").change(function(){
+//     //add text to hidden input to pass it through post
+//     $("#expnsname").val($(this).find("option:selected").text());
+//  });
 
 
 
