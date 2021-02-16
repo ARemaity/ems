@@ -109,7 +109,7 @@ public function insertintoproject($number,$city,$client_name,$client_phone) {
 if ($result) {
     return $last_id;
 } else {
-    return $last_id;
+    return false;
 }
 }
 

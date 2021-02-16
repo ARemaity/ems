@@ -3462,17 +3462,7 @@ $module='project';
 		$(document).ready(function () {
 
 			// process the form
-			$("#numeric1,#numeric2").on("keypress keyup blur", function (event) {
-				$(this).val($(this).val().replace(/[^\d].+/, ""));
-				if ((event.which < 48 || event.which > 57)) {
-					$(".error").css("display", "inline");
-					event.preventDefault();
-				} else {
-					$(".error").css("display", "none");
-				}
-			});
-
-
+			
 
 			$("#project_form").on('submit', function (event) {
 				event.preventDefault(); //prevent default action 

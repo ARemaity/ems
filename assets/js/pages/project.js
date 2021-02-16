@@ -218,7 +218,18 @@ var KTDatatableproject = function() {
 
       
 jQuery(document).ready(function () {
- 
+
+  $(".numberonly").on("keypress keyup blur", function (event) {
+    $(this).val($(this).val().replace(/[^\d].+/, ""));
+    if ((event.which < 48 || event.which > 57)) {
+      $(".error").css("display", "inline");
+      event.preventDefault();
+    } else {
+      $(".error").css("display", "none");
+    }
+  });
+
+
 
    //to show the modal auto
     $.ajax({
@@ -256,7 +267,7 @@ jQuery(document).ready(function () {
           }).then(function (e) {
             if (e.value) {
               $.post(post_url, form_data, function (response) {
-                if (response == '1') {
+                if (typeof response !== "boolean") {
                   
                   Swal.fire(
                     "Inserted!",
@@ -264,7 +275,7 @@ jQuery(document).ready(function () {
                     "success"
                   );
                   $("#addprojectmodal").modal("hide");
-               
+               datatable.reload();
                   $("#newprojectform")
                     .closest("form")
                     .find("input[type=text], textarea")

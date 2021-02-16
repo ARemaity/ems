@@ -16,6 +16,21 @@ if(!empty($number)&&!empty($city)&&!empty($phonenumber)&&!empty($clientname)){
 
 
         $data=intval($result);
+
+
+        $current_data = file_get_contents('file.json');  
+        $array_data = json_decode($current_data, true);  
+        $extra = array(  
+             'PID'  =>  $data,  
+             'number'=> $number,  
+             'city'=>    $city,
+             'client_name'=>  $clientname, 
+             'client_phone'=>   $phonenumber,
+             'created_at'=>  "refresh");
+
+        $array_data[] = $extra;  
+        $final_data = json_encode($array_data);  
+       file_put_contents('file.json', $final_data);
     }
 
 }

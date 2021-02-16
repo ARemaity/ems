@@ -238,7 +238,7 @@ $id=911;
 													<!--begin::Contacts-->
 													<div class="d-flex flex-wrap my-2">
 
-														<a id="phone" href="#"
+														<a  href="#"
 															class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
 
 															<span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
@@ -255,8 +255,8 @@ $id=911;
 																	</g>
 																</svg>
 																<!--end::Svg Icon-->
-															</span></a>
-														<a id="city" href="#"
+															</span><span id="phone"></span></a>
+														<a  href="#"
 															class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
 															<span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
 																<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-02-01-052524/theme/html/demo1/dist/../src/media/svg/icons/Map/Marker1.svg--><svg
@@ -273,7 +273,7 @@ $id=911;
 																	</g>
 																</svg>
 																<!--end::Svg Icon-->
-															</span></a>
+															</span><span id="city"></span></a>
 
 													</div>
 													<!--end::Contacts-->
@@ -327,8 +327,8 @@ $id=911;
 											<div class="d-flex flex-column text-dark-75">
 												<span id="testbtn" class="font-weight-bolder font-size-sm">Transactions
 													: </span>
-												<span id="exp" class="font-weight-bolder font-size-h5">
-													<span class="text-dark-50 font-weight-bold">$</span></span>
+												<span class="font-weight-bolder font-size-h5">
+												<span class="text-dark-50 font-weight-bold">$</span><span id="exp" ></span></span>
 											</div>
 										</div>
 										<!--end: Item-->
@@ -339,8 +339,8 @@ $id=911;
 											</span>
 											<div class="d-flex flex-column text-dark-75">
 												<span class="font-weight-bolder font-size-sm">Income : </span>
-												<span id="incm" class="font-weight-bolder font-size-h5">
-													<span class="text-dark-50 font-weight-bold">$</span></span>
+												<span  class="font-weight-bolder font-size-h5">
+													<span class="text-dark-50 font-weight-bold">$</span><span id="incm"></span></span>
 											</div>
 										</div>
 										<!--end: Item-->
@@ -351,8 +351,8 @@ $id=911;
 											</span>
 											<div class="d-flex flex-column text-dark-75">
 												<span class="font-weight-bolder font-size-sm">Remaining : </span>
-												<span id="total" class="font-weight-bolder font-size-h5">
-													<span class="text-dark-50 font-weight-bold">$</span></span>
+												<span class="font-weight-bolder font-size-h5">
+													<span class="text-dark-50 font-weight-bold">$</span><span  id="total"></span></span>
 											</div>
 										</div>
 										<!--end: Item-->

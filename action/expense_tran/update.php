@@ -15,6 +15,39 @@ if(!empty($dropdown)&&!empty($cost)&&!empty($expenseid)){
     if($result){
     
         $data=1;
+
+        $jsonsString = file_get_contents('file.json', 'w');
+        $datas = json_decode($jsonsString, true); 
+        foreach ($datas as $key => $entry) {
+            if ($entry['ETID'] == $expenseid) {
+              
+                // if 1 no need to add again
+                $datas[$key]['name'] = "refresh";
+                $datas[$key]['cost'] = $cost;
+                
+                break;
+               
+            }
+        }
+        file_put_contents('file.json', json_encode($datas));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
     }

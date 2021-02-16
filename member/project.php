@@ -940,7 +940,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
 																								<i class="la la-phone"></i>
 																							</span>
 																						</div>
-																						<input type="text" class="form-control form-control-solid form-control-lg" name="phonenumberinput"  placeholder="Phone" id = "phonenumberinput" required/>
+																						<input type="text" class="numberonly form-control form-control-solid form-control-lg" name="phonenumberinput"  placeholder="Phone" id = "phonenumberinput" required/>
 																				
 																			</div>
 	
@@ -988,7 +988,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
 																			class="col-xl-3 col-lg-3 col-form-label">Number</label>
 																		<div class="col-lg-9 col-xl-9">
 																			<input 
-																				class="form-control form-control-solid form-control-lg"
+																				class="numberonly form-control form-control-solid form-control-lg"
 																				name="numberinput" type="text" id = "numberinput" required>
 																			<div class="fv-plugins-message-container">
 																			</div>

@@ -16,6 +16,34 @@ if(!empty($cost)&&!empty($incomeid)){
     
         $data=1;
     
+
+        $jsonsString = file_get_contents('file.json', 'w');
+        $datas = json_decode($jsonsString, true); 
+        foreach ($datas as $key => $entry) {
+            if ($entry['ITID'] == $incomeid) {
+              
+                // if 1 no need to add again
+           
+                $datas[$key]['cost'] = $cost;
+                
+                break;
+               
+            }
+        }
+        file_put_contents('file.json', json_encode($datas));
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     }
 

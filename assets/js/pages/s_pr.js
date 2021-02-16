@@ -11,7 +11,62 @@ var incmdid;//income delete id
 var datatable1;
 var datatable2;
 
+var profile_reload = function(){
 
+
+
+  $.ajax({
+    url: "action/project/get_projectbyid.php",
+    type: "POST",
+    data: { id: PID },
+    dataType: "json",
+    success: function (response) {
+      if (response != "0") {
+        $("#clientname").text("Client Name : " + response.client_name);
+        $("#landnumber").text(response.number);
+        $("#phone").text(response.client_phone);
+        $("#date").text(response.created_at);
+        $("#city").text(response.city);
+        // $('#PID1').val(response.PID);
+      }
+    },
+  });
+ 
+
+  // ajax REQUEST TO GET EXPENSE ,INCOME, total,total transaction.
+  $.ajax({
+    url: "action/project/getexpenses.php",
+    type: "POST",
+    data: { id: PID },
+    dataType: "json",
+    success: function (response) {  
+      if (response != "0") {                                    
+        $("#exp").text(Math.round(response.trns));
+        $("#incm").text(  Math.round(response.incm));
+
+        $("#total").text(response.trns - response.incm);
+        $("#transnumber").text(response.trnscount + " Transactions");
+        $("#incmnumber").text(response.incmcount + " income Trans.");
+      }
+    },
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+};
 // Class definition
 
 var KTDatatable_expense = function() {
@@ -211,7 +266,7 @@ var KTDatatable_expense = function() {
           }).then(function (e) {
             if (e.value) {
               $.post(post_url, form_data, function (response) {
-                if (response == '1') {
+                if (response != '0') {
                  
                   Swal.fire(
                     "Updated!",
@@ -225,7 +280,8 @@ var KTDatatable_expense = function() {
                     .val("");
                     // TODO : later on 
                     // datatable.reload();
-                    location.reload();
+                 datatable1.reload();
+                 profile_reload();
                
                 } else {
                   Swal.fire(
@@ -273,7 +329,8 @@ var KTDatatable_expense = function() {
                 "success"
               );
               // datatable.reload();
-              location.reload();
+            datatable1.reload();
+              profile_reload();
             } else {
               Swal.fire(
                 "Error",
@@ -488,9 +545,9 @@ var KTDatatable_income = function() {
               .closest("form")
               .find("input[type=text], textarea")
               .val("");
-              // TODO : later on 
-              // datatable.reload();
-              // location.reload();
+              profile_reload();
+              datatable2.reload();
+           
          
           } else {
             Swal.fire(
@@ -540,7 +597,8 @@ $(document).on("click", ".delete_inc", function () {
               "Income Transaction has been Deleted.",
               "success"
             );
-            // datatable.reload();
+            profile_reload();
+            datatable2.reload();
          
           } else {
             Swal.fire(
@@ -608,7 +666,7 @@ var KTSweetAlert = {
         }).then(function (e) {
           if (e.value) {
             $.post(post_url, form_data, function (response) {
-              if (response == '1') {
+              if (typeof response !== "boolean") {
                 
                 Swal.fire(
                   "Inserted!",
@@ -620,7 +678,8 @@ var KTSweetAlert = {
                   .closest("form")
                   .find("input[type=text], textarea")
                   .val("");
-                  location.reload();
+                  profile_reload();
+                  datatable1.reload();
               } else {
                 Swal.fire(
                   "Error",
@@ -671,7 +730,12 @@ var KTSweetAlert = {
                     "Transaction has been Inserted.",
                     "success"
                   );
-                  location.reload();
+                  $("#project_form")
+                  .closest("form")
+                  .find("input[type=text], textarea")
+                  .val("");
+                  $("#updatemodal").modal("hide");
+                 profile_reload();//reload profile details
                 } else {
                   Swal.fire(
                     "Error",
@@ -701,7 +765,7 @@ var KTSweetAlert = {
           }).then(function (e) {
             if (e.value) {
               $.post(post_url, form_data, function (response) {
-                if (response == "1") {
+                if (typeof response !== "boolean") {
                   Swal.fire(
                     "Inserted!",
                     "Income has been Inserted.",
@@ -711,7 +775,8 @@ var KTSweetAlert = {
                     .closest("form")
                     .find("input[type=text], textarea")
                     .val("");
-                 
+                    datatable2.reload();
+                 profile_reload();
                 } else {
                   Swal.fire(
                     "Error",
@@ -730,6 +795,32 @@ var KTSweetAlert = {
 
 jQuery(document).ready(function () {
 
+  $(".numberonly").bind("keypress", function (e) {//for only number inputs
+    var keyCode = e.which ? e.which : e.keyCode
+         
+    if (!(keyCode >= 48 && keyCode <= 57)) {
+      $(".error").css("display", "inline");
+      return false;
+    }else{
+      $(".error").css("display", "none");
+    }
+});
+$('.decimalonly').keypress(function(event) {
+  if ((event.which != 46 || $(this).val().indexOf('.') != -1) &&
+    ((event.which < 48 || event.which > 57) &&
+      (event.which != 0 && event.which != 8))) {
+    event.preventDefault();
+  }
+
+  var text = $(this).val();
+
+  if ((text.indexOf('.') != -1) &&
+    (text.substring(text.indexOf('.')).length > 2) &&
+    (event.which != 0 && event.which != 8) &&
+    ($(this)[0].selectionStart >= text.length - 2)) {
+    event.preventDefault();
+  }
+});
 
 // TODO : aync await 
 // income and expense in fetch ajax 
@@ -760,43 +851,8 @@ jQuery(document).ready(function () {
   KTSweetAlert.init();
   //ajax  get single project row from project tbl
 
-  $.ajax({
-    url: "action/project/get_projectbyid.php",
-    type: "POST",
-    data: { id: PID },
-    dataType: "json",
-    success: function (response) {
-      if (response != "0") {
-        $("#clientname").text("Client Name : " + response.client_name);
-        $("#landnumber").text(response.number);
-        $("#phone").append(response.client_phone);
-        $("#date").text(response.created_at);
-        $("#city").append(response.city);
-        // $('#PID1').val(response.PID);
-      }
-    },
-  });
  
-
-  // ajax REQUEST TO GET EXPENSE ,INCOME, total,total transaction.
-  $.ajax({
-    url: "action/project/getexpenses.php",
-    type: "POST",
-    data: { id: PID },
-    dataType: "json",
-    success: function (response) {  
-      if (response != "0") {                                    
-        $("#exp").append(Math.round(response.trns));
-        $("#incm").append(  Math.round(response.incm));
-
-        $("#total").append(response.trns - response.incm);
-        $("#transnumber").append(response.trnscount + " Transactions");
-        $("#incmnumber").append(response.incmcount + " income Trans.");
-      }
-    },
-  });
-
-
+  profile_reload();
    
 
 

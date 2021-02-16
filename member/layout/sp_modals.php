@@ -71,7 +71,7 @@
 																			class="col-xl-3 col-lg-3 col-form-label">Cost</label>
 																		<div class="col-lg-9 col-xl-9">
 																			<input
-																				class="form-control form-control-solid form-control-lg"
+																				class="decimalonly form-control form-control-solid form-control-lg"
 																				name="cost" type="text" id = "numeric1" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
@@ -230,7 +230,7 @@ while ($row = $result->fetch_assoc()) {
 																			class="col-xl-3 col-lg-3 col-form-label">Cost</label>
 																		<div class="col-lg-9 col-xl-9">
 																			<input
-																				class="form-control form-control-solid form-control-lg"
+																				class="decimalonly form-control form-control-solid form-control-lg"
 																				name="cost" type="text" id = "numeric1" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
@@ -289,7 +289,7 @@ while ($row = $result->fetch_assoc()) {
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+				<h5 class="modal-title" id="exampleModalLongTitle">Project</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -356,7 +356,7 @@ while ($row = $result->fetch_assoc()) {
 																						<i class="la la-phone"></i>
 																					</span>
 																				</div>
-																				<input type="text" class="form-control form-control-solid form-control-lg" name="phonenumber" placeholder="Phone" id="phonenumber1" required />
+																				<input type="text" class="numberonly form-control form-control-solid form-control-lg" name="phonenumber" placeholder="Phone" id="phonenumber1" required />
 
 																			</div>
 
@@ -389,7 +389,7 @@ while ($row = $result->fetch_assoc()) {
 																	<div class="form-group row fv-plugins-icon-container">
 																		<label class="col-xl-3 col-lg-3 col-form-label">Number</label>
 																		<div class="col-lg-9 col-xl-9">
-																			<input class="form-control form-control-solid form-control-lg" name="number" type="text" id="number1" required>
+																			<input class="numberonly form-control form-control-solid form-control-lg" name="number" type="text" id="number1" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
 																		</div>
@@ -549,7 +549,7 @@ while ($row = $result->fetch_assoc()) {
 																			class="col-xl-3 col-lg-3 col-form-label">Cost</label>
 																		<div class="col-lg-9 col-xl-9">
 																			<input
-																				class="form-control form-control-solid form-control-lg"
+																				class="decimalonly form-control form-control-solid form-control-lg"
 																				name="costedit" type="text" id = "costedit" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
@@ -671,7 +671,7 @@ while ($row = $result->fetch_assoc()) {
 																			class="col-xl-3 col-lg-3 col-form-label">Cost</label>
 																		<div class="col-lg-9 col-xl-9">
 																			<input
-																				class="form-control form-control-solid form-control-lg"
+																				class="decimalonly form-control form-control-solid form-control-lg"
 																				name="incometransactioncostupdate" type="text" id = "incometransactioncostupdate" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
