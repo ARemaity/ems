@@ -274,10 +274,34 @@ if ($stmt->execute()) {
  }
 }
 
+public function updateexpense($id,$name,$description) {
+       
+    $stmt = $this->conn->prepare("UPDATE `expense` SET `name`= ?,`description`= ? WHERE EID = ?");        
+$stmt->bind_param("ssi",$name,$description,$id);   
+
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
 
 
+public function deleteexpns($id) {
+       
+    $stmt = $this->conn->prepare("DELETE FROM `expense` WHERE EID = ?");        
+$stmt->bind_param("i", $id);   
 
-
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
 
 
 

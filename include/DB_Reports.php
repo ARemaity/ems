@@ -61,7 +61,7 @@ if ($stmt->execute()) {
 
 public function getexpense($expenseid) {
        
-    $stmt = $this->conn->prepare("SELECT `EID`, `name`, `description`, `cost` FROM `expense` WHERE EID = ?");        
+    $stmt = $this->conn->prepare("SELECT `EID`, `name`, `description` FROM `expense` WHERE EID = ?");        
 $stmt->bind_param("i", $expenseid);   
 
 if ($stmt->execute()) {			

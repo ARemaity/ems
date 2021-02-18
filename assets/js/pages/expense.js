@@ -1,7 +1,8 @@
 "use strict";
 // Class definition
-var pidd;//project to be deleted inorder to azcess it inside firemethod
+
 var datatable;
+var Did;//id of the expense to be deleted
 var KTDatatablexpense = function() {
 
     var kt_lead={
@@ -149,11 +150,149 @@ var kt_extension = function() {
 
  
 var kt_delete = function() {
+    $(document).on("click", ".delete_exp", function () {
+        Did=this.id;
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You want to delete this expns",
+            icon: "warning",
+            showCancelButton: !0,
+            confirmButtonText: "Yes, Delete it!",
+          }).then(function (e) {
+            if (e.value) {
+              $.ajax({
+                url: "action/expense/delete.php",
+                type: "POST",
+                data: { id: Did},
+                dataType: "json",
+                success: function (response) {
+                if (response == "1") {
+                  Swal.fire(
+                    "Deleted!",
+                    "Expense has been Deleted.",
+                    "success"
+                  );
+                 
+                  datatable.reload();
+               
+                } else {
+                  Swal.fire(
+                    "Error",
+                    "there is an error Call the developer)",
+                    "error"
+                  );
+                }
+              },
+            });
+            }
+          });
+       
+      });
  
 
 };
 
 var kt_update = function() {
+
+    $(document).on("click", ".edit_exp", function () { 
+       
+        
+        $.ajax({//get the transactio attribute and them to the form
+          url: "action/expense/getexpense.php",
+          type: "POST",
+          data: { id: this.id},
+          dataType: "json",
+          success: function (response) {
+            if (response != "0") {
+              $("#uexpenseid").val(response.EID);
+              $("#uexpensename").val(response.name);//fill the input values 
+              $("#uexpensedescription").val(response.description);
+              $("#updateexpense").modal("show");
+            }else{}//if couldnt retrieve transaction from database
+          },
+        });
+      
+      
+      
+        $("#updateexpenseform").on("submit", function (event) {//update transaction form get 3 attributes and update them
+      
+          event.preventDefault();
+          var post_url = $(this).attr("action"); //get form action url
+          var form_data = $(this).serialize(); //Encode form elements for submission
+      
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You want to Update this expense",
+            icon: "warning",
+            showCancelButton: !0,
+            confirmButtonText: "Yes, Update it!",
+          }).then(function (e) {
+            if (e.value) {
+              $.post(post_url, form_data, function (response) {
+                if (response == '1') {
+                 
+                  Swal.fire(
+                    "Updated!",
+                    "Expense has been Updated.",
+                    "success"
+                  );
+                  $("#updateexpense").modal("hide");
+                  $("#updateincmform")
+                    .closest("form")
+                    .find("input[type=text], textarea")
+                    .val("");
+                    
+                    datatable.reload();
+                 
+               
+                } else {
+                  Swal.fire(
+                    "Error",
+                    "there is an error Call the developer)",
+                    "error"
+                  );
+                }
+              });
+            }
+          });
+        });
+      
+      
+      
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 };
@@ -188,6 +327,79 @@ jQuery(document).ready(function () {
       }
     },
   });
+  $('#nexpense').on('click',function(){//insert new expense
+    $("#addexpense").modal("show");
+   
+   
+  $("#newexpense").on("submit", function (event) {
+    $("#incomemodal").modal("hide");
+    event.preventDefault();
+    var post_url = $(this).attr("action"); //get form action url
+     var form_data = $(this).serialize(); //Encode form elements for submission
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to insert this expense",
+      icon: "warning",
+      showCancelButton: !0,
+      confirmButtonText: "Yes, Insert it!",
+    }).then(function (e) {
+      if (e.value) {
+        $.post(post_url, form_data, function (response) {
+          if (response=="1") {
+            Swal.fire(
+              "Inserted!",
+              "expense has been Inserted.",
+              "success"
+            );
+            $("#newexpense")
+              .closest("form")
+              .find("input[type=text], textarea")
+              .val("");
+              datatable.reload();
+              $("#addexpense").modal("hide");
+          
+          } else {
+            Swal.fire(
+              "Error",
+              "there is an error Call the developer)",
+              "error"
+            );
+          }
+        });
+      }
+    });
+  });
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     });
     

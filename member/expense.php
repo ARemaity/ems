@@ -153,7 +153,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
                                
                                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200">
                                    </div>
-                                   <a href="javascript:;" id="nproject"
+                                   <a href="javascript:;" id="nexpense"
                                        class="btn btn-light-primary font-weight-bolder btn-sm">Add Expense</a>
                                    <!--end::Action-->
                                </div>
@@ -582,7 +582,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
 
 
 
-
+       <?php     require_once("layout/expensesmodals.php")       ?>
 
 
 
