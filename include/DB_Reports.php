@@ -265,6 +265,22 @@ $stmt->close();
 
 }
 
+
+
+public function get_expense() {  
+$stmt = $this->conn->prepare("SELECT `EID`, `name`, `description` FROM `expense` ");              
+if ($stmt->execute()) {			
+$expenses = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+return $expenses; 
+$stmt->close();
+} else {
+die("Adding record failed: " .$stmt->error); 
+$stmt->close();
+
+}
+
+}
+
   
 }
 ?>

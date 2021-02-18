@@ -97,7 +97,7 @@
 					</a>
 				</li>
 				<li class="menu-item" aria-haspopup="true">
-					<a href="index.html" class="menu-link">
+					<a href="member/expense.php" class="menu-link">
 						<span class="svg-icon svg-icon-primary svg-icon-2x">
 							<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-12-28-020759/theme/html/demo1/dist/../src/media/svg/icons/Shopping/Wallet3.svg--><svg
 								xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -117,7 +117,7 @@
 							</svg>
 							<!--end::Svg Icon-->
 						</span>
-						<span class="menu-text">Income/Expense</span>
+						<span class="menu-text">Expense</span>
 					</a>
 				</li>
 				<li class="menu-section">

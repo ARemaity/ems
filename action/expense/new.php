@@ -9,7 +9,7 @@ $description = $_POST['description'];
 $data = 0;
 if (!empty($expensename) && !empty($description)) {
 
-    $result = $db->insertintoexpense($expensename, $description);
+    $result = $db->insertintoexpense($expensename,$description);
     if ($result) {
 
         $data = 1;

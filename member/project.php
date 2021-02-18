@@ -1037,7 +1037,7 @@ require_once (dirname(__FILE__,2)).'/base.php';
         <button type="submit"  class="btn btn-primary">Add project</button>
       </div>
 	  </form>
-													<!--end::Wizard Form-
+												
     </div>
   </div>
 </div>
