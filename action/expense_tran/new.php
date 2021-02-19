@@ -32,21 +32,6 @@ if(!empty($projectid)&&!empty($dropdown)&&!empty($cost)&&!empty($expnsname)){
         $final_data = json_encode($array_data);  
        file_put_contents('file.json', $final_data);
 
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
     }
 
 }
