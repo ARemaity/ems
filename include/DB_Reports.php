@@ -281,6 +281,46 @@ $stmt->close();
 
 }
 
+
+
+// HACK: those below is example query
+
+/**
+ * Count Rejected leads for panel user
+ */
+// public function CountRejectedLeadsUserRange($pr,$assign_toId,$start_dt,$end_dt) {
+    
+//         $stmt = $this->conn->prepare("SELECT COUNT(lead_id) as totalRejLeads FROM log_user WHERE  product_id='$pr' AND  assigned_id='$assign_toId'  AND type_id=3 AND time_updated BETWEEN '$start_dt' AND '$end_dt' ");
+
+      
+//   //  $stmt->bind_param("ii",$pr, $assign_toId);
+//     if ($stmt->execute()) {			
+//         $user = $stmt->get_result()->fetch_assoc();
+//         $stmt->close();
+//         return $user; 
+//     } else {
+//         return NULL;
+//     }
+// }
+
+    
+    /**
+     * Count Approved leads for panel user
+     */
+    // public function CountRangeApprovedLeadsUser($assign_toId,$pr,$start_dt,$end_dt) {
+        
+    //             $stmt = $this->conn->prepare("SELECT COUNT(user_id) as totalAppLeads FROM leads WHERE product_id=? AND  assign_to=? AND user_status=2 And user_created_at BETWEEN '$start_dt' AND '$end_dt'");
+        
+    //     $stmt->bind_param("ii",$pr,$assign_toId);
+    //     if ($stmt->execute()) {			
+    //         $user = $stmt->get_result()->fetch_assoc();
+    //         $stmt->close();
+	// 		return $user; 
+    //     } else {
+    //         return NULL;
+    //     }
+    // }
+    
   
 }
 ?>

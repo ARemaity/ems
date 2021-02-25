@@ -50,7 +50,7 @@
 			<!--begin::Menu Nav-->
 			<ul class="menu-nav">
 				<li class="menu-item" aria-haspopup="true">
-					<a href="index.php" class="menu-link">
+					<a href="member/home.php" class="menu-link">
 						<span class="svg-icon svg-icon-primary svg-icon-2x">
 							<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Shopping\Box2.svg--><svg
 								xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -125,24 +125,6 @@
 					<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
 				</li>
 				
-				<li class="menu-item" aria-haspopup="true">
-					<a href="report.php" class="menu-link">
-						<span class="svg-icon svg-icon-primary svg-icon-2x">
-							<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-12-28-020759/theme/html/demo1/dist/../src/media/svg/icons/Home/Stairs.svg--><svg
-								xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-								width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<rect x="0" y="0" width="24" height="24" />
-									<path
-										d="M21,5.5 L21,17.5 C21,18.3284271 20.3284271,19 19.5,19 L4.5,19 C3.67157288,19 3,18.3284271 3,17.5 L3,14.5 C3,13.6715729 3.67157288,13 4.5,13 L9,13 L9,9.5 C9,8.67157288 9.67157288,8 10.5,8 L15,8 L15,5.5 C15,4.67157288 15.6715729,4 16.5,4 L19.5,4 C20.3284271,4 21,4.67157288 21,5.5 Z"
-										fill="#000000" fill-rule="nonzero" />
-								</g>
-							</svg>
-							<!--end::Svg Icon-->
-						</span>
-						<span class="menu-text">Report</span>
-					</a>
-				</li>
 				<li class="menu-item" aria-haspopup="true">
 					<a href="setting.php" class="menu-link">
 						<span class="svg-icon svg-icon-primary svg-icon-2x">
