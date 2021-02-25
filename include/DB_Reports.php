@@ -207,19 +207,106 @@ if ($stmt->execute()) {
     return NULL;
  }
 }
+public function getnumberofprojects() {
+       
+    $stmt = $this->conn->prepare("SELECT Count(*) as total  FROM project");        
+
+
+if ($stmt->execute()) {			
+     $order = $stmt->get_result()->fetch_assoc();
+     $stmt->close();
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
+
+public function numberofexpense_transaction() {
+       
+    $stmt = $this->conn->prepare("SELECT Sum(cost) as total  FROM expense_transaction");        
+
+
+if ($stmt->execute()) {			
+     $order = $stmt->get_result()->fetch_assoc();
+     $stmt->close();
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
+
+public function numberofincome_transaction() {
+       
+    $stmt = $this->conn->prepare("SELECT Sum(cost) as total  FROM income_transaction");        
+
+
+if ($stmt->execute()) {			
+     $order = $stmt->get_result()->fetch_assoc();
+     $stmt->close();
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
+
+
+
+public function getnumberofprojectbydate($startdate,$enddate) {
+       $stdate=$startdate." 00:00:00";
+       $eddate=$enddate." 23:59:59";
+    $stmt = $this->conn->prepare("SELECT COUNT(*) as total
+    FROM project
+    WHERE created_at BETWEEN ?  AND ?");        
+
+$stmt->bind_param("ss",$stdate,$eddate); 
+
+if ($stmt->execute()) {
+     $order = $stmt->get_result()->fetch_assoc();
+     $stmt->close();
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
+public function getexpense_transactionbydate($startdate,$enddate) {
+    $stdate=$startdate." 00:00:00";
+    $eddate=$enddate." 23:59:59";
+ $stmt = $this->conn->prepare("SELECT SUM(cost) as total
+ FROM expense_transaction
+ WHERE created_at BETWEEN ?  AND ?");        
+
+$stmt->bind_param("ss",$stdate,$eddate); 
+
+if ($stmt->execute()) {
+  $order = $stmt->get_result()->fetch_assoc();
+  $stmt->close();
+  return $order; 
+} else {
+ return NULL;
+}
+}
 
 
 
 
 
+public function numberofincome_transactionbydate($startdate,$enddate) {
+    $stdate=$startdate." 00:00:00";
+    $eddate=$enddate." 23:59:59";
+ $stmt = $this->conn->prepare("SELECT SUM(cost) as total
+ FROM income_transaction
+ WHERE created_at BETWEEN ?  AND ?");        
 
+$stmt->bind_param("ss",$stdate,$eddate); 
 
-
-
-
-
-
-
+if ($stmt->execute()) {
+  $order = $stmt->get_result()->fetch_assoc();
+  $stmt->close();
+  return $order; 
+} else {
+ return NULL;
+}
+}
 
 
 
