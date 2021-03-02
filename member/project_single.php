@@ -475,90 +475,12 @@ $id=911;
 															id="kt_datatable_group_action_form">
 															<div class="d-flex align-items-center">
 																<div class="font-weight-bold text-danger mr-3">Selected
-																	<span
-																		id="kt_datatable_selected_records">0</span>records:
+																	records:
+																		<span
+																		id="kt_datatable_selected_records">0</span>
 																</div>
-																<div class="dropdown mr-2" id="kt_status_change">
-																	<button type="button"
-																		class="btn btn-primary btn-sm dropdown-toggle"
-																		data-toggle="dropdown">Update status</button>
-																	<div class="dropdown-menu dropdown-menu-sm">
-																		<ul class="nav nav-hover flex-column">
-																			<li class="nav-item">
-																				<a href="javascript:void(0)"
-																					class="nav-link"
-																					data-toggle="status-change"
-																					data-status="1">
-																					<span class="nav-text">Hold</span>
-																				</a>
-																			</li>
-																			<li class="nav-item">
-																				<a href="javascript:void(0)"
-																					class="nav-link"
-																					data-toggle="status-change"
-																					data-status="8">
-																					<span
-																						class="nav-text">Ordered</span>
-																				</a>
-																			</li>
-																			<li class="nav-item">
-																				<a href="javascript:void(0)"
-																					class="nav-link"
-																					data-toggle="status-change"
-																					data-status="3">
-																					<span
-																						class="nav-text">Rejected</span>
-																				</a>
-																			</li>
-																			<li class="nav-item">
-																				<a href="javascript:void(0)"
-																					class="nav-link"
-																					data-toggle="status-change"
-																					data-status="2">
-																					<span
-																						class="nav-text">Approved</span>
-																				</a>
-																			</li>
-																			<li class="nav-item">
-																				<a href="javascript:void(0)"
-																					class="nav-link"
-																					data-toggle="status-change"
-																					data-status="4">
-																					<span
-																						class="nav-text">Duplicated</span>
-																				</a>
-																			</li>
-																			<li class="nav-item">
-																				<a href="javascript:void(0)"
-																					class="nav-link"
-																					data-toggle="status-change"
-																					data-status="5">
-																					<span
-																						class="nav-text">Trashed</span>
-																				</a>
-																			</li>
-																			<li class="nav-item">
-																				<a href="javascript:void(0)"
-																					class="nav-link"
-																					data-toggle="status-change"
-																					data-status="6">
-																					<span class="nav-text">No
-																						Answer</span>
-																				</a>
-																			</li>
-																			<li class="nav-item">
-																				<a href="javascript:void(0)"
-																					class="nav-link"
-																					data-toggle="status-change"
-																					data-status="9">
-																					<span
-																						class="nav-text">Postponed</span>
-																				</a>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
-																<!-- <button class="btn btn-sm btn-danger mr-2" type="button" id="kt_datatable_delete_all">Delete All</button> -->
+								
+																<button class="btn btn-sm btn-success mr-2" type="button" id="kt_datatable_export_csv">	Export CSV</button>
 															</div>
 														</div>
 														<div class="datatable datatable-bordered datatable-head-custom"

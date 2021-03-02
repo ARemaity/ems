@@ -305,6 +305,70 @@ var KTDatatable_expense = function() {
 
 
 
+var selected_export = function () {
+  $('#kt_datatable_export_csv').on('click', function () {
+    // // fetch selected IDs
+    var activeRow=datatable1.rows('.kt-datatable__row--active').nodes();
+
+    var ids = activeRow.find('.kt-checkbox--single > [type="checkbox"]').map(function(i, chk) {
+      return $(chk).val();
+    });
+
+    var idsArray = [];
+          for (var i = 0; i < ids.length; i++) {
+              idsArray.push(ids[i]);
+    }
+
+    var datas = datatable1.getSelectedRecords();
+    var sizeofdata = datas.length;
+    if (sizeofdata > 0) {
+      var array_handler =[];
+      var array_final =[];
+      for (let i = 0; i < datas.length; i++) {
+        for (let j = 1; j < datas[i].children.length-1; j++) {
+          let st_handler=datas[i].children[j].children[0].innerText;
+          
+          if(!st_handler){
+            st_handler="EMPTY";
+          }else{
+            st_handler.trim();
+          }
+                      array_handler.push(st_handler);
+          
+        }
+array_final.push(array_handler);
+array_handler =[];
+
+      }
+    
+    }
+  
+
+
+      
+var header_array =["Name","Cost","Date"];
+array_final.unshift(header_array);
+console.table(array_final);
+
+        var CsvString = "";
+        array_final.forEach(function(RowItem, RowIndex) {
+          RowItem.forEach(function(ColItem, ColIndex) {
+          CsvString += ColItem + ',';
+          });
+          CsvString += "\r\n";
+        });
+        var universalBOM = "\uFEFF";
+        CsvString=universalBOM+CsvString;
+        CsvString = "data:application/csv;charset=utf-8," + encodeURIComponent(CsvString);
+         var x = document.createElement("A");
+         x.setAttribute("href", CsvString );
+         x.setAttribute("download","somedata.csv");
+         document.body.appendChild(x);
+         x.click();
+        
+    
+  });
+};
   // basic demo
   var delete_expense = function() {
     ////////delete button for expense transaction 
@@ -353,6 +417,7 @@ var KTDatatable_expense = function() {
         delete_expense();
         kt_extension();
         edit_expense();
+        selected_export();
 
       },
   };
@@ -573,6 +638,70 @@ var KTDatatable_income = function() {
 
   // basic demo
   
+var selected_export = function () {
+  $('#kt_datatable_export_csv').on('click', function () {
+    // // fetch selected IDs
+    var activeRow=datatable2.rows('.kt-datatable__row--active').nodes();
+
+    var ids = activeRow.find('.kt-checkbox--single > [type="checkbox"]').map(function(i, chk) {
+      return $(chk).val();
+    });
+
+    var idsArray = [];
+          for (var i = 0; i < ids.length; i++) {
+              idsArray.push(ids[i]);
+    }
+
+    var datas = datatable2.getSelectedRecords();
+    var sizeofdata = datas.length;
+    if (sizeofdata > 0) {
+      var array_handler =[];
+      var array_final =[];
+      for (let i = 0; i < datas.length; i++) {
+        for (let j = 1; j < datas[i].children.length-1; j++) {
+          let st_handler=datas[i].children[j].children[0].innerText;
+          
+          if(!st_handler){
+            st_handler="EMPTY";
+          }else{
+            st_handler.trim();
+          }
+                      array_handler.push(st_handler);
+          
+        }
+array_final.push(array_handler);
+array_handler =[];
+
+      }
+    
+    }
+  
+
+
+      
+var header_array =["Name","Country","Phone","Address","Date","Status","LP","Assigned"];
+array_final.unshift(header_array);
+console.table(array_final);
+
+        var CsvString = "";
+        array_final.forEach(function(RowItem, RowIndex) {
+          RowItem.forEach(function(ColItem, ColIndex) {
+          CsvString += ColItem + ',';
+          });
+          CsvString += "\r\n";
+        });
+        var universalBOM = "\uFEFF";
+        CsvString=universalBOM+CsvString;
+        CsvString = "data:application/csv;charset=utf-8," + encodeURIComponent(CsvString);
+         var x = document.createElement("A");
+         x.setAttribute("href", CsvString );
+         x.setAttribute("download","somedata.csv");
+         document.body.appendChild(x);
+         x.click();
+        
+    
+  });
+};
  
 
 var delete_income = function() {
@@ -622,6 +751,7 @@ $(document).on("click", ".delete_inc", function () {
         delete_income();
         kt_extension();
         edit_income();
+        selected_export();
 
       },
   };

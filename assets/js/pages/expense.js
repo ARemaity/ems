@@ -58,7 +58,7 @@ var KTDatatablexpense = function() {
         }, {
             field: "name",
             title: "Name",
-            width: 70,
+            width: 100,
             // callback function support for column rendering
            template: function(row) {
              return row.name;
@@ -67,7 +67,7 @@ var KTDatatablexpense = function() {
             },{
             field: 'description',
             title: 'Description',
-            width:70,
+            width:100,
             autoHide: true,
             template: function(row) {
                 return row.description;
@@ -298,6 +298,9 @@ var kt_update = function() {
 };
 
 
+
+
+
     return {
         // public functions
         init: function() {
@@ -305,6 +308,7 @@ var kt_update = function() {
             kt_extension();
             kt_delete();
             kt_update();
+       
 
         },
     };
@@ -331,7 +335,7 @@ jQuery(document).ready(function () {
     $("#addexpense").modal("show");
    
    
-  $("#newexpense").on("submit", function (event) {
+    $("#newexpense").on("submit", function (event) {
     $("#incomemodal").modal("hide");
     event.preventDefault();
     var post_url = $(this).attr("action"); //get form action url

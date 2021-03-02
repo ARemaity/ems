@@ -225,7 +225,6 @@ require_once (dirname(__FILE__,2)).'/base.php';
                                        
                                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable">
 
-
                                        </div>
                                        
                                    

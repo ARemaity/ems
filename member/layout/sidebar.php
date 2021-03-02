@@ -50,7 +50,7 @@
 			<!--begin::Menu Nav-->
 			<ul class="menu-nav">
 				<li class="menu-item" aria-haspopup="true">
-					<a href="member/home.php" class="menu-link">
+					<a href="member/index.php" class="menu-link">
 						<span class="svg-icon svg-icon-primary svg-icon-2x">
 							<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Shopping\Box2.svg--><svg
 								xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
