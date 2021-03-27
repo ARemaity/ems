@@ -1,134 +1,124 @@
 <!-- 3 modal for s_pr  -->
 
 <!-- START: insert income transcation -->
-<div class="modal fade" id="incomemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Income Transaction</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
 
-            <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-					<!--begin::Container-->
-					<div class="container">
-						<!--begin::Card-->
-						<div class="card card-custom card-transparent">
-							<div class="card-body p-0">
-								<!--begin::Wizard-->
-								<div class="wizard wizard-4" id="kt_wizard" data-wizard-state="first"
-									data-wizard-clickable="true">
-									<!--begin::Wizard Nav-->
 
-									<!--end::Wizard Nav-->
-									<!--begin::Card-->
-									<div class="card card-custom card-shadowless rounded-top-0">
-										<!--begin::Body-->
-										<div class="card-body p-0">
-											<div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
-												<div class="col-xl-12 col-xxl-10">
-													<!--begin::Wizard Form-->
-													<form
-														action="<?='action/income/new.php'?>"
-														method="POST"
-														class="form fv-plugins-bootstrap fv-plugins-framework"
-														id="insrtincmtrans">
-														<div class="row justify-content-center">
-															<div class="col-xl-9">
-																<!--begin::Wizard Step 1-->
-																<div class="my-5 step" data-wizard-type="step-content"
-																	data-wizard-state="current">
-																	<h5 class="text-dark font-weight-bold mb-10">Income transactions :
+	<div class="modal fade" id="incomemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Income Transaction</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+	
+				<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!-- this is dummmmmmmmmmmmmmmmmmmmmm -->
+	
+	
+						<!--begin::Container-->
+						<div class="container">
+							<!--begin::Card-->
+							<div class="card card-custom card-transparent">
+								<div class="card-body p-0">
+
+									<!--begin::Wizard-->
+									<div class="wizard wizard-4" id="kt_wizard" data-wizard-state="first"
+										data-wizard-clickable="true">
+										<!--begin::Wizard Nav-->
+	
+										<!--end::Wizard Nav-->
+										<!--begin::Card-->
+										<div class="card card-custom card-shadowless rounded-top-0">
+											<!--begin::Body-->
+											<div class="card-body p-0">
+												<div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
+													<div class="col-xl-12 col-xxl-10">
+														<!--begin::Wizard Form-->
+														<form action="<?='action/income/new.php'?>" method="POST" class="form fv-plugins-bootstrap fv-plugins-framework"
+															id="insrtincmtrans">
+															<div class="row justify-content-center">
+																<div class="col-xl-9">
+																	<!--begin::Wizard Step 1-->
+																	<div class="my-5 step" data-wizard-type="step-content" data-wizard-state="current">
+																		<h5 class="text-dark font-weight-bold mb-10">Income transactions :
 																		</h5>
-																	<!--begin::Group-->
+																		<!--begin::Group-->
+														
+																		<!--end::Group-->
+																		<!--begin::Group-->
+																	</div>
 
-																	<!--end::Group-->
-																	<!--begin::Group-->
-                                                                    </div>
-
-
-																	<div>
-																	<div
-																		class="form-group row fv-plugins-icon-container">
-																		
+																	<div class="form-group row fv-plugins-icon-container">
+														
 																		<div class="col-lg-9 col-xl-9">
-																			<input type="hidden" id="projectidinputinc"
-																				class="form-control form-control-solid form-control-lg"
+																			<input type="hidden" id="projectidinputinc" class="form-control form-control-solid form-control-lg"
 																				name="projectid" type="text" readonly>
 																			<div class="fv-plugins-message-container">
 																			</div>
 																		</div>
 																	</div>
-
-
-                                                                    <div
-																		class="form-group row fv-plugins-icon-container">
-																		<label
-																			class="col-xl-3 col-lg-3 col-form-label">Cost</label>
+														
+																	<div class="form-group row fv-plugins-icon-container">
+																		<label class="col-xl-3 col-lg-3 col-form-label">Cost</label>
 																		<div class="col-lg-9 col-xl-9">
-																			<input
-																				class="decimalonly form-control form-control-solid form-control-lg"
-																				name="cost" type="text" id = "numeric1" required>
+																			<input class="decimalonly form-control form-control-solid form-control-lg" name="cost" type="text"
+																				id="numeric1" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
 																		</div>
 																	</div>
-																	<div
-																	class="form-group row fv-plugins-icon-container">
-																	<label
-																		class="col-xl-3 col-lg-3 col-form-label">Status</label>
-																	<div class="col-lg-9 col-xl-9">
-																		<select name="dropdown" id="dropdownexpns" class="form-control form-control-lg form-control-solid">
-<option value="0"> pending</option>
-<option value="1"> Done</option>
+																	<div class="form-group row fv-plugins-icon-container">
+																		<label class="col-xl-3 col-lg-3 col-form-label">Status</label>
+																		<div class="col-lg-9 col-xl-9">
+																			<select name="dropdown" id="dropdownexpns" class="form-control form-control-lg form-control-solid">
+																				<option value="0"> pending</option>
+																				<option value="1"> Done</option>
 																			</select>
 																		</div>
 																	</div>
 																</div>
-
-																			</div>
-
-																<!--end::Wizard Actions-->
+														
 															</div>
-														</div>
-
-
-
-													<!--end::Wizard Form-->
+														
+															<!--end::Wizard Actions-->
+														
+														</form>
+	
+														<!--end::Wizard Form-->
+													</div>
 												</div>
 											</div>
+											<!--end::Body-->
 										</div>
-										<!--end::Body-->
+										<!--end::Card-->
 									</div>
-									<!--end::Card-->
+									<!--end::Wizard-->
 								</div>
-								<!--end::Wizard-->
 							</div>
+							<!--end::Card-->
 						</div>
-						<!--end::Card-->
+						<!--end::Container-->
+	
+	
 					</div>
-					<!--end::Container-->
-
-
 				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Add IncomeTransaction</button>
+				</div>
+				</form>
+	
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-primary">Add IncomeTransaction</button>
-			</div>
-			</form>
-
 		</div>
 	</div>
-</div>
-
-
-
-
+	
+	
+	
+	
 
 
 
@@ -215,7 +205,7 @@
 																		<div class="col-lg-9 col-xl-9">
 
 																		<select name="dropdown" id="dropdownexpns" class="form-control form-control-lg form-control-solid">
-																			<option >Out the list...</option>
+																			<option selected="true" disabled="disabled">Choose Expense</option> 
 
                                                                                    <?php
 

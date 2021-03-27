@@ -106,7 +106,7 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 								<!--begin::Details-->
 								<div class="d-flex align-items-center flex-wrap mr-2">
 									<!--begin::Title-->
-									<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">All Porject (number)</h5>
+									<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">All Porject </h5>
 									<!--end::Title-->
 									<!--begin::Separator-->
 									<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200">
@@ -136,7 +136,7 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 							<div class="topbar-item">
 								<div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
 									<span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-									<span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Ali</span>
+									<span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Admin</span>
 								</div>
 							</div>
 							<!--end::User-->
@@ -151,8 +151,7 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 								<div class="d-flex align-items-center flex-wrap mr-2">
 									<!--begin::Page Title-->
 								
-									<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200">
-									</div>
+									
 									<a href="javascript:;" id="nproject"
 										class="btn btn-light-primary font-weight-bolder btn-sm">Add Project</a>
 									<!--end::Action-->
@@ -863,7 +862,7 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
   <div  class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">New Project</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

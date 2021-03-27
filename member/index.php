@@ -190,7 +190,7 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 								<span
 									class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
 								<span
-									class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Ali</span>
+									class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Admin</span>
 							</div>
 						</div>
 						<!--end::User-->

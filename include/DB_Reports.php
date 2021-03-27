@@ -161,7 +161,7 @@ if ($stmt->execute()) {
  */
 public function getAllProject() {
       
-    $stmt = $this->conn->prepare("SELECT * FROM project   ORDER BY created_at DESC");              
+    $stmt = $this->conn->prepare("SELECT `PID`, `number`, `city`, `client_name`, `client_phone`, `created_at` FROM project   ORDER BY created_at DESC");              
 
 
 
