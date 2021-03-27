@@ -52,7 +52,7 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 		var PID =<?= $id ?>;
 		var Total = 0;
 		var path = "<?php echo DIR_ROOT ?>";
-		var pr_name="<?php echo $result['city'].'='.$result['number']?>";
+		var pr_name="<?php echo $result['city'].'_'.$result['number']?>";
 	</script>
 </head>
 <!--end::Head-->
@@ -343,7 +343,7 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 												<span id="testbtn" class="font-weight-bolder font-size-sm">Transactions
 													: </span>
 												<span class="font-weight-bolder font-size-h5">
-												<span class="text-dark-50 font-weight-bold">$</span><span id="exp" ></span></span>
+												<span class="text-dark-50 font-weight-bold">LBP</span><span id="exp" ></span></span>
 											</div>
 										</div>
 										<!--end: Item-->
@@ -355,7 +355,7 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 											<div class="d-flex flex-column text-dark-75">
 												<span class="font-weight-bolder font-size-sm">Income : </span>
 												<span  class="font-weight-bolder font-size-h5">
-													<span class="text-dark-50 font-weight-bold">$</span><span id="incm"></span></span>
+													<span class="text-dark-50 font-weight-bold">LBP</span><span id="incm"></span></span>
 											</div>
 										</div>
 										<!--end: Item-->
@@ -365,9 +365,9 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 												<i class="flaticon-pie-chart icon-2x text-muted font-weight-bold"></i>
 											</span>
 											<div class="d-flex flex-column text-dark-75">
-												<span class="font-weight-bolder font-size-sm">Remaining : </span>
+												<span class="font-weight-bolder font-size-sm">Profit : </span>
 												<span class="font-weight-bolder font-size-h5">
-													<span class="text-dark-50 font-weight-bold">$</span><span  id="total"></span></span>
+													<span class="text-dark-50 font-weight-bold">LBP</span><span  id="total"></span></span>
 											</div>
 										</div>
 										<!--end: Item-->

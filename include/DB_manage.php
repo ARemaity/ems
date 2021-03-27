@@ -78,10 +78,10 @@ if ($result) {
 
 
 
-public function insertintoincome_transaction($fk_UID,$fk_PID,$cost) {
+public function insertintoincome_transaction($fk_UID,$fk_PID,$cost,$status) {
                                 
-    $stmt = $this->conn->prepare("INSERT INTO `income_transaction`(`ITID`, `fk_UID`, `fk_PID`, `cost`, `created_at`) VALUES (NULL,?,?,?,NOW())");
-    $stmt->bind_param("iid",$fk_UID,$fk_PID,$cost);
+    $stmt = $this->conn->prepare("INSERT INTO `income_transaction`(`ITID`, `fk_UID`, `fk_PID`, `cost`, `status`,`created_at`) VALUES (NULL,?,?,?,?,NOW())");
+    $stmt->bind_param("iidi",$fk_UID,$fk_PID,$cost,$status);
     $result = $stmt->execute();
     $last_id=$stmt->insert_id;
     $stmt->close();
@@ -247,10 +247,39 @@ if ($stmt->execute()) {
     return false;
  }
 }
+
+
+public function deleteincomebypid($incometransactionid) {
+       
+    $stmt = $this->conn->prepare("DELETE FROM `income_transaction` WHERE fk_PID = ?");        
+$stmt->bind_param("i", $incometransactionid);   
+
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
+
+public function deleteexpbypid($expensetrans_id) {
+       
+    $stmt = $this->conn->prepare("DELETE FROM `expense_transaction` WHERE fk_PID = ?");        
+$stmt->bind_param("i", $expensetrans_id);   
+
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
 public function updateincometransaction($incometransactionid,$cost,$status) {
        
     $stmt = $this->conn->prepare("UPDATE `income_transaction` SET `cost`=? ,`status`=? WHERE ITID = ?");        
-$stmt->bind_param("di",$cost,$incometransactionid);   
+$stmt->bind_param("dii",$cost,$status,$incometransactionid);   
 
 if ($stmt->execute()) {			
     

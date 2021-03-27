@@ -10,12 +10,21 @@ $projectid=$_POST['id'];
 $data=0;
 if(!empty($projectid)){
 
+
+// delete   income trasnaction
+
+$result1 = $db->deleteincomebypid($projectid);
+// delete expense transaction 
+
+
+$result2 = $db->deleteexpbypid($projectid);
+
     $result = $db->deleteproject($projectid);
     if($result){
     
         $data=1;
         $jsonString = file_get_contents('file.json', 'w');
-$DPID=0;
+     $DPID=0;
 // decode json to associative array
 $json_arr = json_decode($jsonString, true);
 

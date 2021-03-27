@@ -2,20 +2,8 @@
 	<!--begin::Brand-->
 	<div class="brand flex-column-auto" id="kt_brand">
 		<!--begin::Logo-->
-		<a href="index.html" class="brand-logo">
-			<svg xmlns="//www.w3.org/2000/svg" width="136" height="35" viewBox="0 0 136 35">
-				<defs>
-					<style>
-						.l-svg {
-							fill: #fff;
-							fill-rule: evenodd;
-						}
-					</style>
-				</defs>
-				<path id="logo" class="l-svg"
-					d="M95.286 12.783l-1.464 1.336a8.378 8.378 0 0 0-6.114-2.59 8.078 8.078 0 1 0 5.34 14.13v-4.8h-5.512v-1.736h7.75v7.367a10.183 10.183 0 1 1 0-13.71m9.568 4.353c-4.1 0-5.683 2.76-5.683 6.343v6.087h-2.09v-14.22h1.497l.2 3.84c1.09-2.675 3.443-4.04 6.514-4.04h.374v1.99h-.8zm13.736 12.43l-.09-3.214a6.562 6.562 0 0 1-5.827 3.385 7.3 7.3 0 0 1 0-14.592 6.617 6.617 0 0 1 5.827 3.385l.086-3.19h1.493v14.22h-1.49zm-.49-7.11a5.267 5.267 0 1 0-5.282 5.29 5.245 5.245 0 0 0 5.282-5.29m16.293-3.955l.115-3.16H136v12.43c0 4.3-2.468 7.2-6.975 7.22a9.626 9.626 0 0 1-6.17-2.16l1.205-1.31a8.53 8.53 0 0 0 4.965 1.594c3.157 0 4.85-1.793 4.85-4.92V26.49a6.045 6.045 0 0 1-5.28 3.043 7.2 7.2 0 0 1 0-14.392 6.58 6.58 0 0 1 5.8 3.36m-10.907 3.84a5.267 5.267 0 1 0 5.252-5.2 5.195 5.195 0 0 0-5.252 5.2M65.878.25h-6.562l-7.01 16.885a12.108 12.108 0 0 0 .933-4.726c0-7.16-5.68-12.16-13.8-12.16H28.55v6.66l-1.84-1.97A15.634 15.634 0 0 0 15.35 0a15.247 15.247 0 1 0 0 30.492 15.633 15.633 0 0 0 11.358-4.938l1.847-1.968v6.66h10.388V24.6h.5c6.057 0 10.748-2.79 12.743-7.188L46.86 30.25h11.532l4.15-11.277 4.11 11.277H78.16zM39.834 14.59h-.892v-4.33h.892c.766 0 3.263.155 3.263 2.147 0 1.448-1.1 2.182-3.263 2.182M21.434 17l-1.87 1.852a5.825 5.825 0 0 1-4.21 1.62 4.882 4.882 0 0 1-4.962-5.232 4.882 4.882 0 0 1 4.962-5.233 5.942 5.942 0 0 1 4.232 1.643l1.87 1.81 7.1-6.49v16.54z">
-				</path>
-			</svg>
+		<a href="index.php" class="brand-logo">
+		<img alt="Logo" src="assets/media/logos/logo-light.png">
 		</a>
 		<!--end::Logo-->
 		<!--begin::Toggle-->
@@ -72,7 +60,7 @@
 				</li>
 
 				<li class="menu-section">
-					<h4 class="menu-text">Tables</h4>
+					<h4 class="menu-text">Action</h4>
 					<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
 				</li>
 				<li class="menu-item" aria-haspopup="true">
@@ -120,13 +108,17 @@
 						<span class="menu-text">Expense</span>
 					</a>
 				</li>
+
+
+
+				
 				<li class="menu-section">
 					<h4 class="menu-text">Settings</h4>
 					<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
 				</li>
 				
 				<li class="menu-item" aria-haspopup="true">
-					<a href="setting.php" class="menu-link">
+					<a href="javascript:void(0);" class="menu-link">
 						<span class="svg-icon svg-icon-primary svg-icon-2x">
 							<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-12-28-020759/theme/html/demo1/dist/../src/media/svg/icons/General/Settings-2.svg--><svg
 								xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -144,6 +136,24 @@
 						<span class="menu-text">Setting</span>
 					</a>
 				</li>
+				<li class="menu-item" aria-haspopup="true">
+					<a href="javascript:void(0);" class="menu-link">
+					<span class="svg-icon svg-icon-primary svg-icon-2x">
+																		<!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-03-11-144509/theme/html/demo1/dist/../src/media/svg/icons/Shopping/Chart-line1.svg-->
+																		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																			<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																				<rect x="0" y="0" width="24" height="24"></rect>
+																				<path d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z" fill="#000000" fill-rule="nonzero"></path>
+																				<path d="M8.7295372,14.6839411 C8.35180695,15.0868534 7.71897114,15.1072675 7.31605887,14.7295372 C6.9131466,14.3518069 6.89273254,13.7189711 7.2704628,13.3160589 L11.0204628,9.31605887 C11.3857725,8.92639521 11.9928179,8.89260288 12.3991193,9.23931335 L15.358855,11.7649545 L19.2151172,6.88035571 C19.5573373,6.44687693 20.1861655,6.37289714 20.6196443,6.71511723 C21.0531231,7.05733733 21.1271029,7.68616551 20.7848828,8.11964429 L16.2848828,13.8196443 C15.9333973,14.2648593 15.2823707,14.3288915 14.8508807,13.9606866 L11.8268294,11.3801628 L8.7295372,14.6839411 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+																			</g>
+																		</svg>
+																		<!--end::Svg Icon-->
+																	</span>
+
+						<span class="menu-text">Report</span>
+					</a>
+				</li>
+				
 				<li class="menu-item" aria-haspopup="true">
 					<a href="./logout.php" class="menu-link">
 						<span class="svg-icon svg-icon-primary svg-icon-2x">

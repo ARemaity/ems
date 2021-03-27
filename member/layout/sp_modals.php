@@ -16,7 +16,7 @@
 				<div class="modal-body">
 	
 				<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-						<!-- this is dummmmmmmmmmmmmmmmmmmmmm -->
+				
 	
 	
 						<!--begin::Container-->
@@ -74,7 +74,7 @@
 																	<div class="form-group row fv-plugins-icon-container">
 																		<label class="col-xl-3 col-lg-3 col-form-label">Status</label>
 																		<div class="col-lg-9 col-xl-9">
-																			<select name="dropdown" id="dropdownexpns" class="form-control form-control-lg form-control-solid">
+																			<select name="status" id="dropdownstatus" class="form-control form-control-lg form-control-solid">
 																				<option value="0"> pending</option>
 																				<option value="1"> Done</option>
 																			</select>
@@ -86,7 +86,7 @@
 														
 															<!--end::Wizard Actions-->
 														
-														</form>
+													
 	
 														<!--end::Wizard Form-->
 													</div>
