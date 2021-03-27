@@ -6,7 +6,7 @@
 }
 require_once (dirname(__FILE__,2)).'/base.php';
 // enabled on the production phase
-// if(isset($_SESSION)&&isset($_SESSION["usertype"])){
+if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 	$module='project';
 ?>
 
@@ -1110,10 +1110,10 @@ require_once (dirname(__FILE__,2)).'/base.php';
 	<!--end::Body-->
 </html>
 <?php
-// }else{
+}else{
 
-// header("Location: ../index.php");
-// exit();
-// }
+header("Location: ../index.php");
+exit();
+}
 
 ?>

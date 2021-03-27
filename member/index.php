@@ -1,7 +1,13 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+	
+ }
 require_once (dirname(__FILE__, 2)) . '/base.php';
 require_once (dirname(__FILE__, 2)) . '/' . DIR_INC . 'DB_Manage.php';
 $db=new DB_Manage();
+if(isset($_SESSION)&&isset($_SESSION["usertype"])){
+
 ?>
 <!DOCTYPE html>
 
@@ -242,7 +248,7 @@ $db=new DB_Manage();
 												data-original-title="UC3"
 												style="margin-left: 10px;"></i> </a>
 											<div class="font-weight-bold text-white font-size-sm">
-												<span id="total_expenses" class="font-size-h2 mr-2">Null</span></div>
+												<span id="total_expenses" class="font-size-h2 mr-2">--</span></div>
 											<!-- <div class="progress progress-xs mt-7 bg-white-o-90" style="margin-bottom: 10px;">
 												<div class="progress-bar bg-white" role="progressbar" style="width: 53%;"
 													aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -268,7 +274,7 @@ $db=new DB_Manage();
 												data-original-title="UC4"
 												style="margin-left: 10px;"></i></a>
 											<div class="font-weight-bold text-white font-size-sm">
-												<span id="total_income" class="font-size-h2 mr-2">Null</span></div>
+												<span id="total_income" class="font-size-h2 mr-2">--</span></div>
 											<!-- <div class="progress progress-xs mt-7 bg-white-o-90" style="margin-bottom: 10px;">
 												<div class="progress-bar bg-white" role="progressbar" style="width: 52%;"
 													aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -293,7 +299,7 @@ $db=new DB_Manage();
 												data-original-title="UC5"
 												style="margin-left: 10px;"></i></a>
 											<div class="font-weight-bold text-muted font-size-sm">
-												<span id="total_profit" class="text-dark-75 font-size-h2 font-weight-bolder mr-2">Null</span></div>
+												<span id="total_profit" class="text-dark-75 font-size-h2 font-weight-bolder mr-2">--</span></div>
 											<!-- <div class="progress progress-xs mt-7 bg-success-o-60" style="margin-bottom: 10px;">
 												<div class="progress-bar bg-success" role="progressbar" style="width: 90%;"
 													aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -310,279 +316,17 @@ $db=new DB_Manage();
 							</div>
 							<!--begin::Row-->
 							<div class="row">
-								<div class="col-xl-6">
-									<!--begin::Charts Widget 2-->
-									<div class="card card-custom bg-gray-100 card-stretch gutter-b">
-										<!--begin::Header-->
-										<div class="card-header h-auto border-0">
-											<!--begin::Title-->
-											<div class="card-title py-5">
-												<h3 class="card-label">
-													<span class="d-block text-dark font-weight-bolder"> Orders <i class="fa fa-info-circle " data-html="true" data-toggle="tooltip" data-placement="right"
-														title=""
-														data-original-title="UC7"
-														style="margin-left: 10px;"></i></span>
-				
-												</h3>
-											</div>
-											<!--end::Title-->
-											<!--begin::Toolbar-->
-											<div class="card-toolbar">
-												<ul class="nav nav-pills nav-pills-sm nav-dark-75" role="tablist">
-												<li class="nav-item">
-														<a class="nav-link py-2 px-4 active" id="#" data-toggle="tab"
-															href="#kt_charts_widget_2_chart_tab_1">
-															<span class="nav-text font-size-sm">Date</span>
-														</a>
-													</li>
-													
-													
-												   
-												</ul>
-											</div>
-											<!--end::Toolbar-->
-										</div>
-										<!--end::Header-->
-										<!--begin::Body-->
-										<div class="card-body" style="position: relative;">
-											<div class="tab-content">
-											<div class="tab-pane fade show active" id="kt_charts_widget_2_chart_tab_1" role="tabpanel"
-													aria-labelledby="kt_charts_widget_2_chart_tab_1">
-													<div id="kt_charts_day_order" style="min-height: 365px;"> </div>
-												</div>
-												<div class="tab-pane fade " id="kt_charts_widget_2_chart_tab_3"
-													role="tabpanel" aria-labelledby="kt_charts_widget_2_chart_tab_3">
-													<div id="kt_charts_month_order" style="min-height: 365px;"> </div>
-												</div>
-											 
-												<div class="tab-pane fade" id="kt_charts_widget_2_chart_tab_2" role="tabpanel"
-													aria-labelledby="kt_charts_widget_2_chart_tab_2">
-													<div id="kt_charts_week_order" style="min-height: 365px;"> </div>
-												</div>
-											   
-											</div>
-											<!--begin::Chart-->
-				
-											<!--end::Chart-->
-											<div class="resize-triggers">
-												<div class="expand-trigger">
-													<div style="width: 634px; height: 418px;"></div>
-												</div>
-												<div class="contract-trigger"></div>
-											</div>
-										</div>
-										<!--end::Body-->
-									</div>
-									<!--end::Charts Widget 2-->
+								<div class="col-xl-12">
+									
 								</div>
 				
-								<div class="col-xl-6">
-									<!--begin::Advance Table Widget 1-->
-									<div class="card card-custom card-stretch gutter-b">
-										<!--begin::Header-->
-										<div class="card-header border-0 py-5">
-											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label font-weight-bolder text-dark">Top Product <i class="fa fa-info-circle " data-html="true" data-toggle="tooltip" data-placement="right"
-													title=""
-													data-original-title="UC9"
-													style="margin-left: 10px;"></i></span>
-												<span class="text-muted mt-3 font-weight-bold font-size-sm">Top 5 Product According to
-													latest Data</span>
-											</h3>
-				
-										</div>
-										<!--end::Header-->
-				
-										<!--begin::Body-->
-										<div class="card-body py-0">
-											<div id="chart_product"></div>
-											<!--end::Table-->
-										</div>
-										<!--end::Body-->
-									</div>
-									<!--end::Advance Table Widget 1-->
-								</div>
+							
 				
 							</div>
 							<!--end::Row-->
 				
 							<!--begin::Row-->
-							<div class="row">
-								<div class="col-xl-4">
-									<!--begin::Mixed Widget 13-->
-									<div class="card card-custom gutter-b card-stretch">
-										<!--begin::Beader-->
-										<div class="card-header border-0 py-5">
-											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label font-weight-bolder text-dark">Sales <i class="fa fa-info-circle " data-html="true" data-toggle="tooltip" data-placement="right"
-													title=""
-													data-original-title="UC8"
-													style="margin-left: 10px;"></i></span>
-												<span class="text-muted mt-3 font-weight-bold font-size-sm">Sales Data for the Current
-													Month</span>
-											</h3>
 				
-				
-										</div>
-										<!--end::Header-->
-										<!--begin::Body-->
-										<div id="blockui_mix_sales"  class="card-body p-0 d-flex flex-column" style="position: relative;">
-											<!--begin::Stats-->
-											<div class="card-spacer pt-5 bg-white flex-grow-1">
-												<!--begin::Row-->
-												<div class="row row-paddingless">
-													<div class="col mr-8">
-														<div class="font-size-sm text-muted font-weight-bold">Gross Sales</div>
-														<div id="gross_sales" class="font-size-h4 font-weight-bolder">$650</div>
-													</div>
-													<div class="col">
-														<div class="font-size-sm text-muted font-weight-bold">Net Sales</div>
-														<div id="net_sales" class="font-size-h4 font-weight-bolder">$233,600</div>
-													</div>
-												</div>
-												<!--end::Row-->
-												<!--begin::Row-->
-												<div class="row row-paddingless mt-8">
-													<div class="col mr-8">
-														<div class="font-size-sm text-muted font-weight-bold">Gross Margin</div>
-														<div id="gross_margin" class="font-size-h4 font-weight-bolder">$29,004</div>
-													</div>
-													<div class="col">
-														<div class="font-size-sm text-muted font-weight-bold">Net Quantity</div>
-														<div id="net_quantity" class="font-size-h4 font-weight-bolder">$1,480,00</div>
-													</div>
-												</div>
-												<!--end::Row-->
-											</div>
-											<!--end::Stats-->
-											<!--begin::Chart-->
-											<div id="chart_sales_mixed" class="card-rounded-bottom"
-												style="height: 200px; min-height: 200px;">
-				
-											</div>
-											<!--end::Chart-->
-											<div class="resize-triggers">
-												<div class="expand-trigger">
-													<div style="width: 414px; height: 394px;"></div>
-												</div>
-												<div class="contract-trigger"></div>
-											</div>
-										</div>
-										<!--end::Body-->
-									</div>
-									<!--end::Mixed Widget 13-->
-								</div>
-								<div class="col-xl-4">
-									<!--begin::List Widget 20-->
-									<div class="card card-custom card-stretch gutter-b" id="kt_blockui_card">
-										<!--begin::Header-->
-										<div class="card-header border-0 pt-6 mb-2">
-											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label font-weight-bold font-size-h4 text-dark-75 mb-3">Latest
-													Orders <i class="fa fa-info-circle " data-html="true" data-toggle="tooltip" data-placement="right"
-													title=""
-													data-original-title="UC10"
-													style="margin-left: 10px;"></i></span>
-				
-											</h3>
-											<div class="card-toolbar">
-												<button id="order_list_btn" type="button" class="btn btn-secondary">Veiw All</button>
-											</div>
-				
-										</div>
-										<!--end::Header-->
-										<!--begin::Body-->
-										<div class="card-body pt-2">
-											<!--begin::Table-->
-											<div class="table-responsive">
-												<table id="latest_order" class="table table-borderless mb-0">
-													<tbody>
-														<!--begin::Item-->
-														<tr>
-															<!--begin::Icon-->
-															<td class="text-left align-left pb-6">
-				
-																<div class="font-size-lg font-weight-bolder text-dark-75">Customer Name
-																</div>
-															</td>
-				
-															<td class="text-right align-middle pb-6">
-				
-																<div class="font-size-lg font-weight-bolder text-dark-75">#Item</div>
-															</td>
-															<td class="text-right align-middle pb-6">
-				
-																<div class="font-size-lg font-weight-bolder text-dark-75">Total</div>
-															</td>
-				
-															<!--end::Content-->
-														</tr>
-														
-													   
-														<!--end::Item-->
-													</tbody>
-												</table>
-											</div>
-											<!--end::Table-->
-										</div>
-										<!--end::Body-->
-									</div>
-									<!--end::List Widget 20-->
-								</div>
-								<div class="col-xl-4">
-									<div class="row">
-										<div class="col-xl-12">
-				
-											<!--begin::Stats Widget 29-->
-											<div class="card card-custom bgi-no-repeat card-stretch gutter-b"
-												style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg);padding: 3rem 4rem;">
-												<!--begin::Body-->
-												<div class="card-body">
-													<i class="fa fa-info-circle " data-html="true" data-toggle="tooltip" data-placement="right"
-													title=""
-													data-original-title="UC11"
-													style="margin-left: 10px;"></i>
-													<span class="card-title font-weight-bolder font-size-h2 mb-0 mt-6 d-block"
-														style="color: #8950FC;">+24%</span>
-													<span
-														class="card-title font-weight-bolder text-dark-75 font-size-h3 mb-0 mt-6 d-block">Visitors
-														Margin</span>
-													<span class="font-weight-bold text-muted font-size-sm">Compares visitors' number in
-														last 2 months</span>
-												</div>
-												<!--end::Body-->
-											</div>
-											<!--end::Stats Widget 29-->
-				
-										</div>
-				
-										<div class="col-xl-12">
-											<!--begin::Stats Widget 30-->
-											<div class="card card-custom bg-info card-stretch gutter-b" style="padding: 3rem 4rem;">
-												<!--begin::Body-->
-												<div class="card-body">
-													<i class="fa fa-info-circle " data-html="true" data-toggle="tooltip" data-placement="right"
-													title=""
-													data-original-title="UC12"
-													style="margin-left: 10px;"></i>
-													<span
-														class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 d-block">-10%</span>
-													<span
-														class="card-title font-weight-bolder text-white font-size-h3 mb-0 mt-6 d-block">Abandoned
-													   checkouts</span>
-													<span class="font-weight-bold text-white font-size-sm">Monthly rate comparision
-													</span>
-												</div>
-												<!--end::Body-->
-											</div>
-											<!--end::Stats Widget 30-->
-										</div>
-									</div>
-									<!--end::Mixed Widget 14-->
-								</div>
-				
-							</div>
-							<!--end::Row-->
 				
 							<!--begin::Row-->
 							<div class="row">
@@ -735,3 +479,11 @@ $db=new DB_Manage();
 </body>
 
 </html>
+<?php
+}else{
+
+header("Location: ../index.php");
+exit();
+}
+
+?>

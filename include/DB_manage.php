@@ -247,9 +247,9 @@ if ($stmt->execute()) {
     return false;
  }
 }
-public function updateincometransaction($incometransactionid,$cost) {
+public function updateincometransaction($incometransactionid,$cost,$status) {
        
-    $stmt = $this->conn->prepare("UPDATE `income_transaction` SET `cost`=? WHERE ITID = ?");        
+    $stmt = $this->conn->prepare("UPDATE `income_transaction` SET `cost`=? ,`status`=? WHERE ITID = ?");        
 $stmt->bind_param("di",$cost,$incometransactionid);   
 
 if ($stmt->execute()) {			

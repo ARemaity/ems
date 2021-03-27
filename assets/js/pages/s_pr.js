@@ -3,8 +3,8 @@
 "use strict"
 var post_url;
 var form_data;
-var did;//since in the delete transaction method this.id coukdnt bee acessed inside swap.fire deleteid
-var eid;///expense id for edit expense id
+var did;
+var eid;
 
 var incmdid;//income delete id
 
@@ -304,28 +304,26 @@ var KTDatatable_expense = function() {
 }
 
 
-
 var selected_export = function () {
   $('#kt_datatable_export_csv').on('click', function () {
-    // // fetch selected IDs
-    var activeRow=datatable1.rows('.kt-datatable__row--active').nodes();
 
-    var ids = activeRow.find('.kt-checkbox--single > [type="checkbox"]').map(function(i, chk) {
-      return $(chk).val();
-    });
+    var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
 
-    var idsArray = [];
-          for (var i = 0; i < ids.length; i++) {
-              idsArray.push(ids[i]);
-    }
+var today = mm + '/' + dd + '/' + yyyy;
 
+
+var excel_name="in-"+pr_name+"_"+today;
     var datas = datatable1.getSelectedRecords();
     var sizeofdata = datas.length;
     if (sizeofdata > 0) {
       var array_handler =[];
       var array_final =[];
       for (let i = 0; i < datas.length; i++) {
-        for (let j = 1; j < datas[i].children.length-1; j++) {
+        array_handler.push(i+1);
+        for (let j = 2; j < datas[i].children.length-1; j++) {
           let st_handler=datas[i].children[j].children[0].innerText;
           
           if(!st_handler){
@@ -342,14 +340,10 @@ array_handler =[];
       }
     
     }
-  
 
-
-      
-var header_array =["Name","Cost","Date"];
+var header_array =["ID","Name","Cost","Date"];
 array_final.unshift(header_array);
 console.table(array_final);
-
         var CsvString = "";
         array_final.forEach(function(RowItem, RowIndex) {
           RowItem.forEach(function(ColItem, ColIndex) {
@@ -362,13 +356,14 @@ console.table(array_final);
         CsvString = "data:application/csv;charset=utf-8," + encodeURIComponent(CsvString);
          var x = document.createElement("A");
          x.setAttribute("href", CsvString );
-         x.setAttribute("download","somedata.csv");
+         x.setAttribute("download",excel_name+".csv");
          document.body.appendChild(x);
          x.click();
         
     
   });
-};
+}
+
   // basic demo
   var delete_expense = function() {
     ////////delete button for expense transaction 
@@ -487,7 +482,23 @@ var KTDatatable_income = function() {
           template: function(row) {
               return row.cost;
           },
-      },{
+      },
+      {
+        width: 100,
+        field: 'user_status',
+        title: 'Status',
+        autoHide: false,
+        // callback function support for column rendering
+        template: function(row) {
+            var status = {
+                0: {'title': 'Unpaid', 'state': 'danger'},
+                1: {'title': 'Paid', 'state': 'success'},
+            
+            };
+            return '<span class="label font-weight-bold label-lg label-light-' + status[row.user_status].state + ' label-inline">' + status[row.user_status].title + '</span>';
+        },
+    }
+      ,{
           field: 'created_at',
           title: 'Date',
           width: 100,
@@ -578,7 +589,7 @@ var KTDatatable_income = function() {
         
         $("#incometransactionidupdate").val(response.ITID);//fill the input values 
         $("#incometransactioncostupdate").val(response.cost);
-
+        $("#incometransactionstupdate").val(response. status);
       }else{$("#incomemodalupdate").modal("hide");}//if couldnt retrieve transaction from database
     },
   });
@@ -636,29 +647,27 @@ var KTDatatable_income = function() {
 
 
 
-  // basic demo
-  
+
 var selected_export = function () {
   $('#kt_datatable_export_csv').on('click', function () {
-    // // fetch selected IDs
-    var activeRow=datatable2.rows('.kt-datatable__row--active').nodes();
 
-    var ids = activeRow.find('.kt-checkbox--single > [type="checkbox"]').map(function(i, chk) {
-      return $(chk).val();
-    });
+    var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
 
-    var idsArray = [];
-          for (var i = 0; i < ids.length; i++) {
-              idsArray.push(ids[i]);
-    }
+var today = mm + '/' + dd + '/' + yyyy;
 
-    var datas = datatable2.getSelectedRecords();
+
+var excel_name="in-"+pr_name+"_"+today;
+    var datas = datatable1.getSelectedRecords();
     var sizeofdata = datas.length;
     if (sizeofdata > 0) {
       var array_handler =[];
       var array_final =[];
       for (let i = 0; i < datas.length; i++) {
-        for (let j = 1; j < datas[i].children.length-1; j++) {
+        array_handler.push(i+1);
+        for (let j = 2; j < datas[i].children.length-1; j++) {
           let st_handler=datas[i].children[j].children[0].innerText;
           
           if(!st_handler){
@@ -675,14 +684,10 @@ array_handler =[];
       }
     
     }
-  
 
-
-      
-var header_array =["Name","Country","Phone","Address","Date","Status","LP","Assigned"];
+var header_array =["ID","amount","status","Date"];
 array_final.unshift(header_array);
 console.table(array_final);
-
         var CsvString = "";
         array_final.forEach(function(RowItem, RowIndex) {
           RowItem.forEach(function(ColItem, ColIndex) {
@@ -695,14 +700,14 @@ console.table(array_final);
         CsvString = "data:application/csv;charset=utf-8," + encodeURIComponent(CsvString);
          var x = document.createElement("A");
          x.setAttribute("href", CsvString );
-         x.setAttribute("download","somedata.csv");
+         x.setAttribute("download",excel_name+".csv");
          document.body.appendChild(x);
          x.click();
         
     
   });
-};
- 
+}
+
 
 var delete_income = function() {
   ////////delete button for expense transaction 

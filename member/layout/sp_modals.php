@@ -77,7 +77,18 @@
 																			</div>
 																		</div>
 																	</div>
-
+																	<div
+																	class="form-group row fv-plugins-icon-container">
+																	<label
+																		class="col-xl-3 col-lg-3 col-form-label">Status</label>
+																	<div class="col-lg-9 col-xl-9">
+																		<select name="dropdown" id="dropdownexpns" class="form-control form-control-lg form-control-solid">
+<option value="0"> pending</option>
+<option value="1"> Done</option>
+																			</select>
+																		</div>
+																	</div>
+																</div>
 
 																			</div>
 

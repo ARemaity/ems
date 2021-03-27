@@ -1,9 +1,23 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+	
+ }
 require_once (dirname(__FILE__, 2)) . '/base.php';
 require_once (dirname(__FILE__, 2)) . '/' . DIR_INC . 'DB_Manage.php';
+require_once (dirname(__FILE__, 2)) . '/' . DIR_INC . 'DB_Reports.php';
+$rp =new DB_Reports();  
 $db=new DB_Manage();
-$module='expensetransaction';
-$id=911;
+
+
+
+
+if(isset($_SESSION)&&isset($_SESSION["usertype"])){
+
+	if (isset($_REQUEST) && isset($_GET['pid'])):
+		$id=$_GET['pid'];
+
+		$result = $rp->getproject($id);
 ?>
 <!DOCTYPE html>
 
@@ -37,7 +51,8 @@ $id=911;
 	<script>
 		var PID =<?= $id ?>;
 		var Total = 0;
-		var path = "<?php echo DIR_ROOT ?>";	
+		var path = "<?php echo DIR_ROOT ?>";
+		var pr_name="<?php echo $result['city'].'='.$result['number']?>";
 	</script>
 </head>
 <!--end::Head-->
@@ -144,7 +159,7 @@ $id=911;
 							<!--begin::Details-->
 							<div class="d-flex align-items-center flex-wrap mr-2">
 								<!--begin::Title-->
-								<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Single Project (number)</h5>
+								<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Single Project- <?=$result['number']?></h5>
 								<!--end::Title-->
 								<!--begin::Separator-->
 								<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200">
@@ -364,7 +379,7 @@ $id=911;
 											<div class="d-flex flex-column flex-lg-fill">
 												<span id="transnumber"
 													class="text-dark-75 font-weight-bolder font-size-sm"></span>
-												<a href="#" class="text-primary font-weight-bolder">View</a>
+												
 											</div>
 										</div>
 										<!--end: Item-->
@@ -376,7 +391,7 @@ $id=911;
 											<div class="d-flex flex-column">
 												<span id="incmnumber"
 													class="text-dark-75 font-weight-bolder font-size-sm"></span>
-												<a href="#" class="text-primary font-weight-bolder">View</a>
+												
 											</div>
 										</div>
 										<!--end: Item-->
@@ -460,7 +475,7 @@ $id=911;
 															</div>
 
 															<div class="spinner-grow text-secondary" role="status">
-																<span class="sr-only">Loading...</span>
+																<span class="sr-only">Loading...</span>	
 															</div>
 															<div class="spinner-grow text-secondary" role="status">
 																<span class="sr-only">Loading...</span>
@@ -805,3 +820,20 @@ $id=911;
 </body>
 
 </html>
+<?php
+
+
+	else:
+		header("Location: project.php");
+		exit();	
+
+	endif;
+
+
+}else{
+
+header("Location: ../index.php");
+exit();
+}
+
+?>
