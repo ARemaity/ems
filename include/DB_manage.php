@@ -180,7 +180,7 @@ if ($stmt->execute()) {
 
 public function getproject($projecttid) {
        
-    $stmt = $this->conn->prepare("SELECT `PID`, `number`, `city`, `client_name`, `client_phone`, `created_at` FROM `project` WHERE PID = ?");        
+    $stmt = $this->conn->prepare("SELECT * FROM `project` WHERE PID = ?");        
 $stmt->bind_param("i", $projecttid);   
 
 if ($stmt->execute()) {			
@@ -192,10 +192,10 @@ if ($stmt->execute()) {
  }
 }
 
-public function updateproject($projecttid,$number,$city,$client_name,$client_phone) {
+public function updateproject($projecttid,$TID,$number,$city,$client_name,$client_phone) {
        
-    $stmt = $this->conn->prepare("UPDATE `project` SET `number`= ?,`city`= ?,`client_name`= ?,`client_phone`= ? WHERE PID = ?");        
-$stmt->bind_param("issii", $number,$city,$client_name,$client_phone,$projecttid);   
+    $stmt = $this->conn->prepare("UPDATE `project` SET `fk_TID`=?, `number`= ?,`city`= ?,`client_name`= ?,`client_phone`= ? WHERE PID = ?");        
+$stmt->bind_param("iissii", $TID,$number,$city,$client_name,$client_phone,$projecttid);   
 $result = $stmt->execute();
 $stmt->close();
 // check for successful stores

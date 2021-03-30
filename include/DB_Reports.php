@@ -15,19 +15,7 @@ class DB_Reports {
   
 
 
-public function insertintoproject($number,$city,$owner_id,$created_at) {
-                                
-    $stmt = $this->conn->prepare("INSERT INTO `project`(`PID`, `number`, `city`, `owner_id`, `created_at`) VALUES (Null,?,?,?,?)");
-    $stmt->bind_param("isis",$number,$city,$owner_id,$created_at);
-    $result = $stmt->execute();
-    $stmt->close();
- // check for successful stores
- if ($result) {
-     return true;
- } else {
-     return false;
- }
-}
+
 
     public function getclient($clientid) {
        
@@ -161,7 +149,7 @@ if ($stmt->execute()) {
  */
 public function getAllProject() {
       
-    $stmt = $this->conn->prepare("SELECT `PID`, `number`, `city`, `client_name`, `client_phone`, `created_at` FROM project   ORDER BY created_at DESC");              
+    $stmt = $this->conn->prepare("SELECT * FROM project  ORDER BY created_at DESC");              
 
 
 
