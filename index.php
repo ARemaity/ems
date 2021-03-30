@@ -67,7 +67,7 @@ $alert = '<div class="alert alert-custom alert-light-danger fade show mb-5" role
 	<!--begin::Head-->
 	<head><base href="">
 		<meta charset="utf-8" />
-		<title>Dermayouth</title>
+		<title>EMS1.0</title>
 		<meta name="description" content="Login page example" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -101,6 +101,7 @@ $alert = '<div class="alert alert-custom alert-light-danger fade show mb-5" role
 					<div class="login-form text-center text-white p-7 position-relative overflow-hidden">
 						<!--begin::Login Header-->
 						<div class="d-flex flex-center mb-15">
+							<h1>EMS v1.0</h1>
 						</div>
 
 						<!--end::Login Header-->

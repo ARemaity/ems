@@ -9,7 +9,7 @@ var page_init = function(){
 			$("#total_projects").text(response.numberofprojects);
 			$("#total_expenses").text(Math.round(response.numberofexpense_transaction));
 			$("#total_income").text(Math.round(response.numberofincome_transaction));
-			$("#total_profit").text(Math.round(response.numberofexpense_transaction-response.numberofincome_transaction));
+			$("#total_profit").text(Math.round(response.numberofincome_transaction-response.numberofexpense_transaction));
 
 		  }
 		},

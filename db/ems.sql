@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2021 at 01:23 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Mar 30, 2021 at 07:52 AM
+-- Server version: 10.4.13-MariaDB-log
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,8 +52,7 @@ CREATE TABLE `expense` (
 --
 
 INSERT INTO `expense` (`EID`, `name`, `description`) VALUES
-(1, 'twabe3', 'tawbe3'),
-(2, 'benzin', 'sefqsefwEAF');
+(6, 'abc', 'a');
 
 -- --------------------------------------------------------
 
@@ -75,8 +74,8 @@ CREATE TABLE `expense_transaction` (
 --
 
 INSERT INTO `expense_transaction` (`ETID`, `fk_UID`, `fk_PID`, `fk_EID`, `cost`, `created_at`) VALUES
-(4, 1, 911, 1, '1000.00', '2021-02-14 00:05:19'),
-(5, 1, 911, 2, '22.00', '2021-02-18 16:25:06');
+(11, 1, 917, 1, '12000.00', '2021-03-27 17:09:22'),
+(12, 1, 917, 2, '100000.00', '2021-03-27 17:48:05');
 
 -- --------------------------------------------------------
 
@@ -89,8 +88,17 @@ CREATE TABLE `income_transaction` (
   `fk_UID` int(100) NOT NULL,
   `fk_PID` int(100) NOT NULL,
   `cost` decimal(30,2) NOT NULL,
+  `status` tinyint(4) DEFAULT 0,
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `income_transaction`
+--
+
+INSERT INTO `income_transaction` (`ITID`, `fk_UID`, `fk_PID`, `cost`, `status`, `created_at`) VALUES
+(918, 1, 917, '100000.00', 1, '2021-03-27 17:09:36'),
+(919, 1, 917, '1000000.00', 0, '2021-03-27 17:34:00');
 
 -- --------------------------------------------------------
 
@@ -122,6 +130,7 @@ INSERT INTO `login` (`userId`, `usertype`, `username`, `encrypted_password`, `sa
 
 CREATE TABLE `project` (
   `PID` int(100) NOT NULL,
+  `fk_TID` int(11) NOT NULL,
   `number` int(100) NOT NULL,
   `city` varchar(255) NOT NULL,
   `client_name` varchar(255) NOT NULL,
@@ -133,10 +142,23 @@ CREATE TABLE `project` (
 -- Dumping data for table `project`
 --
 
-INSERT INTO `project` (`PID`, `number`, `city`, `client_name`, `client_phone`, `created_at`) VALUES
-(2, 23423234, 'sdfgsdf', 'sfsdf', 3423423, '2021-01-30 12:10:54'),
-(911, 234234, 'gogo', 'ALI', 70083245, '2021-01-30 12:10:54'),
-(913, 0, 'ddd', 'test', 33333, '2021-02-15 21:45:17');
+INSERT INTO `project` (`PID`, `fk_TID`, `number`, `city`, `client_name`, `client_phone`, `created_at`) VALUES
+(917, 0, 432432, 'المجادل', 'محمود سليمان', 70083245, '2021-03-27 17:09:01'),
+(918, 0, 1233222, 'الشهابية', 'حسين علي ', 70034424, '2021-03-27 17:27:53'),
+(919, 0, 118, 'majadel', 'akrm', 71185386, '2021-03-27 17:50:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project_type`
+--
+
+CREATE TABLE `project_type` (
+  `TID` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `created_at` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -179,6 +201,12 @@ ALTER TABLE `project`
   ADD PRIMARY KEY (`PID`);
 
 --
+-- Indexes for table `project_type`
+--
+ALTER TABLE `project_type`
+  ADD PRIMARY KEY (`TID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -192,19 +220,19 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `EID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `EID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `expense_transaction`
 --
 ALTER TABLE `expense_transaction`
-  MODIFY `ETID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ETID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `income_transaction`
 --
 ALTER TABLE `income_transaction`
-  MODIFY `ITID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=915;
+  MODIFY `ITID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=920;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -216,7 +244,13 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `PID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=915;
+  MODIFY `PID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=920;
+
+--
+-- AUTO_INCREMENT for table `project_type`
+--
+ALTER TABLE `project_type`
+  MODIFY `TID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
