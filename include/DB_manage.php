@@ -96,11 +96,11 @@ if ($result) {
 
 
 
-public function insertintoproject($number,$city,$client_name,$client_phone) {
+public function insertintoproject($number,$city,$client_name,$client_phone,$TID) {
                                 
-    $stmt = $this->conn->prepare("INSERT INTO `project`(`PID`, `number`, `city`, `client_name`, `client_phone`, `created_at`) VALUES (Null,?,?,?,?,NOW())");
+    $stmt = $this->conn->prepare("INSERT INTO `project`(`PID`,`fk_TID`, `number`, `city`, `client_name`, `client_phone`, `created_at`) VALUES (Null,?,?,?,?,?,NOW())");
  
-    $stmt->bind_param("issi",$number,$city,$client_name,$client_phone);
+    $stmt->bind_param("iissi",$TID,$number,$city,$client_name,$client_phone);
   
     $result = $stmt->execute();
     $last_id=$stmt->insert_id;

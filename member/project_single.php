@@ -11,7 +11,6 @@ $db=new DB_Manage();
 
 
 
-
 if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 
 	if (isset($_REQUEST) && isset($_GET['pid'])):

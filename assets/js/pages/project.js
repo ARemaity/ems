@@ -291,13 +291,12 @@ jQuery(document).ready(function () {
                     "Transaction has been Inserted.",
                     "success"
                   );
+                  $("#newprojectform").trigger("reset");
+                 
+                      
                   $("#addprojectmodal").modal("hide");
                datatable.reload();
-                  $("#newprojectform")
-                    .closest("form")
-                    .find("input[type=text], textarea")
-                    .val("");
-                   
+            
 
                 } else {
                   Swal.fire(

@@ -4,7 +4,11 @@
 	session_start();
 	
 }
+
 require_once (dirname(__FILE__,2)).'/base.php';
+
+require_once (dirname(__FILE__, 2)) . '/' . DIR_INC . 'DB_Reports.php';
+$dbr =new DB_Reports(); 
 // enabled on the production phase
 if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 	$module='project';
@@ -949,7 +953,31 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 	
 																			</div>
 
+    <div
+																		class="form-group row fv-plugins-icon-container">
+                                                                        <label
+																			class="col-xl-3 col-lg-3 col-form-label">Project type</label>
+																		<div class="col-lg-9 col-xl-9">
 
+																		<select name="dropdown" id="dropdownexpns" class="form-control form-control-lg form-control-solid">
+																			<option selected="true" disabled="disabled">Choose Type</option> 
+
+                                                                                   <?php
+
+$result = $dbr->project_type_getall();
+foreach ($result as $row) {
+    echo "<option value='" . $row['TID'] . "'>" . $row['name'] . "</option>";}
+
+?>
+
+
+
+
+
+
+																		</select>
+																	</div>
+																</div>
 
 
 
