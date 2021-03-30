@@ -332,11 +332,51 @@ if ($stmt->execute()) {
  }
 }
 
+//project type sql manage
+
+public function project_type_delete($id) {
+       
+    $stmt = $this->conn->prepare("DELETE FROM `project_type` WHERE TID = ?");        
+    $stmt->bind_param("i", $id);   
+
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
+
+public function project_type_update($id,$name,$description) {
+       
+    $stmt = $this->conn->prepare("UPDATE `project_type` SET `name`=?,`description`=? WHERE TID=?");        
+$stmt->bind_param("ssi",$name,$description,$id);   
+
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
 
 
-
-
-
+public function project_type_create($name,$description) {
+                                
+    $stmt = $this->conn->prepare("INSERT INTO `project_type`(`TID`, `name`, `description`, `created_at`) VALUES (Null,?,?,NOW())");
+ 
+    $stmt->bind_param("ss",$name,$description);
+    $result = $stmt->execute();
+    $stmt->close();
+// check for successful store
+if ($result) {
+    return true;
+} else {
+    return false;
+}
+}
 
 
 

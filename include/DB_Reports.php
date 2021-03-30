@@ -361,15 +361,39 @@ $expenses = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 return $expenses; 
 $stmt->close();
 } else {
-die("Adding record failed: " .$stmt->error); 
+die("getting record failed: " .$stmt->error); 
 $stmt->close();
 
 }
 
 }
 
+public function project_type_getall() {
+       
+    $stmt = $this->conn->prepare("SELECT * FROM `project_type`");        
+ 
 
+if ($stmt->execute()) {			
+     $order = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
 
+public function project_type_getsingletype($id) {
+       
+    $stmt = $this->conn->prepare("SELECT * FROM `project_type` WHERE TID = ?");        
+$stmt->bind_param("i", $id);   
+
+if ($stmt->execute()) {			
+     $order = $stmt->get_result()->fetch_assoc();
+     $stmt->close();
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
 
     
   
