@@ -64,7 +64,7 @@ if ($stmt->execute()) {
 
 public function getexpense_transaction($expensetrans_id) {
        
-    $stmt = $this->conn->prepare("SELECT `ETID`, `fk_UID`, `fk_PID`, `fk_EID`, `cost`, `created_at` FROM `expense_transaction` WHERE ETID = ? ");        
+    $stmt = $this->conn->prepare("SELECT * FROM `expense_transaction` WHERE ETID = ? ");        
     $stmt->bind_param("i", $expensetrans_id);   
 
 if ($stmt->execute()) {			

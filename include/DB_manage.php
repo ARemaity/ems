@@ -58,7 +58,7 @@ class DB_Manage {
 
  public function insertintoexpense_transaction($fk_UID,$fk_PID,$fk_IID,$cost) {
                                 
-    $stmt = $this->conn->prepare("INSERT INTO `expense_transaction`(`ETID`, `fk_UID`, `fk_PID`, `fk_EID`,`cost`,`created_at`) VALUES (Null,?,?,?,?,NOW())");
+    $stmt = $this->conn->prepare("INSERT INTO `expense_transaction`(`ETID`, `fk_UID`, `fk_PID`, `fk_EID`,`cost`,`Status_income`,`created_at`) VALUES (Null,?,?,?,?,default,NOW())");
     $stmt->bind_param("iiid",$fk_UID,$fk_PID,$fk_IID,$cost);
     $result = $stmt->execute();
     $last_id=$stmt->insert_id;
@@ -159,7 +159,7 @@ if ($stmt->execute()) {
 
 public function getexpense_transaction($expensetrans_id) {
        
-    $stmt = $this->conn->prepare("SELECT `ETID`, `fk_UID`, `fk_PID`, `fk_IID`, `cost`, `created_at` FROM `expense_transaction` WHERE ETID = ?");        
+    $stmt = $this->conn->prepare("SELECT * FROM `expense_transaction` WHERE ETID = ?");        
 $stmt->bind_param("i", $expensetrans_id);   
 
 if ($stmt->execute()) {			
@@ -234,6 +234,21 @@ if ($stmt->execute()) {
     return false;
  }
 }
+//with status
+public function updateexptransaction_status($ETID,$status) {
+       
+    $stmt = $this->conn->prepare("UPDATE `expense_transaction` SET `Status_income`=? WHERE ETID= ?");        
+$stmt->bind_param("ii",$status,$ETID);   
+
+if ($stmt->execute()) {			
+    
+     $stmt->close();
+     return true; 
+ } else {
+    return false;
+ }
+}
+
 public function deleteincometransaction($incometransactionid) {
        
     $stmt = $this->conn->prepare("DELETE FROM `income_transaction` WHERE ITID = ?");        

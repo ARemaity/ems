@@ -11,7 +11,7 @@ $rpt=new DB_Reports();
 
 
 
-$result=$db->project_type_delete(3);
+$result=$db->updateexptransaction_status(11,1);
 
 echo($result);
 
