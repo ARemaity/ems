@@ -27,7 +27,7 @@ if (!empty($expensename) && !empty($description)) {
         $array_data[] = $extra;  
         $final_data = json_encode($array_data);  
        file_put_contents('file.json', $final_data);
-
+       $data = 1;
     }
 }
 

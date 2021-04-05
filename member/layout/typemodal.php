@@ -203,7 +203,7 @@
 												<div class="col-xl-12 col-xxl-10">
 													<!--begin::Wizard Form-->
 													<form
-														action="<?='action/expense/update.php'?>"
+														action="<?='action/projecttype/update.php'?>"
 														method="POST"
 														class="form fv-plugins-bootstrap fv-plugins-framework"
 														id="updateexpenseform">

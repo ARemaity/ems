@@ -369,16 +369,18 @@ public function project_type_create($name,$description) {
  
     $stmt->bind_param("ss",$name,$description);
     $result = $stmt->execute();
+  
+    $last_id=$stmt->insert_id;
     $stmt->close();
-// check for successful store
-if ($result) {
-    return true;
-} else {
+    // check for successful store
+    if ($result) {
+    return $last_id;
+    } else {
     return false;
-}
-}
-
-
+    }
+    }
+    
+    
 
 
 

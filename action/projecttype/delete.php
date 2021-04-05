@@ -3,17 +3,17 @@ require_once (dirname(__FILE__, 3)) . '/base.php';
 require_once (dirname(__FILE__, 3)) . '/' . DIR_INC . 'DB_manage.php';
 
 $db =new DB_Manage();      
-$expenseid=$_POST['id'];
+$TID=$_POST['id'];
 
 // first arg for uid 
 
-$data=0;
-if(!empty($expenseid)){
+$data="0";
+if(!empty($TID)){
 
-    $result = $db->deleteexpns($expenseid);
+    $result = $db->project_type_delete($TID);
     if($result){
     
-        $data=1;
+        $data="1";
         $jsonString = file_get_contents('file.json', 'w');
         $DPID=0; //id to be selected inorder to delete
         // decode json to associative array
@@ -22,7 +22,7 @@ if(!empty($expenseid)){
         
         foreach ($json_arr as $key => $value)
         {
-            if ($value['EID'] == $expenseid)
+            if ($value['TID'] == $TID)
             {
                $DPID= $key;
             }
@@ -39,19 +39,6 @@ if(!empty($expenseid)){
         file_put_contents('file.json', json_encode($json_arr));
 
 
-
-
-
-
-
-
-
-
-
-
-
-    
-    
     }
 
 }

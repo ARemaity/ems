@@ -161,7 +161,7 @@ var kt_delete = function() {
           }).then(function (e) {
             if (e.value) {
               $.ajax({
-                url: "action/expense/delete.php",
+                url: "action/projecttype/delete.php",
                 type: "POST",
                 data: { id: Did},
                 dataType: "json",
@@ -198,13 +198,13 @@ var kt_update = function() {
        
         
         $.ajax({//get the transactio attribute and them to the form
-          url: "action/expense/getexpense.php",
+          url: "action/projecttype/getexpense.php",
           type: "POST",
           data: { id: this.id},
           dataType: "json",
           success: function (response) {
             if (response != "0") {
-              $("#uexpenseid").val(response.EID);
+              $("#uexpenseid").val(response.TID);
               $("#uexpensename").val(response.name);//fill the input values 
               $("#uexpensedescription").val(response.description);
               $("#updateexpense").modal("show");
@@ -229,7 +229,7 @@ var kt_update = function() {
           }).then(function (e) {
             if (e.value) {
               $.post(post_url, form_data, function (response) {
-                if (response == '1') {
+                if (response == 1) {
                  
                   Swal.fire(
                     "Updated!",
@@ -351,7 +351,7 @@ jQuery(document).ready(function () {
     }).then(function (e) {
       if (e.value) {
         $.post(post_url, form_data, function (response) {
-          if (response==1) {
+          if (response == 1) {
             Swal.fire(
               "Inserted!",
               "expense has been Inserted.",
