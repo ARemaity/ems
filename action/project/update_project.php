@@ -6,12 +6,13 @@ $db =new DB_Manage();
 $id=$_POST['PID'];    
 $number=$_POST['number'];
 $city=$_POST['city'];
+$TID=$_POST['type'];
 $phonenumber=$_POST['phonenumber'];
 $clientname=$_POST['clientname'];
 $data=0;
-if(!empty($number)&&!empty($city)&&!empty($phonenumber)&&!empty($clientname)){
+if(!empty($number)&&!empty($TID)&&!empty($city)&&!empty($phonenumber)&&!empty($clientname)){
 
-    $result = $db->updateproject($id,$number,$city,$clientname,$phonenumber);
+    $result = $db->updateproject($id,$TID,$number,$city,$clientname,$phonenumber);
     if($result){
     
         $data=1;

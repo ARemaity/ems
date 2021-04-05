@@ -63,11 +63,7 @@ var KTDatatableproject = function() {
               return row.number;
 
      }
-      //  template: function(row) {
-      //           return '<a href="member/project_single.php?pid='+row.PID+'" class="btn btn-sm btn-clean btn-icon"\
-      //              title="Delete">'+row.number+'</a>';
 
-      //  }
         
             },{
             field: 'city',
@@ -92,7 +88,16 @@ var KTDatatableproject = function() {
             template: function(row) {
                 return row.client_phone;
             },
-        },{
+        },
+        {
+          field: 'type',
+          title: 'Type',
+          width: 80,
+
+          template: function(row) {
+              return row.type;
+          },
+      },{
             field: 'created_at',
             title: 'Date',
             width: 70,
@@ -254,6 +259,7 @@ jQuery(document).ready(function () {
         type: "POST",
         data: { get_json: 1 },
         success: function (response) {
+          response=response.replace(/ /g,'');
           if(response=='1'){
   
             KTDatatableproject.init();

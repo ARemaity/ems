@@ -144,15 +144,13 @@ if ($stmt->execute()) {
   
 /**
  * getAllProject 
+ * GET PROPJECT WITH ITS type
  *
  * @return array
  */
 public function getAllProject() {
       
-    $stmt = $this->conn->prepare("SELECT * FROM project  ORDER BY created_at DESC");              
-
-
-
+    $stmt = $this->conn->prepare("SELECT P.`PID`, T.`name` as type , P.`number`, P.`city`, P.`client_name`, P.`client_phone`, P.`created_at` FROM `project` AS P right join `project_type` AS T ON T.TID=P.fk_TID ORDER BY created_at DESC ");              
 
 if ($stmt->execute()) {			
 $project = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);

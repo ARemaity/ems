@@ -15,8 +15,6 @@ if(!empty($projectid)){
 
 $result1 = $db->deleteincomebypid($projectid);
 // delete expense transaction 
-
-
 $result2 = $db->deleteexpbypid($projectid);
 
     $result = $db->deleteproject($projectid);
