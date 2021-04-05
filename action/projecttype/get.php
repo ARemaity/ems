@@ -25,7 +25,7 @@ if (is_array($query)) {
 }
 
 $sort = !empty($datatable['sort']['sort']) ? $datatable['sort']['sort'] : 'asc';
-$field = !empty($datatable['sort']['field']) ? $datatable['sort']['field'] : 'EID';
+$field = !empty($datatable['sort']['field']) ? $datatable['sort']['field'] : 'TID';
 
 $meta = array();
 $page = !empty($datatable['pagination']['page']) ? (int)$datatable['pagination']['page'] : 1;

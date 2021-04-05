@@ -47,7 +47,7 @@ var KTDatatablexpense = function() {
     // columns definition
     columns: [
         {
-            field: 'EID',
+            field: 'TID',
             title: '#',
             sortable: false,
             width: 20,
@@ -324,6 +324,7 @@ jQuery(document).ready(function () {
     type: "POST",
     data: { get_json: 1 },
     success: function (response) {
+      response=response.replace(/ /g,'');
       if(response=='1'){
 
         KTDatatablexpense.init();
