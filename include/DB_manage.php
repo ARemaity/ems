@@ -159,7 +159,7 @@ if ($stmt->execute()) {
 
 public function getexpense_transaction($expensetrans_id) {
        
-    $stmt = $this->conn->prepare("SELECT `ETID`, `fk_UID`, `fk_PID`, `fk_IID`, `cost`, `created_at` FROM `expense_transaction` WHERE ETID = ?");        
+    $stmt = $this->conn->prepare("SELECT * FROM `expense_transaction` WHERE ETID = ?");        
 $stmt->bind_param("i", $expensetrans_id);   
 
 if ($stmt->execute()) {			
@@ -170,6 +170,7 @@ if ($stmt->execute()) {
     return NULL;
  }
 }
+
 
 
 
@@ -221,10 +222,10 @@ if ($stmt->execute()) {
  }
 }
 
-public function updateexptransaction($expensetrans_id,$expenseid,$cost) {
+public function updateexptransaction($expensetrans_id,$expenseid,$cost,$status) {
        
-    $stmt = $this->conn->prepare("UPDATE `expense_transaction` SET `fk_EID`=?,`cost`= ? WHERE ETID= ?");        
-$stmt->bind_param("idi",$expenseid,$cost,$expensetrans_id);   
+    $stmt = $this->conn->prepare("UPDATE `expense_transaction` SET `fk_EID`=?,`cost`= ?,`Status_income`=? WHERE ETID= ?");        
+$stmt->bind_param("idii",$expenseid,$cost,$status,$expensetrans_id);   
 
 if ($stmt->execute()) {			
     
