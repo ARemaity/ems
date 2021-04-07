@@ -1,8 +1,12 @@
 <!-- 3 modal for s_pr  -->
 
 <!-- START: insert income transcation -->
+<?php
+require_once (dirname(__FILE__,3)).'/base.php';
 
-
+require_once (dirname(__FILE__, 3)) . '/' . DIR_INC . 'DB_Reports.php';
+$dbr =new DB_Reports(); 
+?>
 
 	<div class="modal fade" id="incomemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -347,6 +351,36 @@ while ($row = $result->fetch_assoc()) {
 																			</div>
 																		</div>
 																	</div>
+																
+
+
+
+
+    <div
+																		class="form-group row fv-plugins-icon-container">
+                                                                        <label
+																			class="col-xl-3 col-lg-3 col-form-label">Project type</label>
+																		<div class="col-lg-9 col-xl-9">
+
+																		<select name="dropdownp" id="dropdownexpnsp" class="form-control form-control-lg form-control-solid">
+																			<option selected="true" disabled="disabled">Choose Type</option> 
+
+                                                                                   <?php
+
+$result = $dbr->project_type_getall();
+foreach ($result as $row) {
+    echo "<option value='" . $row['TID'] . "'>" . $row['name'] . "</option>";}
+
+?>
+
+
+
+
+
+
+																		</select>
+																	</div>
+																</div>
 
 
 
@@ -560,6 +594,15 @@ while ($row = $result->fetch_assoc()) {
 																				name="costedit" type="text" id = "costedit" required>
 																			<div class="fv-plugins-message-container">
 																			</div>
+																		</div>
+																	</div>
+																	<div class="form-group row fv-plugins-icon-container">
+																		<label class="col-xl-3 col-lg-3 col-form-label">Status</label>
+																		<div class="col-lg-9 col-xl-9">
+																			<select name="statusexp" id="dropdownstatusexp" class="form-control form-control-lg form-control-solid">
+																				<option value="0"> pending</option>
+																				<option value="1"> Done</option>
+																			</select>
 																		</div>
 																	</div>
 

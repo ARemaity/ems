@@ -26,6 +26,7 @@ if(!empty($projectid)&&!empty($dropdown)&&!empty($cost)&&!empty($expnsname)){
              'ETID'=> $data,  
              'name'=>$expnsname,
              'cost'=>$cost,
+             "Status_income"=>0,
              'date'=>date("Y-m-d H:i:s"));
 
         $array_data[] = $extra;  

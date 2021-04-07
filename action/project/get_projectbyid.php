@@ -9,7 +9,17 @@ $data=0;
 if(!empty($id)){
 
     $result = $db->getproject($id);
-    if($result){
+    
+    if($result){  
+
+
+ $result1=$db->project_type_getsingletype($result["fk_TID"]);
+
+ if(!$result1){  $result["prtype"]=  "no Type"; }//get name of the type from type project and add it to array
+
+
+$result["prtype"]=  $result1["name"];
+
      echo json_encode($result);
     die();
  }

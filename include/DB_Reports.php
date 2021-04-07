@@ -121,15 +121,39 @@ if ($stmt->execute()) {
     return NULL;
  }
 }
+public function getexpensetransaction_sumu($projecttid) {
+       
+    $stmt = $this->conn->prepare("SELECT SUM(cost) as sum ,COUNT(cost) AS trnscount FROM expense_transaction WHERE fk_PID = ? AND Status_income = 0");        
+$stmt->bind_param("i", $projecttid);   
 
+if ($stmt->execute()) {			
+     $order = $stmt->get_result()->fetch_assoc();
+     $stmt->close();
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
 
+public function getincometransaction_sumu($projecttid) {
+       
+    $stmt = $this->conn->prepare("SELECT SUM(cost) as sum,COUNT(cost) AS incmcount FROM income_transaction fk_PID WHERE fk_PID = ? AND `status`=0");        
+$stmt->bind_param("i", $projecttid);   
 
+if ($stmt->execute()) {			
+     $order = $stmt->get_result()->fetch_assoc();
+     $stmt->close();
+     return $order; 
+ } else {
+    return NULL;
+ }
+}
 
 
 
 public function getproject($projecttid) {
        
-    $stmt = $this->conn->prepare("SELECT `PID`, `number`, `city`, `client_name`, `client_phone`, `created_at` FROM `project` WHERE PID = ?");        
+    $stmt = $this->conn->prepare("SELECT * FROM `project` WHERE PID = ?");        
 $stmt->bind_param("i", $projecttid);   
 
 if ($stmt->execute()) {			
@@ -209,12 +233,12 @@ if ($stmt->execute()) {
 
 public function numberofexpense_transaction() {
        
-    $stmt = $this->conn->prepare("SELECT Sum(cost) as total  FROM expense_transaction");        
+    $stmt = $this->conn->prepare("SELECT Sum(cost) as total  FROM expense_transaction Where Status_income =1");        
 
 
 if ($stmt->execute()) {			
      $order = $stmt->get_result()->fetch_assoc();
-     $stmt->close();
+     $stmt->close(); 
      return $order; 
  } else {
     return NULL;
@@ -306,13 +330,14 @@ if ($stmt->execute()) {
 
 public function get_expenses_project($PID) {
     
-    $stmt = $this->conn->prepare("SELECT   ETID ,  name , cost, T.created_at as date FROM expense_transaction AS T  INNER JOIN expense AS E  ON   T.fk_EID = E.EID where T.fk_PID = ?  ORDER BY created_at DESC");              
+    $stmt = $this->conn->prepare("SELECT   `ETID`,`name`,`cost`,`Status_income`, T.created_at as date FROM expense_transaction AS T  INNER JOIN expense AS E  ON   T.fk_EID = E.EID where T.fk_PID = ?  ORDER BY created_at DESC");              
     $stmt->bind_param("i", $PID);   
 if ($stmt->execute()) {			
 $expenses = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 return $expenses; 
 $stmt->close();
-} else {
+} 
+else {
 die("Adding record failed: " .$stmt->error); 
 $stmt->close();
 

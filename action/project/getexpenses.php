@@ -19,9 +19,32 @@ if(!empty($id)){
             $data["incmcount"] = $result1['incmcount'];
        
 
-            
-       
-        }
+             }
+
+             $result2 = $db->getexpensetransaction_sumu($id);
+             if($result2){
+                 $data["trnsu"] = $result2['sum'];
+                 $data["trnscountu"] = $result2['trnscount'];
+             }
+    
+
+                  $result3 = $db->getincometransaction_sumu($id);
+                  if($result3){
+                      $data["incmu"] = $result3['sum'];
+                      $data["incmcountu"] = $result3['incmcount'];
+                 
+          
+                       }
+
+
+
+
+
+
+
+
+
+
 
  echo json_encode($data);
 

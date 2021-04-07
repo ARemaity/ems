@@ -7,12 +7,14 @@ $expenseid=$_POST['transactionid'];
 $dropdown=$_POST['liste'];
 $cost=$_POST['costedit'];
 $transactionname=$_POST['transactionname'];
+$statusexp=$_POST['statusexp'];
+
 // first arg for uid 
 
 $data=0;
-if(!empty($dropdown)&&!empty($cost)&&!empty($expenseid)){
+if(!empty($dropdown)&&!empty($cost)&&!empty($expenseid)&&!empty($statusexp)){
 
-    $result = $db->updateexptransaction($expenseid,$dropdown,$cost);
+    $result = $db->updateexptransaction($expenseid,$dropdown,$cost,$statusexp);
     if($result){
     
         $data=1;
@@ -25,7 +27,7 @@ if(!empty($dropdown)&&!empty($cost)&&!empty($expenseid)){
                 // if 1 no need to add again
                 $datas[$key]['name'] = $transactionname;
                 $datas[$key]['cost'] = $cost;
-                
+                $datas[$key]['Status_income'] = $statusexp;
                 break;
                
             }

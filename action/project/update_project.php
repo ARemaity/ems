@@ -6,9 +6,10 @@ $db =new DB_Manage();
 $id=$_POST['PID'];    
 $number=$_POST['number'];
 $city=$_POST['city'];
-$TID=$_POST['type'];
+$TID=$_POST['dropdownp'];
 $phonenumber=$_POST['phonenumber'];
 $clientname=$_POST['clientname'];
+
 $data=0;
 if(!empty($number)&&!empty($TID)&&!empty($city)&&!empty($phonenumber)&&!empty($clientname)){
 

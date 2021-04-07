@@ -19,6 +19,7 @@ var profile_reload = function () {
       if (response != "0") {
         $("#clientname").text("Client Name : " + response.client_name);
         $("#landnumber").text(response.number);
+        $("#projecttypee").text(response.prtype);
         $("#phone").text(response.client_phone);
         $("#date").text(response.created_at);
         $("#city").text(response.city);
@@ -46,7 +47,7 @@ var profile_reload = function () {
         }
 
         $("#total").text(profit);
-        $("#transnumber").text(response.trnscount + " Transactions");
+        $("#transnumber").text("Transactions : "+response.trnscount + " paid and "+response.trnscountu+" upaid" );
         $("#incmnumber").text(response.incmcount + " income Trans.");
       }
     }
@@ -122,6 +123,24 @@ var KTDatatable_expense = (function () {
         autoHide: true,
         template: function (row) {
           return row.cost;
+        }
+      }, {
+        field: "status",
+        title: "status",
+        width: 70,
+        autoHide: true,
+        template: function (row) {
+          var status = {
+            0: { title: "Unpaid", state: "danger" },
+            1: { title: "Paid", state: "success" }
+          };
+          return (
+            '<span class="label font-weight-bold label-lg label-light-' +
+            status[row.Status_income].state +
+            ' label-inline">' +
+            status[row.Status_income].title +
+            "</span>"
+          ); 
         }
       },
       {
@@ -228,6 +247,7 @@ var KTDatatable_expense = (function () {
             $("#transactionid").val(response.ETID); //fill the input values
 
             $("#liste").val(response.fk_EID);
+    
             $("#costedit").val(response.cost);
           } else {
             $("#edittransactionmodal").modal("hide");
@@ -787,7 +807,7 @@ var KTSweetAlert = {
               $("#city1").val(response.city);
               $("#number1").val(response.number);
               $("#PID1").val(response.PID);
-
+              $("#dropdownexpnsp").val(response.fk_TID);
               $("#updatemodal").modal("show");
             }
           }
@@ -806,7 +826,7 @@ var KTSweetAlert = {
           }).then(function (e) {
             if (e.value) {
               $.post(post_url, form_data, function (response) {
-                if (response == "1") {
+                if (response == 1) {
                   Swal.fire(
                     "Inserted!",
                     "Transaction has been Inserted.",

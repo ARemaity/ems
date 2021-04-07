@@ -304,8 +304,10 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 											<!--end: Title-->
 											<!--begin: Content-->
 											<div class="d-flex align-items-center flex-wrap justify-content-between">
+											
 
 												<div class="d-flex flex-wrap align-items-center py-2">
+												
 													<div class="d-flex align-items-center mr-10">
 														<div class="mr-6">
 															<div class="font-weight-bold mb-2">Created on : </div>
@@ -317,6 +319,14 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 															<span id="landnumber"
 																class="btn btn-sm btn-text btn-light-info text-uppercase font-weight-bold"></span>
 														</div>
+
+
+														<div class="mr-6">
+															<div class="font-weight-bold mb-2">project Type : </div>
+															<span id="projecttypee"
+																class="btn btn-sm btn-text btn-light-primary text-uppercase font-weight-bold"></span>
+														</div>
+
 														
 													</div>
 													<div
@@ -326,6 +336,7 @@ if(isset($_SESSION)&&isset($_SESSION["usertype"])){
 													</div>
 												</div>
 											</div>
+											
 
 											<!--end: Content-->
 										</div>
