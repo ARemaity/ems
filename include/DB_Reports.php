@@ -96,7 +96,7 @@ if ($stmt->execute()) {
 
 public function getexpensetransaction_sum($projecttid) {
        
-    $stmt = $this->conn->prepare("SELECT SUM(cost) as sum ,COUNT(cost) AS trnscount FROM expense_transaction WHERE fk_PID = ? ");        
+    $stmt = $this->conn->prepare("SELECT SUM(cost) as sum ,COUNT(cost) AS trnscount FROM expense_transaction WHERE fk_PID = ? AND Status_income = 1");        
 $stmt->bind_param("i", $projecttid);   
 
 if ($stmt->execute()) {			
@@ -150,7 +150,7 @@ if ($stmt->execute()) {
  */
 public function getAllProject() {
       
-    $stmt = $this->conn->prepare("SELECT P.`PID`, T.`name` as type , P.`number`, P.`city`, P.`client_name`, P.`client_phone`, P.`created_at` FROM `project` AS P left join `project_type` AS T ON T.TID=P.fk_TID ORDER BY created_at DESC ");              
+    $stmt = $this->conn->prepare("SELECT P.`PID`, T.`name` as type , P.`number`, P.`city`, P.`client_name`, P.`client_phone`, P.`created_at` FROM `project` AS P right join `project_type` AS T ON T.TID=P.fk_TID ORDER BY created_at DESC ");              
 
 if ($stmt->execute()) {			
 $project = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
