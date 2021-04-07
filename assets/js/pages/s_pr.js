@@ -917,6 +917,7 @@ jQuery(document).ready(function () {
     type: "POST",
     data: { PID: PID },
     success: function (response) {
+      response=response.replace(/ /g,'');
       if (response == "1") {
         KTDatatable_expense.init();
       }
