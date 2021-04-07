@@ -58,7 +58,7 @@ class DB_Manage {
 
  public function insertintoexpense_transaction($fk_UID,$fk_PID,$fk_IID,$cost) {
                                 
-    $stmt = $this->conn->prepare("INSERT INTO `expense_transaction`(`ETID`, `fk_UID`, `fk_PID`, `fk_EID`,`cost`,`created_at`) VALUES (Null,?,?,?,?,NOW())");
+    $stmt = $this->conn->prepare("INSERT INTO `expense_transaction`(`ETID`, `fk_UID`, `fk_PID`, `fk_EID`,`cost`,`Status_income`,`created_at`) VALUES (Null,?,?,?,?,default,NOW())");
     $stmt->bind_param("iiid",$fk_UID,$fk_PID,$fk_IID,$cost);
     $result = $stmt->execute();
     $last_id=$stmt->insert_id;
