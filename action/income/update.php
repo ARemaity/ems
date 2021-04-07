@@ -5,7 +5,9 @@ require_once (dirname(__FILE__, 3)) . '/' . DIR_INC . 'DB_manage.php';
 $db =new DB_Manage();      
 $incomeid=$_POST['incometransactionidupdate'];
 $cost=$_POST['incometransactioncostupdate'];
-$status=$_POST['incometransactionstupdate'];
+$status=$_POST['statusicnm'];
+
+
 // first arg for uid 
 
 $data=0;

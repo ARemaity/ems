@@ -47,8 +47,8 @@ var profile_reload = function () {
         }
 
         $("#total").text(profit);
-        $("#transnumber").text("Transactions : "+response.trnscount + " paid and "+response.trnscountu+" upaid" );
-        $("#incmnumber").text(response.incmcount + " income Trans.");
+        $("#transnumber").text("Transactions : "+response.trnscount + " paid and "+response.trnscountu+" unpaid" );
+        $("#incmnumber").text("incomes : "+response.incmcount + " paid and "+response.incmcountu+" unpaid");
       }
     }
   });
@@ -249,6 +249,7 @@ var KTDatatable_expense = (function () {
             $("#liste").val(response.fk_EID);
     
             $("#costedit").val(response.cost);
+            $("#dropdownstatusexp").val(response.Status_income);
           } else {
             $("#edittransactionmodal").modal("hide");
           } //if couldnt retrieve transaction from database
@@ -590,7 +591,7 @@ var KTDatatable_income = (function () {
           if (response != "0") {
             $("#incometransactionidupdate").val(response.ITID); //fill the input values
             $("#incometransactioncostupdate").val(response.cost);
-            $("#incometransactionstupdate").val(response.status);
+            $("#statusicnm").val(response.status);
           } else {
             $("#incomemodalupdate").modal("hide");
           } //if couldnt retrieve transaction from database
@@ -613,7 +614,7 @@ var KTDatatable_income = (function () {
         }).then(function (e) {
           if (e.value) {
             $.post(post_url, form_data, function (response) {
-              if (response == "1") {
+              if (response == 1) {
                 Swal.fire(
                   "Updated!",
                   "Transaction has been Updated.",
@@ -751,6 +752,7 @@ var KTDatatable_income = (function () {
 var KTSweetAlert = {
   init: function () {
     $("#etransactions").click(function (e) {
+      $("#insrtextrans").trigger("reset");
       $("#insertmodal").modal("show");
       $("#projectidinput").val(PID);
       $("#insrtextrans").on("submit", function (event) {
@@ -767,7 +769,9 @@ var KTSweetAlert = {
           showCancelButton: !0,
           confirmButtonText: "Yes, Insert it!"
         }).then(function (e) {
+
           if (e.value) {
+          
             $.post(post_url, form_data, function (response) {
               if (typeof response !== "boolean") {
                 Swal.fire(
@@ -776,10 +780,7 @@ var KTSweetAlert = {
                   "success"
                 );
                 $("#insertmodal").modal("hide");
-                $("#insrtextrans")
-                  .closest("form")
-                  .find("input[type=text], textarea")
-                  .val("");
+                $("#insrtextrans").trigger("reset");
                 profile_reload();
                 datatable1.reload();
               } else {
@@ -788,6 +789,7 @@ var KTSweetAlert = {
                   "there is an error Call the developer)",
                   "error"
                 );
+                $("#insrtextrans").trigger("reset");
               }
             });
           }
@@ -851,6 +853,7 @@ var KTSweetAlert = {
         });
       }),
       $("#incomebttn").click(function (e) {
+        $("#insrtincmtrans").trigger("reset");
         $("#incomemodal").modal("show");
         $("#projectidinputinc").val(PID);
         $("#insrtincmtrans").on("submit", function (event) {
@@ -874,10 +877,7 @@ var KTSweetAlert = {
                     "Income has been Inserted.",
                     "success"
                   );
-                  $("#incomemodal")
-                    .closest("form")
-                    .find("input[type=text], textarea")
-                    .val("");
+                  $("#insrtincmtrans").trigger("reset");
                   datatable2.reload();
                   profile_reload();
                 } else {
@@ -886,6 +886,7 @@ var KTSweetAlert = {
                     "there is an error Call the developer)",
                     "error"
                   );
+                  $("#insrtincmtrans").trigger("reset");
                 }
               });
             }

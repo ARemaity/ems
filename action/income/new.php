@@ -5,7 +5,7 @@ require_once (dirname(__FILE__, 3)) . '/' . DIR_INC . 'DB_manage.php';
 $db =new DB_Manage();      
 $projectid=$_POST['projectid'];
 $cost=$_POST['cost'];
-$status=$_POST['status'];
+$status=$_POST['statusn'];
 $data=0;
 if(!empty($projectid)&&!empty($cost)){
 

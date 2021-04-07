@@ -12,7 +12,7 @@ $statusexp=$_POST['statusexp'];
 // first arg for uid 
 
 $data=0;
-if(!empty($dropdown)&&!empty($cost)&&!empty($expenseid)&&!empty($statusexp)){
+if(!empty($dropdown)&&!empty($cost)&&!empty($expenseid)){
 
     $result = $db->updateexptransaction($expenseid,$dropdown,$cost,$statusexp);
     if($result){
