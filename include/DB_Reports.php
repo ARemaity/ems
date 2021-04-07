@@ -62,9 +62,10 @@ if ($stmt->execute()) {
 }
 
 
+
 public function getexpense_transaction($expensetrans_id) {
        
-    $stmt = $this->conn->prepare("SELECT `ETID`, `fk_UID`, `fk_PID`, `fk_EID`, `cost`, `created_at` FROM `expense_transaction` WHERE ETID = ? ");        
+    $stmt = $this->conn->prepare("SELECT * FROM `expense_transaction` WHERE ETID = ? ");        
     $stmt->bind_param("i", $expensetrans_id);   
 
 if ($stmt->execute()) {			
@@ -75,7 +76,6 @@ if ($stmt->execute()) {
     return NULL;
  }
 }
-
 
 public function getincome($incomeid) {
        
@@ -150,7 +150,7 @@ if ($stmt->execute()) {
  */
 public function getAllProject() {
       
-    $stmt = $this->conn->prepare("SELECT P.`PID`, T.`name` as type , P.`number`, P.`city`, P.`client_name`, P.`client_phone`, P.`created_at` FROM `project` AS P right join `project_type` AS T ON T.TID=P.fk_TID ORDER BY created_at DESC ");              
+    $stmt = $this->conn->prepare("SELECT P.`PID`, T.`name` as type , P.`number`, P.`city`, P.`client_name`, P.`client_phone`, P.`created_at` FROM `project` AS P left join `project_type` AS T ON T.TID=P.fk_TID ORDER BY created_at DESC ");              
 
 if ($stmt->execute()) {			
 $project = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
